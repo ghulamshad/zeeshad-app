@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   description: "Leading IT services company specializing in software development, cloud computing, AI, cybersecurity, and digital transformation. Serving domestic and international markets from Karachi, Pakistan.",
   keywords: "IT services, software development, cloud computing, artificial intelligence, cybersecurity, digital transformation, Pakistan",
   authors: [{ name: "ZeeShad (Private) Limited" }],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "ZeeShad (Private) Limited - IT Solutions & Digital Transformation",
     description: "Leading IT services company specializing in software development, cloud computing, AI, cybersecurity, and digital transformation.",
