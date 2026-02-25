@@ -52,8 +52,8 @@ export default function About() {
       component="section"
       id="about"
       sx={{
-        py: { xs: '70px', sm: '80px', md: '20px' },
-        background: `linear-gradient(135deg, ${alpha(theme.palette.grey[50], 1)} 0%, ${alpha(theme.palette.primary.light, 0.1)} 100%)`,
+        py: { xs: 8, sm: 10, md: 12 },
+        bgcolor: 'background.default',
       }}
     >
       <Container maxWidth="lg">
@@ -86,7 +86,8 @@ export default function About() {
         <Card
           sx={{
             mb: { xs: 4, md: 5 },
-            boxShadow: 4,
+            bgcolor: 'background.paper',
+            border: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
           }}
         >
           <CardContent sx={{ p: { xs: 4, md: 6 } }}>
@@ -224,16 +225,15 @@ export default function About() {
         {/* Mission Statement */}
         <Box
           sx={{
-            background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
             borderRadius: { xs: 3, md: 4 },
             p: { xs: 4, md: 5 },
             textAlign: 'center',
-            color: 'white',
-            boxShadow: 8,
+            border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
+            bgcolor: alpha(theme.palette.primary.main, 0.08),
           }}
         >
-          <People sx={{ fontSize: 60, mb: 3, opacity: 0.9 }} />
-          <Typography variant="h4" component="h3" sx={{ mb: 2, fontWeight: 700 }}>
+          <People sx={{ fontSize: 60, mb: 3, color: 'primary.main', opacity: 0.9 }} />
+          <Typography variant="h4" component="h3" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
             Our Mission
           </Typography>
           <Typography
@@ -241,7 +241,7 @@ export default function About() {
             sx={{
               maxWidth: 800,
               mx: 'auto',
-              opacity: 0.95,
+              color: 'text.secondary',
               lineHeight: 1.8,
             }}
           >

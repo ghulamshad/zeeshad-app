@@ -45,10 +45,11 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        bgcolor: 'grey.900',
-        color: 'grey.300',
+        bgcolor: 'background.default',
+        color: 'text.secondary',
         pt: { xs: 6, md: 8 },
         pb: { xs: 4, md: 6 },
+        borderTop: '1px solid rgba(255,255,255,0.06)',
       }}
     >
       <Container maxWidth="xl">
@@ -87,7 +88,7 @@ export default function Footer() {
                       fontSize: { xs: '1rem', sm: '1.1rem' },
                       lineHeight: 1.2,
                       mb: 0.25,
-                      color: 'white',
+                      color: 'text.primary',
                     }}
                   >
                     ZeeShad
@@ -96,7 +97,7 @@ export default function Footer() {
                     variant="caption"
                     sx={{
                       fontSize: { xs: '0.65rem', sm: '0.7rem' },
-                      color: 'grey.400',
+                      color: 'text.secondary',
                       fontWeight: 500,
                       letterSpacing: '0.5px',
                       display: 'block',
@@ -107,7 +108,7 @@ export default function Footer() {
                 </Box>
               </Box>
             </Link>
-            <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.7 }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
               Leading IT solutions provider specializing in software development, 
               cloud computing, AI, and digital transformation services.
             </Typography>
@@ -115,7 +116,7 @@ export default function Footer() {
 
           {/* Services */}
           <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-            <Typography variant="h6" sx={{ mb: 2, color: 'white', fontWeight: 600 }}>
+            <Typography variant="h6" sx={{ mb: 2, color: 'text.primary', fontWeight: 600 }}>
               Our Services
             </Typography>
             <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
@@ -125,7 +126,7 @@ export default function Footer() {
                     component={Link}
                     href="#services"
                     sx={{
-                      color: 'grey.400',
+                      color: 'text.secondary',
                       textDecoration: 'none',
                       fontSize: '0.875rem',
                       '&:hover': {
@@ -143,7 +144,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-            <Typography variant="h6" sx={{ mb: 2, color: 'white', fontWeight: 600 }}>
+            <Typography variant="h6" sx={{ mb: 2, color: 'text.primary', fontWeight: 600 }}>
               Quick Links
             </Typography>
             <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
@@ -153,7 +154,7 @@ export default function Footer() {
                     component={Link}
                     href={link.href}
                     sx={{
-                      color: 'grey.400',
+                      color: 'text.secondary',
                       textDecoration: 'none',
                       fontSize: '0.875rem',
                       '&:hover': {
@@ -171,13 +172,13 @@ export default function Footer() {
 
           {/* Contact Info */}
           <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-            <Typography variant="h6" sx={{ mb: 2, color: 'white', fontWeight: 600 }}>
+            <Typography variant="h6" sx={{ mb: 2, color: 'text.primary', fontWeight: 600 }}>
               Contact Us
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <Box sx={{ display: 'flex', gap: 1.5 }}>
                 <LocationOn sx={{ color: 'primary.main', mt: 0.5, flexShrink: 0 }} />
-                <Typography variant="body2" sx={{ color: 'grey.400', lineHeight: 1.6 }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
                   D-17 Ground Floor, Gulistan Society<br />
                   Quaidabad, Karachi, Pakistan
                 </Typography>
@@ -187,7 +188,7 @@ export default function Footer() {
                 <MuiLink
                   href="mailto:info@zeeshad.com"
                   sx={{
-                    color: 'grey.400',
+                    color: 'text.secondary',
                     textDecoration: 'none',
                     fontSize: '0.875rem',
                     '&:hover': {
@@ -203,7 +204,7 @@ export default function Footer() {
                 <MuiLink
                   href="tel:+923040058323"
                   sx={{
-                    color: 'grey.400',
+                    color: 'text.secondary',
                     textDecoration: 'none',
                     fontSize: '0.875rem',
                     '&:hover': {
@@ -222,7 +223,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  color: 'grey.400',
+                  color: 'text.secondary',
                   '&:hover': {
                     color: 'primary.main',
                     bgcolor: 'rgba(37, 99, 235, 0.1)',
@@ -238,7 +239,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  color: 'grey.400',
+                  color: 'text.secondary',
                   '&:hover': {
                     color: 'primary.main',
                     bgcolor: 'rgba(37, 99, 235, 0.1)',
@@ -254,7 +255,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                  color: 'grey.400',
+                  color: 'text.secondary',
                   '&:hover': {
                     color: 'primary.main',
                     bgcolor: 'rgba(37, 99, 235, 0.1)',
@@ -268,7 +269,7 @@ export default function Footer() {
           </Grid>
         </Grid>
 
-        <Divider sx={{ my: 4, borderColor: 'grey.800' }} />
+        <Divider sx={{ my: 4, borderColor: 'rgba(255,255,255,0.08)' }} />
 
         <Box
           sx={{
@@ -280,10 +281,10 @@ export default function Footer() {
             textAlign: { xs: 'center', sm: 'left' },
           }}
         >
-          <Typography variant="body2" sx={{ color: 'grey.400' }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             © {currentYear} ZeeShad (Private) Limited. All rights reserved.
           </Typography>
-          <Typography variant="body2" sx={{ color: 'grey.400' }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             Incorporated under Companies Act, 2017 (XIX of 2017)
           </Typography>
         </Box>

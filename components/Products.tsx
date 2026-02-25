@@ -100,8 +100,8 @@ export default function Products() {
       component="section"
       id="products"
       sx={{
-        py: { xs: '70px', sm: '80px', md: '20px' },
-        background: `linear-gradient(135deg, ${alpha(theme.palette.grey[50], 1)} 0%, ${alpha(theme.palette.primary.light, 0.1)} 50%, ${alpha(theme.palette.secondary.light, 0.1)} 100%)`,
+        py: { xs: 8, sm: 10, md: 12 },
+        bgcolor: 'background.paper',
       }}
     >
       <Container maxWidth="xl">
@@ -139,25 +139,15 @@ export default function Products() {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  bgcolor: alpha(product.color, 0.05),
+                  bgcolor: 'background.default',
+                  border: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
                   position: 'relative',
                   overflow: 'visible',
                   transition: 'all 0.3s ease-in-out',
                   '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: 8,
-                    '&::before': {
-                      opacity: 0.05,
-                    },
-                  },
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: 0,
-                    background: `linear-gradient(135deg, ${product.color} 0%, ${alpha(product.color, 0.5)} 100%)`,
-                    opacity: 0,
-                    transition: 'opacity 0.3s ease-in-out',
-                    borderRadius: 2,
+                    transform: 'translateY(-4px)',
+                    borderColor: alpha(product.color, 0.4),
+                    boxShadow: `0 12px 40px ${alpha(theme.palette.common.black, 0.4)}`,
                   },
                 }}
               >
@@ -273,17 +263,17 @@ export default function Products() {
         {/* Additional Info */}
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: 'background.default',
             borderRadius: 4,
             p: { xs: 3, md: 4 },
             textAlign: 'center',
-            boxShadow: 4,
+            border: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
             maxWidth: 900,
             mx: 'auto',
             mt: { xs: 4, md: 5 },
           }}
         >
-          <Typography variant="h4" component="h3" sx={{ mb: 2, fontWeight: 700 }}>
+          <Typography variant="h4" component="h3" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
             Looking for Custom Solutions?
           </Typography>
           <Typography

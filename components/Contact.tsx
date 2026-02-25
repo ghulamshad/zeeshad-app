@@ -91,7 +91,7 @@ export default function Contact() {
       component="section"
       id="contact"
       sx={{
-        py: { xs: '70px', sm: '80px', md: '20px' },
+        py: { xs: 8, sm: 10, md: 12 },
         bgcolor: 'background.default',
       }}
     >
@@ -127,13 +127,12 @@ export default function Contact() {
             <Card
               sx={{
                 height: '100%',
-                background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-                color: 'white',
-                boxShadow: 8,
+                bgcolor: 'background.paper',
+                border: `1px solid ${alpha(theme.palette.primary.main, 0.25)}`,
               }}
             >
               <CardContent sx={{ p: { xs: 4, md: 5 } }}>
-                <Typography variant="h5" component="h3" sx={{ mb: 4, fontWeight: 700 }}>
+                <Typography variant="h5" component="h3" sx={{ mb: 4, fontWeight: 700, color: 'text.primary' }}>
                   Contact Information
                 </Typography>
                 
@@ -141,7 +140,7 @@ export default function Contact() {
                   <Box sx={{ display: 'flex', gap: 2 }}>
                     <Box
                       sx={{
-                        bgcolor: alpha('#fff', 0.2),
+                        bgcolor: alpha(theme.palette.primary.main, 0.15),
                         borderRadius: 2,
                         p: 1.5,
                         display: 'flex',
@@ -149,15 +148,16 @@ export default function Contact() {
                         justifyContent: 'center',
                         minWidth: 48,
                         height: 48,
+                        color: 'primary.main',
                       }}
                     >
                       <LocationOn />
                     </Box>
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
                         Registered Office
                       </Typography>
-                      <Typography variant="body2" sx={{ opacity: 0.9, lineHeight: 1.6 }}>
+                      <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
                         D-17 Ground Floor<br />
                         Gulistan Society Quaidabad<br />
                         Karachi, Pakistan
@@ -168,7 +168,7 @@ export default function Contact() {
                   <Box sx={{ display: 'flex', gap: 2 }}>
                     <Box
                       sx={{
-                        bgcolor: alpha('#fff', 0.2),
+                        bgcolor: alpha(theme.palette.primary.main, 0.15),
                         borderRadius: 2,
                         p: 1.5,
                         display: 'flex',
@@ -176,12 +176,13 @@ export default function Contact() {
                         justifyContent: 'center',
                         minWidth: 48,
                         height: 48,
+                        color: 'primary.main',
                       }}
                     >
                       <Email />
                     </Box>
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
                         Email Address
                       </Typography>
                       <Typography
@@ -189,10 +190,9 @@ export default function Contact() {
                         href="mailto:info@zeeshad.com"
                         variant="body2"
                         sx={{
-                          opacity: 0.9,
-                          color: 'inherit',
+                          color: 'primary.light',
                           textDecoration: 'none',
-                          '&:hover': { opacity: 1, textDecoration: 'underline' },
+                          '&:hover': { textDecoration: 'underline' },
                         }}
                       >
                         info@zeeshad.com
@@ -203,7 +203,7 @@ export default function Contact() {
                   <Box sx={{ display: 'flex', gap: 2 }}>
                     <Box
                       sx={{
-                        bgcolor: alpha('#fff', 0.2),
+                        bgcolor: alpha(theme.palette.primary.main, 0.15),
                         borderRadius: 2,
                         p: 1.5,
                         display: 'flex',
@@ -211,12 +211,13 @@ export default function Contact() {
                         justifyContent: 'center',
                         minWidth: 48,
                         height: 48,
+                        color: 'primary.main',
                       }}
                     >
                       <Phone />
                     </Box>
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
                         Phone Number
                       </Typography>
                       <Typography
@@ -224,10 +225,9 @@ export default function Contact() {
                         href="tel:+923040058323"
                         variant="body2"
                         sx={{
-                          opacity: 0.9,
-                          color: 'inherit',
+                          color: 'primary.light',
                           textDecoration: 'none',
-                          '&:hover': { opacity: 1, textDecoration: 'underline' },
+                          '&:hover': { textDecoration: 'underline' },
                         }}
                       >
                         +92 304 0058323
@@ -238,7 +238,7 @@ export default function Contact() {
                   <Box sx={{ display: 'flex', gap: 2 }}>
                     <Box
                       sx={{
-                        bgcolor: alpha('#fff', 0.2),
+                        bgcolor: alpha(theme.palette.primary.main, 0.15),
                         borderRadius: 2,
                         p: 1.5,
                         display: 'flex',
@@ -246,15 +246,16 @@ export default function Contact() {
                         justifyContent: 'center',
                         minWidth: 48,
                         height: 48,
+                        color: 'primary.main',
                       }}
                     >
                       <Business />
                     </Box>
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
                         Business Hours
                       </Typography>
-                      <Typography variant="body2" sx={{ opacity: 0.9, lineHeight: 1.6 }}>
+                      <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
                         Monday - Friday: 9:00 AM - 6:00 PM<br />
                         Saturday: 10:00 AM - 2:00 PM
                       </Typography>
@@ -266,10 +267,10 @@ export default function Contact() {
                   sx={{
                     mt: 4,
                     pt: 4,
-                    borderTop: `1px solid ${alpha('#fff', 0.2)}`,
+                    borderTop: `1px solid ${alpha(theme.palette.common.white, 0.08)}`,
                   }}
                 >
-                  <Typography variant="body2" sx={{ opacity: 0.8, lineHeight: 1.7 }}>
+                  <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                     We&apos;re here to help you with all your IT needs. 
                     Reach out to us and let&apos;s start a conversation about 
                     how we can support your business.
@@ -281,7 +282,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <Box sx={{ width: { xs: '100%', lg: '66.666%' } }}>
-            <Card sx={{ boxShadow: 4 }}>
+            <Card sx={{ bgcolor: 'background.paper', border: `1px solid ${alpha(theme.palette.common.white, 0.06)}` }}>
               <CardContent sx={{ p: { xs: 4, md: 5 } }}>
                 <form onSubmit={handleSubmit}>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>

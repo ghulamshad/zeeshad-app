@@ -195,12 +195,25 @@ export default function Services() {
       component="section"
       id="services"
       sx={{
-        py: { xs: '70px', sm: '80px', md: '20px' },
+        py: { xs: 8, sm: 10, md: 12 },
         bgcolor: 'background.default',
       }}
     >
       <Container maxWidth="xl">
         {/* Section Header */}
+        <Typography
+          variant="overline"
+          sx={{
+            display: 'block',
+            textAlign: 'center',
+            letterSpacing: 4,
+            color: 'primary.main',
+            fontWeight: 700,
+            mb: 1,
+          }}
+        >
+          Services
+        </Typography>
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 5 }, maxWidth: 800, mx: 'auto' }}>
           <Typography
             variant="h2"
@@ -208,9 +221,10 @@ export default function Services() {
             sx={{
               mb: 2,
               fontWeight: 700,
+              color: 'text.primary',
             }}
           >
-            Our <Box component="span" sx={{ color: 'primary.main' }}>Services</Box>
+            What ZeeShad Delivers
           </Typography>
           <Typography
             variant="h6"
@@ -220,8 +234,7 @@ export default function Services() {
               lineHeight: 1.7,
             }}
           >
-            Comprehensive IT solutions tailored to your business needs, 
-            from software development to digital transformation.
+            End-to-end development, strategic insight, and tech innovation—all under one roof.
           </Typography>
         </Box>
 
@@ -234,11 +247,13 @@ export default function Services() {
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  bgcolor: alpha(service.color, 0.05),
+                  bgcolor: 'background.paper',
+                  border: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
                   transition: 'all 0.3s ease-in-out',
                   '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: 8,
+                    transform: 'translateY(-4px)',
+                    borderColor: alpha(service.color, 0.4),
+                    boxShadow: `0 12px 40px ${alpha(theme.palette.common.black, 0.4)}`,
                   },
                 }}
               >
@@ -301,23 +316,22 @@ export default function Services() {
         {/* Additional Services Note */}
         <Box
           sx={{
-            mt: { xs: 4, md: 5 },
-            background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+            mt: { xs: 4, md: 6 },
             borderRadius: 4,
             p: { xs: 4, md: 6 },
             textAlign: 'center',
-            color: 'white',
-            boxShadow: 8,
+            border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
+            bgcolor: alpha(theme.palette.primary.main, 0.06),
           }}
         >
-          <Typography variant="h4" component="h3" sx={{ mb: 2, fontWeight: 700 }}>
+          <Typography variant="h4" component="h3" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
             Need Something Specific?
           </Typography>
           <Typography
             variant="body1"
             sx={{
               mb: 4,
-              opacity: 0.95,
+              color: 'text.secondary',
               maxWidth: 600,
               mx: 'auto',
               lineHeight: 1.7,
@@ -331,13 +345,8 @@ export default function Services() {
             href="#contact"
             variant="contained"
             sx={{
-              bgcolor: 'white',
-              color: 'primary.main',
               px: 4,
               py: 1.5,
-              '&:hover': {
-                bgcolor: alpha('#fff', 0.9),
-              },
             }}
           >
             Contact Us for Custom Solutions

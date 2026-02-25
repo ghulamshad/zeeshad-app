@@ -14,15 +14,15 @@ declare module '@mui/material/styles' {
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2563eb',
-      dark: '#1e40af',
-      light: '#3b82f6',
+      main: '#0ea5e9',
+      dark: '#0284c7',
+      light: '#38bdf8',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#7c3aed',
-      dark: '#5b21b6',
-      light: '#8b5cf6',
+      main: '#6366f1',
+      dark: '#4f46e5',
+      light: '#818cf8',
       contrastText: '#ffffff',
     },
     accent: {
@@ -32,12 +32,12 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     background: {
-      default: '#ffffff',
-      paper: '#ffffff',
+      default: '#0a0a0f',
+      paper: '#111118',
     },
     text: {
-      primary: '#0f172a',
-      secondary: '#64748b',
+      primary: '#f8fafc',
+      secondary: '#94a3b8',
     },
     grey: {
       50: '#f8fafc',
@@ -54,49 +54,29 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
+      'var(--font-inter)',
       'Inter',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
       'sans-serif',
     ].join(','),
     h1: {
       fontWeight: 800,
-      fontSize: '3.5rem',
+      fontSize: 'clamp(2.25rem, 5vw, 4rem)',
       lineHeight: 1.1,
-      letterSpacing: '-0.02em',
-      '@media (max-width:960px)': {
-        fontSize: '2.5rem',
-      },
-      '@media (max-width:600px)': {
-        fontSize: '2rem',
-      },
+      letterSpacing: '-0.03em',
     },
     h2: {
       fontWeight: 700,
-      fontSize: '2.75rem',
+      fontSize: 'clamp(2rem, 4vw, 3rem)',
       lineHeight: 1.2,
-      letterSpacing: '-0.01em',
-      '@media (max-width:960px)': {
-        fontSize: '2.25rem',
-      },
-      '@media (max-width:600px)': {
-        fontSize: '1.75rem',
-      },
+      letterSpacing: '-0.02em',
     },
     h3: {
       fontWeight: 700,
-      fontSize: '2rem',
+      fontSize: 'clamp(1.5rem, 3vw, 2rem)',
       lineHeight: 1.3,
-      '@media (max-width:960px)': {
-        fontSize: '1.75rem',
-      },
-      '@media (max-width:600px)': {
-        fontSize: '1.5rem',
-      },
     },
     h4: {
       fontWeight: 600,
@@ -115,7 +95,7 @@ const theme = createTheme({
     },
     body1: {
       fontSize: '1rem',
-      lineHeight: 1.6,
+      lineHeight: 1.7,
     },
     body2: {
       fontSize: '0.875rem',
@@ -133,18 +113,18 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 24,
-          padding: '10px 24px',
+          borderRadius: 8,
+          padding: '12px 24px',
           fontSize: '1rem',
           fontWeight: 600,
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)',
+            boxShadow: '0 0 24px rgba(14, 165, 233, 0.35)',
           },
         },
         contained: {
           '&:hover': {
-            boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)',
+            boxShadow: '0 0 24px rgba(14, 165, 233, 0.35)',
           },
         },
       },
@@ -153,11 +133,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 16,
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-          transition: 'all 0.3s ease-in-out',
+          border: '1px solid rgba(255,255,255,0.06)',
+          boxShadow: 'none',
+          transition: 'all 0.3s ease',
           '&:hover': {
-            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
-            transform: 'translateY(-4px)',
+            borderColor: 'rgba(14, 165, 233, 0.25)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+            transform: 'translateY(-2px)',
           },
         },
       },
@@ -167,7 +149,8 @@ const theme = createTheme({
         root: {
           boxShadow: 'none',
           backdropFilter: 'blur(20px)',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          backgroundColor: 'rgba(10, 10, 15, 0.85)',
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
         },
       },
     },
@@ -176,11 +159,13 @@ const theme = createTheme({
         root: {
           '& .MuiOutlinedInput-root': {
             borderRadius: 12,
+            backgroundColor: 'rgba(255,255,255,0.03)',
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#2563eb',
+              borderColor: 'rgba(14, 165, 233, 0.5)',
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
               borderWidth: 2,
+              borderColor: '#0ea5e9',
             },
           },
         },

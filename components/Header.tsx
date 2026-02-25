@@ -264,17 +264,11 @@ export default function Header() {
           left: 0,
           right: 0,
           zIndex: theme.zIndex.appBar,
-          backgroundColor: scrolled
-            ? alpha(theme.palette.background.paper, 0.98)
-            : alpha(theme.palette.background.paper, 0.8),
-          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(10px)',
+          backgroundColor: alpha(theme.palette.background.default, scrolled ? 0.98 : 0.9),
+          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'blur(12px)',
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          borderBottom: scrolled
-            ? `1px solid ${alpha(theme.palette.divider, 0.1)}`
-            : 'none',
-          boxShadow: scrolled
-            ? `0 4px 20px ${alpha(theme.palette.common.black, 0.08)}`
-            : 'none',
+          borderBottom: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
+          boxShadow: scrolled ? `0 4px 24px rgba(0,0,0,0.3)` : 'none',
         }}
       >
           <Container maxWidth="xl">
@@ -312,7 +306,7 @@ export default function Header() {
                     className="logo-image"
                     sx={{
                       position: 'relative',
-                      width: { xs: 50, sm: 56, md: scrolled ? 56 : 64 },
+                      width: { xs: 100, sm: 100, md: 100 },
                       height: { xs: 50, sm: 56, md: scrolled ? 56 : 64 },
                       flexShrink: 0,
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -333,16 +327,10 @@ export default function Header() {
                       component="div"
                       sx={{
                         fontWeight: 700,
-                        fontSize: { xs: '0.95rem', sm: '1.1rem', md: scrolled ? '1.1rem' : '1.25rem' },
+                        fontSize: { xs: '0.95rem', sm: '1.1rem', md: '1.15rem' },
                         lineHeight: 1.2,
                         mb: 0.25,
-                        color: scrolled ? theme.palette.text.primary : 'transparent',
-                        background: scrolled
-                          ? 'none'
-                          : `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-                        WebkitBackgroundClip: scrolled ? 'unset' : 'text',
-                        WebkitTextFillColor: scrolled ? theme.palette.text.primary : 'transparent',
-                        backgroundClip: scrolled ? 'unset' : 'text',
+                        color: 'text.primary',
                         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       }}
                     >
@@ -356,7 +344,7 @@ export default function Header() {
                         fontWeight: 500,
                         letterSpacing: '0.5px',
                         display: 'block',
-                        opacity: scrolled ? 0.85 : 1,
+                        opacity: 0.85,
                         transition: 'opacity 0.3s ease',
                       }}
                     >
@@ -441,13 +429,13 @@ export default function Header() {
                       borderRadius: 3,
                       fontSize: '0.95rem',
                       fontWeight: 600,
-                      boxShadow: scrolled ? 4 : 6,
-                      background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+                      boxShadow: 4,
+                      background: theme.palette.primary.main,
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                       '&:hover': {
-                        boxShadow: 8,
-                        transform: 'translateY(-2px) scale(1.05)',
-                        background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
+                        boxShadow: '0 0 24px rgba(14, 165, 233, 0.4)',
+                        transform: 'translateY(-2px)',
+                        background: theme.palette.primary.light,
                       },
                     }}
                   >
