@@ -1,8 +1,8 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
-import PartnersStrip from '@/components/PartnersStrip';
-import Services from '@/components/Services';
+import Features from '@/components/Features';
+import CaseStudies from '@/components/CaseStudies';
 import Products from '@/components/Products';
 import About from '@/components/About';
 import Testimonials from '@/components/Testimonials';
@@ -18,7 +18,7 @@ export default function Home() {
     "legalName": "ZeeShad (Private) Limited",
     "url": "https://zeeshad.com",
     "logo": "https://zeeshad.com/header-logo.png",
-    "description": "Leading IT services company specializing in software development, cloud computing, AI, cybersecurity, and digital transformation.",
+    "description": "ZeeShad delivers custom ERP solutions, SaaS MVP builds, e-commerce systems, and business automation. From idea to launch—Karachi, Pakistan and worldwide.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "D-17 Ground Floor, Gulistan Society",
@@ -45,24 +45,32 @@ export default function Home() {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Software Development",
-            "description": "Web, mobile, and enterprise application development"
+            "name": "Custom ERP Solutions",
+            "description": "Tailored enterprise resource planning systems"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Cloud Computing",
-            "description": "Cloud-based solutions and digital infrastructure management"
+            "name": "SaaS MVP Builds",
+            "description": "Scalable SaaS products from idea to launch"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "IT Consultancy",
-            "description": "Digital transformation and business process optimization"
+            "name": "E-commerce Systems",
+            "description": "Online stores and marketplaces with payments and fulfillment"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Business Automation",
+            "description": "Workflows, approvals, and system integrations"
           }
         },
         {
@@ -88,14 +96,6 @@ export default function Home() {
             "@type": "Product",
             "name": "Z-POS",
             "description": "Modern Point of Sale system for retail and hospitality"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "ZeeShad Academy",
-            "description": "Professional IT training and certification programs"
           }
         }
       ]
@@ -140,7 +140,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main id="main-content">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -152,8 +152,8 @@ export default function Home() {
       <Header />
       <Hero />
       <StatsSection />
-      <PartnersStrip />
-      <Services />
+      <Features />
+      <CaseStudies />
       <Products />
       <About />
       <Testimonials />

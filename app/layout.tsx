@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import ThemeProvider from "@/components/ThemeProvider";
+import ReduxProvider from "@/components/ReduxProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,30 +13,24 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://zeeshad.com"),
   title: {
-    default: "ZeeShad (Private) Limited - IT Solutions & Digital Transformation",
-    template: "%s | ZeeShad (Private) Limited",
+    default: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Business Automation",
+    template: "%s | ZeeShad",
   },
-  description: "Leading IT services company specializing in software development, cloud computing, AI, cybersecurity, and digital transformation. Serving domestic and international markets from Karachi, Pakistan.",
+  description: "ZeeShad delivers custom ERP solutions, SaaS MVP builds, e-commerce systems, and business automation. From idea to launch—Karachi, Pakistan and worldwide.",
   keywords: [
-    "IT services",
+    "custom ERP",
+    "SaaS MVP",
+    "e-commerce",
+    "business automation",
+    "ERP solutions",
     "software development",
-    "cloud computing",
-    "artificial intelligence",
-    "cybersecurity",
     "digital transformation",
     "Pakistan",
     "Karachi IT company",
-    "web development",
-    "mobile app development",
-    "ERP solutions",
-    "POS systems",
-    "QR code solutions",
-    "IT training",
     "ZeeShad",
-    "Qr-Codify",
     "Z-ERP",
     "Z-POS",
-    "ZeeShad Academy",
+    "Qr-Codify",
   ],
   authors: [{ name: "ZeeShad (Private) Limited" }],
   creator: "ZeeShad (Private) Limited",
@@ -61,8 +56,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "ZeeShad",
-    title: "ZeeShad - IT Solutions & Digital Transformation",
-    description: "Leading IT services company specializing in software development, cloud computing, AI, cybersecurity, and digital transformation. Serving domestic and international markets from Karachi, Pakistan.",
+    title: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Automation",
+    description: "Custom ERP solutions, SaaS MVP builds, e-commerce systems, and business automation. From idea to launch.",
     images: [
       {
         url: "/favicon.png",
@@ -74,8 +69,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZeeShad - IT Solutions & Digital Transformation",
-    description: "Leading IT services company specializing in software development, cloud computing, AI, cybersecurity, and digital transformation.",
+    title: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Automation",
+    description: "Custom ERP, SaaS MVP builds, e-commerce systems, and business automation.",
     images: ["/favicon.png"],
     creator: "@zeeshad",
   },
@@ -97,7 +92,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body style={{ backgroundColor: '#0a0a0f' }}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
+        <ReduxProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

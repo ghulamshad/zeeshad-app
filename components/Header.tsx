@@ -35,7 +35,7 @@ export default function Header() {
       setScrolled(scrollY > 20);
 
       // Active section detection
-      const sections = ['home', 'services', 'products', 'about', 'contact'];
+      const sections = ['home', 'features', 'case-studies', 'about', 'testimonials', 'contact'];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -90,9 +90,10 @@ export default function Header() {
 
   const navItems = [
     { href: '#home', label: 'Home', id: 'home' },
-    { href: '#services', label: 'Services', id: 'services' },
-    { href: '#products', label: 'Products', id: 'products' },
+    { href: '#features', label: 'Features', id: 'features' },
+    { href: '#case-studies', label: 'Case Studies', id: 'case-studies' },
     { href: '#about', label: 'About', id: 'about' },
+    { href: '#testimonials', label: 'Testimonials', id: 'testimonials' },
     { href: '#contact', label: 'Contact', id: 'contact' },
   ];
 

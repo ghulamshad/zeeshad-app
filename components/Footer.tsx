@@ -25,19 +25,17 @@ export default function Footer() {
   const currentYear = 2024;
 
   const services = [
-    'Software Development',
-    'Cloud Computing',
-    'AI & Data Analytics',
-    'Cybersecurity',
-    'Digital Transformation',
-    'IT Consultancy',
+    'Custom ERP',
+    'SaaS MVP',
+    'E-commerce',
+    'Business Automation',
   ];
 
   const quickLinks = [
     { href: '#home', label: 'Home' },
-    { href: '#services', label: 'Services' },
-    { href: '#products', label: 'Products' },
-    { href: '#about', label: 'About Us' },
+    { href: '#features', label: 'Features' },
+    { href: '#case-studies', label: 'Case Studies' },
+    { href: '#about', label: 'About' },
     { href: '#contact', label: 'Contact' },
   ];
 
@@ -109,8 +107,8 @@ export default function Footer() {
               </Box>
             </Link>
             <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-              Leading IT solutions provider specializing in software development, 
-              cloud computing, AI, and digital transformation services.
+              Custom ERP, SaaS MVP builds, e-commerce systems, and business automation. 
+              From idea to launch.
             </Typography>
           </Grid>
 
@@ -124,7 +122,7 @@ export default function Footer() {
                 <Box component="li" key={index} sx={{ mb: 1 }}>
                   <MuiLink
                     component={Link}
-                    href="#services"
+                    href="#features"
                     sx={{
                       color: 'text.secondary',
                       textDecoration: 'none',

@@ -101,7 +101,7 @@ export default function Hero() {
                 mb: 2,
               }}
             >
-              Leading IT Solutions Provider
+              Custom ERP · SaaS · E-commerce · Automation
             </Typography>
 
             <Typography
@@ -116,7 +116,7 @@ export default function Hero() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Transforming businesses through innovative IT solutions.
+              Build what your business needs.
             </Typography>
 
             <Typography
@@ -131,7 +131,7 @@ export default function Hero() {
                 fontWeight: 400,
               }}
             >
-              Software development, cloud, AI, cybersecurity, and digital transformation—domestic and international.
+              Custom ERP solutions, SaaS MVPs, e-commerce systems, and business automation—from idea to launch.
             </Typography>
 
             <Box
@@ -160,7 +160,7 @@ export default function Hero() {
               </Button>
               <Button
                 component={Link}
-                href="#services"
+                href="#features"
                 variant="outlined"
                 size="large"
                 sx={{
@@ -176,7 +176,7 @@ export default function Hero() {
                   },
                 }}
               >
-                Explore Services
+                Explore solutions
               </Button>
             </Box>
 
