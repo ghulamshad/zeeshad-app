@@ -38,7 +38,10 @@ export default function Hero() {
         sx={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: `url(${HERO_BG})`,
+          backgroundImage: {
+            xs: 'none',
+            md: `url(${HERO_BG})`,
+          },
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
