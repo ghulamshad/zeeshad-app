@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 
 const HERO_BG = '/images/slider/slide-1.png';
-const HERO_RIGHT_IMAGE = '/images/hero-right.png';
+const HERO_RIGHT_IMAGE = '/images/hero-right.webp';
 
 export default function Hero() {
   const theme = useTheme();
