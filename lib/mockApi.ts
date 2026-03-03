@@ -1,4 +1,4 @@
-import type { CaseStudy, CaseStudyCategory } from '@/store/slices/caseStudiesSlice';
+import type { CaseStudy } from '@/store/slices/caseStudiesSlice';
 import type { ContactFormState } from '@/store/slices/contactSlice';
 
 const MOCK_DELAY = 800;
@@ -93,12 +93,4 @@ export async function submitContactApi(payload: ContactFormState): Promise<{ ok:
     console.log('[Mock API] Contact submitted:', payload);
   }
   return { ok: true };
-}
-
-export function filterCaseStudies(
-  items: CaseStudy[],
-  filter: CaseStudyCategory
-): CaseStudy[] {
-  if (filter === 'all') return items;
-  return items.filter((item) => item.category === filter);
 }

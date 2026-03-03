@@ -13,7 +13,6 @@ import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 
 const HERO_BG = '/images/slider/slide-1.png';
-// Right-side hero image: place your image at public/images/hero/hero-right.png
 const HERO_RIGHT_IMAGE = '/images/hero-right.png';
 
 export default function Hero() {
