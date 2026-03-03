@@ -164,9 +164,52 @@ export default function Home() {
     "@type": "WebSite",
     "name": "ZeeShad",
     "url": canonicalUrl,
-    "description": "Custom ERP, SaaS MVP, e-commerce systems, and business automation.",
+    "description": "ZeeShad builds custom ERP systems, SaaS MVPs, e-commerce platforms, and business automation solutions for SMEs and enterprises.",
     "publisher": { "@id": `${canonicalUrl}#organization` },
     "inLanguage": "en-US",
+  };
+
+  const faqData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services does ZeeShad provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "ZeeShad provides custom ERP development, SaaS MVP builds, e-commerce platforms, and business automation solutions, along with related IT consulting and digital transformation services.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Who is ZeeShad a good fit for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "ZeeShad is a good fit for SMEs and enterprises that want to modernize operations, integrate legacy systems, or launch new digital products such as SaaS platforms and e-commerce stores.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "Where is ZeeShad based?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "ZeeShad (Private) Limited is based in Karachi, Pakistan and serves both domestic and international clients.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "How can I start a project with ZeeShad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text":
+            "You can start a project by filling out the contact form on the ZeeShad website with details about your requirements. The team will review your request and get back to you within 48 hours.",
+        },
+      },
+    ],
   };
 
   return (
@@ -182,6 +225,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
       />
       <Header />
       <Hero />

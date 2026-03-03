@@ -162,6 +162,7 @@ export default function Products() {
                         href={product.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label="Open Qr-Codify website"
                         size="small"
                         sx={{
                           color: 'text.secondary',
@@ -235,7 +236,7 @@ export default function Products() {
                           },
                         }}
                       >
-                        Learn More
+                        Learn more about Qr-Codify
                       </Button>
                     ) : (
                       <Button

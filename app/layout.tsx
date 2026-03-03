@@ -23,17 +23,21 @@ export const metadata: Metadata = {
     default: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Business Automation",
     template: "%s | ZeeShad",
   },
-  description: "ZeeShad delivers custom ERP solutions, SaaS MVP builds, e-commerce systems, and business automation. From idea to launch—Karachi, Pakistan and worldwide.",
+  description:
+    "ZeeShad builds custom ERP systems, SaaS MVPs, e-commerce platforms, and business automation solutions for SMEs and enterprises. We help businesses modernize operations, integrate systems, and launch scalable digital products from Karachi, Pakistan to clients worldwide.",
   keywords: [
-    "custom ERP",
-    "SaaS MVP",
-    "e-commerce",
-    "business automation",
-    "ERP solutions",
-    "software development",
-    "digital transformation",
-    "Pakistan",
-    "Karachi IT company",
+    "custom ERP development",
+    "ERP solutions Pakistan",
+    "SaaS MVP development",
+    "SaaS product development",
+    "e-commerce development",
+    "e-commerce platforms",
+    "business process automation",
+    "workflow automation",
+    "enterprise software development",
+    "web application development",
+    "Karachi software company",
+    "IT services company Pakistan",
     "ZeeShad",
     "Z-ERP",
     "Z-POS",
@@ -64,7 +68,8 @@ export const metadata: Metadata = {
     url: "/",
     siteName: "ZeeShad",
     title: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Automation",
-    description: "Custom ERP solutions, SaaS MVP builds, e-commerce systems, and business automation. From idea to launch.",
+    description:
+      "Custom ERP systems, SaaS MVPs, e-commerce platforms, and business automation solutions for SMEs and enterprises.",
     images: [
       {
         url: "/favicon.png",
@@ -77,7 +82,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Automation",
-    description: "Custom ERP, SaaS MVP builds, e-commerce systems, and business automation.",
+    description:
+      "Custom ERP, SaaS MVP development, e-commerce platforms, and business automation solutions for growing businesses.",
     images: [{ url: "/favicon.png", width: 1200, height: 630, alt: "ZeeShad" }],
     creator: "@zeeshad",
   },
