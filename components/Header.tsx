@@ -181,7 +181,7 @@ export default function Header() {
       </Box>
 
       {/* Navigation Links */}
-      <List sx={{ flexGrow: 1, pt: 2 }}>
+      <List component="nav" aria-label="Mobile navigation" sx={{ flexGrow: 1, pt: 2 }}>
         {navItems.map((item) => (
           <ListItem key={item.href} disablePadding sx={{ mb: 0.5, px: 2 }}>
             <ListItemButton
@@ -357,6 +357,8 @@ export default function Header() {
 
               {/* Desktop Navigation */}
               <Box
+                component="nav"
+                aria-label="Main navigation"
                 sx={{
                   display: { xs: 'none', lg: 'flex' },
                   gap: 0.5,

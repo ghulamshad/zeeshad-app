@@ -1,23 +1,35 @@
+import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
-import Features from '@/components/Features';
-import CaseStudies from '@/components/CaseStudies';
-import Products from '@/components/Products';
-import About from '@/components/About';
-import Testimonials from '@/components/Testimonials';
-import CTASection from '@/components/CTASection';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
+const sectionLoading = () => (
+  <div className="section-loading" aria-hidden="true">
+    <span className="section-loading-spinner" />
+  </div>
+);
+
+const Features = dynamic(() => import('@/components/Features'), { loading: sectionLoading });
+const CaseStudies = dynamic(() => import('@/components/CaseStudies'), { loading: sectionLoading });
+const Products = dynamic(() => import('@/components/Products'), { loading: sectionLoading });
+const About = dynamic(() => import('@/components/About'), { loading: sectionLoading });
+const Testimonials = dynamic(() => import('@/components/Testimonials'), { loading: sectionLoading });
+const CTASection = dynamic(() => import('@/components/CTASection'), { loading: sectionLoading });
+const Contact = dynamic(() => import('@/components/Contact'), { loading: sectionLoading });
+
 export default function Home() {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zeeshad.com";
+  const canonicalUrl = baseUrl.replace(/\/$/, "");
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${canonicalUrl}#organization`,
     "name": "ZeeShad (Private) Limited",
     "legalName": "ZeeShad (Private) Limited",
-    "url": "https://zeeshad.com",
-    "logo": "https://zeeshad.com/header-logo.png",
+    "url": canonicalUrl,
+    "logo": `${canonicalUrl}/header-logo.png`,
     "description": "ZeeShad delivers custom ERP solutions, SaaS MVP builds, e-commerce systems, and business automation. From idea to launch—Karachi, Pakistan and worldwide.",
     "address": {
       "@type": "PostalAddress",
@@ -30,9 +42,16 @@ export default function Home() {
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+92-304-0058323",
+      "email": "info@zeeshad.com",
       "contactType": "Customer Service",
       "areaServed": ["PK", "International"],
-      "availableLanguage": ["English", "Urdu"]
+      "availableLanguage": ["English", "Urdu"],
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
     },
     "sameAs": [
       "https://qr-codify.com"
@@ -106,10 +125,11 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "ZeeShad (Private) Limited",
-    "image": "https://zeeshad.com/header-logo.png",
-    "@id": "https://zeeshad.com",
-    "url": "https://zeeshad.com",
+    "image": `${canonicalUrl}/header-logo.png`,
+    "@id": canonicalUrl,
+    "url": canonicalUrl,
     "telephone": "+92-304-0058323",
+    "email": "info@zeeshad.com",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
@@ -139,8 +159,18 @@ export default function Home() {
     }
   };
 
+  const webSiteData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ZeeShad",
+    "url": canonicalUrl,
+    "description": "Custom ERP, SaaS MVP, e-commerce systems, and business automation.",
+    "publisher": { "@id": `${canonicalUrl}#organization` },
+    "inLanguage": "en-US",
+  };
+
   return (
-    <main id="main-content">
+    <main id="main-content" role="main">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -148,6 +178,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteData) }}
       />
       <Header />
       <Hero />

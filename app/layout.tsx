@@ -8,7 +8,14 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0a0a0f",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://zeeshad.com"),
@@ -71,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Automation",
     description: "Custom ERP, SaaS MVP builds, e-commerce systems, and business automation.",
-    images: ["/favicon.png"],
+    images: [{ url: "/favicon.png", width: 1200, height: 630, alt: "ZeeShad" }],
     creator: "@zeeshad",
   },
   alternates: {

@@ -113,7 +113,7 @@ export default function Footer() {
           </Grid>
 
           {/* Services */}
-          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }} component="nav" aria-label="Footer services">
             <Typography variant="h6" sx={{ mb: 2, color: 'text.primary', fontWeight: 600 }}>
               Our Services
             </Typography>
@@ -141,7 +141,7 @@ export default function Footer() {
           </Grid>
 
           {/* Quick Links */}
-          <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }} component="nav" aria-label="Footer quick links">
             <Typography variant="h6" sx={{ mb: 2, color: 'text.primary', fontWeight: 600 }}>
               Quick Links
             </Typography>
