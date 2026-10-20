@@ -5,142 +5,160 @@ import { createTheme } from '@mui/material/styles';
 declare module '@mui/material/styles' {
   interface Palette {
     accent: Palette['primary'];
+    ink: Palette['primary'];
   }
   interface PaletteOptions {
     accent?: PaletteOptions['primary'];
+    ink?: PaletteOptions['primary'];
   }
 }
 
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
-      main: '#0ea5e9',
-      dark: '#0284c7',
-      light: '#38bdf8',
+      main: '#0A6B68',
+      dark: '#085552',
+      light: '#1A8A86',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#6366f1',
-      dark: '#4f46e5',
-      light: '#818cf8',
+      main: '#1A2B3C',
+      dark: '#0E1A24',
+      light: '#2E455C',
       contrastText: '#ffffff',
     },
     accent: {
-      main: '#06b6d4',
-      dark: '#0891b2',
-      light: '#22d3ee',
+      main: '#C4A35A',
+      dark: '#A8863F',
+      light: '#D4B97A',
+      contrastText: '#0E1A24',
+    },
+    ink: {
+      main: '#0E1A24',
+      dark: '#070D12',
+      light: '#243447',
       contrastText: '#ffffff',
     },
     background: {
-      default: '#0a0a0f',
-      paper: '#111118',
+      default: '#F3F5F7',
+      paper: '#FFFFFF',
     },
     text: {
-      primary: '#f8fafc',
-      secondary: '#94a3b8',
+      primary: '#0E1A24',
+      secondary: '#5A6A7A',
     },
+    divider: 'rgba(14, 26, 36, 0.08)',
     grey: {
-      50: '#f8fafc',
-      100: '#f1f5f9',
-      200: '#e2e8f0',
-      300: '#cbd5e1',
-      400: '#94a3b8',
-      500: '#64748b',
-      600: '#475569',
-      700: '#334155',
-      800: '#1e293b',
-      900: '#0f172a',
+      50: '#F8FAFB',
+      100: '#EEF1F4',
+      200: '#E2E7EC',
+      300: '#C8D0D8',
+      400: '#9AA8B5',
+      500: '#6B7C8C',
+      600: '#4A5B6B',
+      700: '#334455',
+      800: '#1A2B3C',
+      900: '#0E1A24',
     },
   },
   typography: {
     fontFamily: [
-      'var(--font-inter)',
-      'Inter',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
+      'var(--font-manrope)',
+      'Manrope',
+      'Segoe UI',
       'sans-serif',
     ].join(','),
     h1: {
-      fontWeight: 800,
-      fontSize: 'clamp(2.25rem, 5vw, 4rem)',
-      lineHeight: 1.1,
+      fontFamily: 'var(--font-syne), Syne, sans-serif',
+      fontWeight: 700,
+      fontSize: 'clamp(2.4rem, 6vw, 4.5rem)',
+      lineHeight: 1.05,
       letterSpacing: '-0.03em',
     },
     h2: {
+      fontFamily: 'var(--font-syne), Syne, sans-serif',
       fontWeight: 700,
-      fontSize: 'clamp(2rem, 4vw, 3rem)',
-      lineHeight: 1.2,
-      letterSpacing: '-0.02em',
+      fontSize: 'clamp(1.85rem, 4vw, 3rem)',
+      lineHeight: 1.15,
+      letterSpacing: '-0.025em',
     },
     h3: {
-      fontWeight: 700,
-      fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-      lineHeight: 1.3,
+      fontFamily: 'var(--font-syne), Syne, sans-serif',
+      fontWeight: 650,
+      fontSize: 'clamp(1.35rem, 2.5vw, 1.75rem)',
+      lineHeight: 1.25,
+      letterSpacing: '-0.02em',
     },
     h4: {
-      fontWeight: 600,
-      fontSize: '1.5rem',
-      lineHeight: 1.4,
+      fontFamily: 'var(--font-syne), Syne, sans-serif',
+      fontWeight: 650,
+      fontSize: '1.35rem',
+      lineHeight: 1.3,
     },
     h5: {
+      fontFamily: 'var(--font-syne), Syne, sans-serif',
       fontWeight: 600,
-      fontSize: '1.25rem',
-      lineHeight: 1.4,
+      fontSize: '1.15rem',
+      lineHeight: 1.35,
     },
     h6: {
       fontWeight: 600,
       fontSize: '1rem',
-      lineHeight: 1.5,
+      lineHeight: 1.45,
+    },
+    overline: {
+      fontFamily: 'var(--font-manrope), Manrope, sans-serif',
+      fontWeight: 700,
+      letterSpacing: '0.14em',
+      fontSize: '0.72rem',
+      textTransform: 'uppercase',
     },
     body1: {
-      fontSize: '1rem',
-      lineHeight: 1.7,
+      fontSize: '1.05rem',
+      lineHeight: 1.75,
     },
     body2: {
-      fontSize: '0.875rem',
-      lineHeight: 1.6,
+      fontSize: '0.925rem',
+      lineHeight: 1.65,
     },
     button: {
       textTransform: 'none',
-      fontWeight: 600,
+      fontWeight: 650,
+      letterSpacing: '-0.01em',
     },
   },
   shape: {
-    borderRadius: 12,
+    borderRadius: 10,
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
           borderRadius: 8,
-          padding: '12px 24px',
-          fontSize: '1rem',
-          fontWeight: 600,
+          padding: '12px 22px',
+          fontSize: '0.95rem',
           boxShadow: 'none',
-          '&:hover': {
-            boxShadow: '0 0 24px rgba(14, 165, 233, 0.35)',
-          },
+          '&:hover': { boxShadow: 'none' },
         },
         contained: {
           '&:hover': {
-            boxShadow: '0 0 24px rgba(14, 165, 233, 0.35)',
+            boxShadow: 'none',
+            filter: 'brightness(1.05)',
           },
+        },
+        outlined: {
+          borderWidth: 1.5,
+          '&:hover': { borderWidth: 1.5 },
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
-          border: '1px solid rgba(255,255,255,0.06)',
+          borderRadius: 12,
+          border: '1px solid rgba(14, 26, 36, 0.08)',
           boxShadow: 'none',
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            borderColor: 'rgba(14, 165, 233, 0.25)',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
-            transform: 'translateY(-2px)',
-          },
         },
       },
     },
@@ -148,9 +166,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           boxShadow: 'none',
-          backdropFilter: 'blur(20px)',
-          backgroundColor: 'rgba(10, 10, 15, 0.85)',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          backgroundImage: 'none',
         },
       },
     },
@@ -158,16 +174,24 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
-            borderRadius: 12,
-            backgroundColor: 'rgba(255,255,255,0.03)',
+            borderRadius: 10,
+            backgroundColor: '#FFFFFF',
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: 'rgba(14, 165, 233, 0.5)',
+              borderColor: 'rgba(10, 107, 104, 0.45)',
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
               borderWidth: 2,
-              borderColor: '#0ea5e9',
+              borderColor: '#0A6B68',
             },
           },
+        },
+      },
+    },
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: '#F3F5F7',
+          color: '#0E1A24',
         },
       },
     },
@@ -175,5 +199,3 @@ const theme = createTheme({
 });
 
 export default theme;
-
-

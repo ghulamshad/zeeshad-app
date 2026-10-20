@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Syne, Manrope } from "next/font/google";
 import ThemeProvider from "@/components/ThemeProvider";
 import ReduxProvider from "@/components/ReduxProvider";
 import "./globals.css";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-syne",
+  display: "swap",
+  preload: true,
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
   display: "swap",
   preload: true,
 });
@@ -14,7 +21,7 @@ const inter = Inter({
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0a0a0f",
+  themeColor: "#F3F5F7",
 };
 
 export const metadata: Metadata = {
@@ -63,10 +70,10 @@ export const metadata: Metadata = {
       "Custom ERP, SaaS MVPs, e-commerce and automation for SMEs. Written scope and estimate within two business days.",
     images: [
       {
-        url: "/favicon.png",
+        url: "/images/brand/hero-atmosphere.jpg",
         width: 1200,
         height: 630,
-        alt: "ZeeShad software delivery",
+        alt: "ZeeShad software delivery studio",
       },
     ],
   },
@@ -75,14 +82,17 @@ export const metadata: Metadata = {
     title: "Custom ERP, SaaS MVP & E-commerce Builds | ZeeShad",
     description:
       "Custom ERP, SaaS MVPs, e-commerce and automation for growing businesses.",
-    images: [{ url: "/favicon.png", width: 1200, height: 630, alt: "ZeeShad" }],
+    images: [
+      {
+        url: "/images/brand/hero-atmosphere.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ZeeShad",
+      },
+    ],
   },
   alternates: {
     canonical: "/",
-  },
-  verification: {
-    // Add Google Search Console verification code when available
-    // google: "your-verification-code",
   },
   category: "Technology",
 };
@@ -93,9 +103,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body style={{ backgroundColor: '#0a0a0f' }}>
-        <a href="#main-content" className="skip-link">Skip to main content</a>
+    <html lang="en" className={`${syne.variable} ${manrope.variable}`}>
+      <body style={{ backgroundColor: "#F3F5F7" }}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <div className="grain" aria-hidden="true" />
         <ReduxProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </ReduxProvider>

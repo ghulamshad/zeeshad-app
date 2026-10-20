@@ -1,190 +1,194 @@
 'use client';
 
-import {
-  Container,
-  Box,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Button,
-  useTheme,
-  alpha,
-} from '@mui/material';
-import {
-  BusinessCenter,
-  RocketLaunch,
-  ShoppingCart,
-  AutoAwesome,
-  CheckCircle,
-} from '@mui/icons-material';
+import { Container, Box, Typography, Button, Divider } from '@mui/material';
 import Link from 'next/link';
+import { ArrowForward } from '@mui/icons-material';
+import { Reveal, Stagger, StaggerItem } from '@/components/Motion';
 
-interface Feature {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  points: string[];
-  color: string;
-}
-
-const features: Feature[] = [
+const features = [
   {
-    icon: BusinessCenter,
+    num: '01',
     title: 'Custom ERP Solutions',
-    description: 'Tailored enterprise resource planning systems that unify finance, inventory, HR, and operations.',
+    description:
+      'Tailored enterprise resource planning systems that unify finance, inventory, HR, and operations.',
     points: [
       'Finance & accounting modules',
       'Inventory & supply chain',
       'HR & payroll integration',
       'Reporting & analytics',
     ],
-    color: '#2563eb',
   },
   {
-    icon: RocketLaunch,
+    num: '02',
     title: 'SaaS MVP Builds',
-    description: 'From idea to launch: we build scalable, secure SaaS products with subscription and multi-tenant support.',
+    description:
+      'From idea to launch: scoped, secure SaaS products with subscription and multi-tenant support.',
     points: [
       'Product discovery & scope',
       'Architecture & security',
       'Subscription & billing',
       'Launch & iteration',
     ],
-    color: '#6366f1',
   },
   {
-    icon: ShoppingCart,
+    num: '03',
     title: 'E-commerce Systems',
-    description: 'Full-featured online stores and marketplaces with payments, fulfillment, and growth tools.',
+    description:
+      'Online stores and marketplaces with payments, fulfillment, and growth integrations.',
     points: [
       'Storefront & catalog',
       'Checkout & payments',
       'Multi-vendor marketplaces',
       'Integrations & APIs',
     ],
-    color: '#10b981',
   },
   {
-    icon: AutoAwesome,
+    num: '04',
     title: 'Business Automation',
-    description: 'Streamline workflows, approvals, and integrations so your team can focus on what matters.',
+    description:
+      'Workflows, approvals, and system integrations so your team spends less time on manual work.',
     points: [
       'Workflow design & BPM',
       'Approvals & notifications',
       'System integrations',
       'Process analytics',
     ],
-    color: '#f59e0b',
   },
 ];
 
 export default function Features() {
-  const theme = useTheme();
-
   return (
     <Box
       component="section"
       id="features"
       sx={{
-        py: { xs: 8, sm: 10, md: 12 },
+        py: { xs: 9, md: 12 },
         bgcolor: 'background.default',
       }}
     >
-      <Container maxWidth="xl">
-        <Typography
-          variant="overline"
-          sx={{
-            display: 'block',
-            textAlign: 'center',
-            letterSpacing: 4,
-            color: 'primary.main',
-            fontWeight: 700,
-            mb: 1,
-          }}
-        >
-          What we build
-        </Typography>
-        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 5 }, maxWidth: 800, mx: 'auto' }}>
-          <Typography variant="h2" component="h2" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
+      <Container maxWidth="lg">
+        <Reveal>
+          <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
+            What we build
+          </Typography>
+          <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 640 }}>
             Four things we actually deliver
           </Typography>
-          <Typography variant="h6" component="p" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-            Custom ERP, SaaS MVPs, e-commerce and automation—scoped clearly, built by the people you talk to.
+          <Typography
+            sx={{ color: 'text.secondary', maxWidth: 560, mb: { xs: 5, md: 7 }, fontSize: '1.1rem' }}
+          >
+            Custom ERP, SaaS MVPs, e-commerce and automation—scoped clearly, built by the people
+            you talk to.
           </Typography>
-        </Box>
+        </Reveal>
 
-        <Grid container spacing={3}>
+        <Stagger>
           {features.map((feature, index) => (
-            <Grid size={{ xs: 12, md: 6 }} key={index}>
-              <Card
+            <StaggerItem key={feature.num}>
+              <Box
                 sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  bgcolor: 'background.paper',
-                  border: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
-                  transition: 'all 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-4px)',
-                    borderColor: alpha(feature.color, 0.4),
-                    boxShadow: `0 12px 40px ${alpha(theme.palette.common.black, 0.4)}`,
-                  },
+                  display: 'grid',
+                  gridTemplateColumns: { xs: '1fr', md: '88px 1fr 1fr' },
+                  gap: { xs: 2, md: 4 },
+                  py: { xs: 3.5, md: 4.5 },
+                  alignItems: 'start',
                 }}
               >
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                  <Box sx={{ color: feature.color, mb: 2 }}>
-                    <feature.icon sx={{ fontSize: 48 }} />
-                  </Box>
-                  <Typography variant="h5" component="h3" sx={{ mb: 1.5, fontWeight: 700 }}>
+                <Typography
+                  sx={{
+                    fontFamily: 'var(--font-syne), Syne, sans-serif',
+                    fontWeight: 700,
+                    fontSize: '1.5rem',
+                    color: 'primary.main',
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1,
+                  }}
+                >
+                  {feature.num}
+                </Typography>
+                <Box>
+                  <Typography variant="h3" component="h3" sx={{ mb: 1.25 }}>
                     {feature.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary', lineHeight: 1.7 }}>
+                  <Typography sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
                     {feature.description}
                   </Typography>
-                  <List dense sx={{ p: 0 }}>
-                    {feature.points.map((point, idx) => (
-                      <ListItem key={idx} disablePadding sx={{ mb: 0.5 }}>
-                        <ListItemIcon sx={{ minWidth: 32 }}>
-                          <CheckCircle sx={{ fontSize: 18, color: feature.color }} />
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={point}
-                          primaryTypographyProps={{ variant: 'body2', sx: { fontSize: '0.875rem' } }}
-                        />
-                      </ListItem>
-                    ))}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
+                </Box>
+                <Box
+                  component="ul"
+                  sx={{
+                    listStyle: 'none',
+                    m: 0,
+                    p: 0,
+                    display: 'grid',
+                    gap: 1,
+                    pt: { md: 0.5 },
+                  }}
+                >
+                  {feature.points.map((point) => (
+                    <Box
+                      component="li"
+                      key={point}
+                      sx={{
+                        display: 'flex',
+                        gap: 1.25,
+                        color: 'text.secondary',
+                        fontSize: '0.95rem',
+                        '&::before': {
+                          content: '""',
+                          width: 6,
+                          height: 6,
+                          borderRadius: '50%',
+                          bgcolor: 'primary.main',
+                          mt: 0.85,
+                          flexShrink: 0,
+                        },
+                      }}
+                    >
+                      {point}
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+              {index < features.length - 1 && <Divider />}
+            </StaggerItem>
           ))}
-        </Grid>
+        </Stagger>
 
-        <Box
-          sx={{
-            mt: { xs: 4, md: 6 },
-            borderRadius: 4,
-            p: { xs: 4, md: 6 },
-            textAlign: 'center',
-            border: `1px solid ${alpha(theme.palette.primary.main, 0.3)}`,
-            bgcolor: alpha(theme.palette.primary.main, 0.06),
-          }}
-        >
-          <Typography variant="h5" component="h3" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
-            Need something specific?
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 4, color: 'text.secondary', maxWidth: 600, mx: 'auto', lineHeight: 1.7 }}>
-            Not sure which of the four fits? Send a short brief—we will say clearly if we are the right team.
-          </Typography>
-          <Button component={Link} href="#contact" variant="contained" sx={{ px: 4, py: 1.5 }}>
-            Request a scope & estimate
-          </Button>
-        </Box>
+        <Reveal delay={0.1}>
+          <Box
+            sx={{
+              mt: { xs: 6, md: 8 },
+              pt: { xs: 4, md: 5 },
+              borderTop: '1px solid',
+              borderColor: 'divider',
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              alignItems: { sm: 'center' },
+              justifyContent: 'space-between',
+              gap: 3,
+            }}
+          >
+            <Box sx={{ maxWidth: 520 }}>
+              <Typography variant="h3" component="h3" sx={{ mb: 1, fontSize: '1.35rem' }}>
+                Need something specific?
+              </Typography>
+              <Typography sx={{ color: 'text.secondary' }}>
+                Not sure which of the four fits? Send a short brief—we will say clearly if we are
+                the right team.
+              </Typography>
+            </Box>
+            <Button
+              component={Link}
+              href="#contact"
+              variant="contained"
+              endIcon={<ArrowForward />}
+              sx={{ alignSelf: { xs: 'stretch', sm: 'center' }, flexShrink: 0 }}
+            >
+              Request a scope & estimate
+            </Button>
+          </Box>
+        </Reveal>
       </Container>
     </Box>
   );

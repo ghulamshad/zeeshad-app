@@ -1,23 +1,16 @@
 'use client';
 
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  useTheme,
-  alpha,
-} from '@mui/material';
+import { Box, Container, Typography, Button, Stack } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowForward, WhatsApp } from '@mui/icons-material';
+import { motion, useReducedMotion } from 'framer-motion';
 
-const HERO_BG = '/images/slider/slide-1.png';
-const HERO_RIGHT_IMAGE = '/images/hero-right.png';
 const WHATSAPP_URL = 'https://wa.me/923040058323';
+const HERO_IMG = '/images/brand/hero-atmosphere.jpg';
 
 export default function Hero() {
-  const theme = useTheme();
+  const reduce = useReducedMotion();
 
   return (
     <Box
@@ -25,100 +18,108 @@ export default function Hero() {
       id="home"
       sx={{
         position: 'relative',
-        minHeight: { xs: '100svh', sm: '100vh' },
+        minHeight: { xs: '92svh', md: 'calc(100vh - 78px)' },
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: 'flex-end',
         overflow: 'hidden',
-        pt: { xs: 10, md: 1 },
-        pb: { xs: 8, md: 10 },
+        color: '#fff',
       }}
     >
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: {
-            xs: 'none',
-            md: `url(${HERO_BG})`,
-          },
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          bgcolor: 'background.default',
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: `linear-gradient(180deg, ${alpha(theme.palette.common.black, 0.65)} 0%, ${alpha(theme.palette.common.black, 0.8)} 100%)`,
-        }}
-      />
-
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+      <Box sx={{ position: 'absolute', inset: 0 }}>
+        <Image
+          src={HERO_IMG}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+        />
         <Box
           sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: { xs: 3, sm: 4, md: 6 },
-            alignItems: 'center',
+            position: 'absolute',
+            inset: 0,
+            background: {
+              xs: 'linear-gradient(180deg, rgba(14,26,36,0.55) 0%, rgba(14,26,36,0.88) 72%, rgba(14,26,36,0.94) 100%)',
+              md: 'linear-gradient(105deg, rgba(14,26,36,0.92) 0%, rgba(14,26,36,0.72) 42%, rgba(14,26,36,0.35) 100%)',
+            },
           }}
-        >
-          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+        />
+      </Box>
+
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: 'relative',
+          zIndex: 1,
+          pt: { xs: 10, md: 14 },
+          pb: { xs: 8, md: 12 },
+        }}
+      >
+        <Box sx={{ maxWidth: { md: 640 } }}>
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             <Typography
-              variant="overline"
+              component="p"
               sx={{
-                display: 'block',
-                letterSpacing: 3,
-                color: 'primary.light',
+                fontFamily: 'var(--font-syne), Syne, sans-serif',
                 fontWeight: 700,
-                mb: 2,
+                fontSize: { xs: 'clamp(2.8rem, 12vw, 4.5rem)', md: 'clamp(4rem, 7vw, 5.75rem)' },
+                lineHeight: 0.95,
+                letterSpacing: '-0.04em',
+                mb: 2.5,
+                color: '#fff',
               }}
             >
-              ZeeShad Software Delivery · Karachi
+              ZeeShad
             </Typography>
+          </motion.div>
 
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          >
             <Typography
               variant="h1"
               component="h1"
               sx={{
-                mb: 2,
-                color: 'text.primary',
-                fontWeight: 800,
-                fontSize: { xs: 'clamp(1.75rem, 5vw, 2.5rem)', md: 'clamp(2rem, 3vw, 2.75rem)' },
-                lineHeight: 1.15,
+                color: '#fff',
+                fontSize: { xs: '1.45rem', sm: '1.7rem', md: '1.95rem' },
+                fontWeight: 650,
+                lineHeight: 1.25,
                 letterSpacing: '-0.02em',
+                mb: 2,
+                maxWidth: 540,
               }}
             >
               Custom ERP, SaaS MVP and e-commerce builds that fit how you actually work.
             </Typography>
-
             <Typography
-              variant="h6"
-              component="p"
               sx={{
-                mb: 4,
-                color: 'text.secondary',
-                maxWidth: { md: 520 },
-                mx: { xs: 'auto', md: 0 },
+                color: 'rgba(255,255,255,0.78)',
+                fontSize: { xs: '1rem', md: '1.1rem' },
                 lineHeight: 1.7,
-                fontWeight: 400,
+                mb: 4,
+                maxWidth: 480,
               }}
             >
               For SME and mid-size operators who need finance, inventory, sales or workflows
               under one system—or a first SaaS or store that ships without a bloated IT menu.
             </Typography>
+          </motion.div>
 
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' },
-                gap: 2,
-                justifyContent: { xs: 'center', md: 'flex-start' },
-                alignItems: 'center',
-                flexWrap: 'wrap',
-              }}
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1.75}
+              alignItems={{ xs: 'stretch', sm: 'center' }}
             >
               <Button
                 component={Link}
@@ -126,7 +127,14 @@ export default function Hero() {
                 variant="contained"
                 size="large"
                 endIcon={<ArrowForward />}
-                sx={{ px: 4, py: 1.75, fontSize: '1.05rem', borderRadius: 2 }}
+                sx={{
+                  bgcolor: 'primary.main',
+                  color: '#fff',
+                  px: 3.5,
+                  py: 1.6,
+                  fontSize: '1rem',
+                  '&:hover': { bgcolor: 'primary.dark' },
+                }}
               >
                 Request a scope & estimate
               </Button>
@@ -139,47 +147,20 @@ export default function Hero() {
                 size="large"
                 startIcon={<WhatsApp />}
                 sx={{
-                  px: 4,
-                  py: 1.75,
-                  fontSize: '1.05rem',
-                  borderRadius: 2,
-                  borderColor: alpha(theme.palette.common.white, 0.4),
-                  color: 'text.primary',
+                  borderColor: 'rgba(255,255,255,0.45)',
+                  color: '#fff',
+                  px: 3,
+                  py: 1.6,
                   '&:hover': {
-                    borderColor: 'primary.main',
-                    bgcolor: alpha(theme.palette.primary.main, 0.1),
+                    borderColor: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.08)',
                   },
                 }}
               >
                 WhatsApp us
               </Button>
-            </Box>
-          </Box>
-
-          <Box
-            sx={{
-              position: 'relative',
-              borderRadius: { xs: 2, md: 3 },
-              overflow: 'hidden',
-              border: `1px solid ${alpha(theme.palette.common.white, 0.1)}`,
-              width: '100%',
-              maxWidth: { xs: 360, sm: 420, md: 'none' },
-              mx: { xs: 'auto', md: 0 },
-              aspectRatio: { xs: '4/3', sm: '16/10', md: '4/5' },
-              maxHeight: { xs: 280, sm: 320, md: 520 },
-              minHeight: 0,
-              bgcolor: alpha(theme.palette.background.paper, 0.3),
-            }}
-          >
-            <Image
-              src={HERO_RIGHT_IMAGE}
-              alt="Custom software delivery for ERP, SaaS and e-commerce"
-              fill
-              sizes="(max-width: 600px) 360px, (max-width: 960px) 420px, 50vw"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
-              priority
-            />
-          </Box>
+            </Stack>
+          </motion.div>
         </Box>
       </Container>
     </Box>

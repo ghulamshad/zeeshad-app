@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import {
   Box,
   Container,
@@ -7,10 +8,9 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  useTheme,
-  alpha,
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
+import { Reveal } from '@/components/Motion';
 
 const FAQS = [
   {
@@ -32,60 +32,71 @@ const FAQS = [
 ];
 
 export default function Faq() {
-  const theme = useTheme();
+  const [expanded, setExpanded] = useState<string | false>(FAQS[0].q);
 
   return (
     <Box
       component="section"
       id="faq"
       sx={{
-        py: { xs: 8, md: 10 },
+        py: { xs: 9, md: 11 },
         bgcolor: 'background.paper',
-        borderTop: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
+        borderTop: '1px solid',
+        borderColor: 'divider',
       }}
     >
       <Container maxWidth="md">
-        <Typography
-          variant="overline"
-          sx={{
-            display: 'block',
-            textAlign: 'center',
-            letterSpacing: 4,
-            color: 'primary.main',
-            fontWeight: 700,
-            mb: 1,
-          }}
-        >
-          FAQ
-        </Typography>
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ textAlign: 'center', mb: 4, fontWeight: 700, color: 'text.primary' }}
-        >
-          Straight answers
-        </Typography>
+        <Reveal>
+          <Typography
+            variant="overline"
+            sx={{ color: 'primary.main', mb: 1.5, display: 'block', textAlign: 'center' }}
+          >
+            FAQ
+          </Typography>
+          <Typography
+            variant="h2"
+            component="h2"
+            sx={{ textAlign: 'center', mb: 5 }}
+          >
+            Straight answers
+          </Typography>
+        </Reveal>
 
         {FAQS.map((item) => (
           <Accordion
             key={item.q}
             disableGutters
             elevation={0}
+            expanded={expanded === item.q}
+            onChange={(_, isExpanded) => setExpanded(isExpanded ? item.q : false)}
             sx={{
-              mb: 1,
-              bgcolor: 'background.default',
-              border: `1px solid ${alpha(theme.palette.common.white, 0.08)}`,
-              borderRadius: '12px !important',
+              mb: 1.25,
+              bgcolor: 'transparent',
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+              borderRadius: '0 !important',
               '&:before': { display: 'none' },
+              '&.Mui-expanded': { margin: 0, mb: 1.25 },
             }}
           >
-            <AccordionSummary expandIcon={<ExpandMore sx={{ color: 'primary.main' }} />}>
-              <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'text.primary' }}>
+            <AccordionSummary
+              expandIcon={<ExpandMore sx={{ color: 'primary.main' }} />}
+              sx={{ px: 0, py: 0.5 }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: 'var(--font-syne), Syne, sans-serif',
+                  fontWeight: 650,
+                  fontSize: '1.05rem',
+                  color: 'text.primary',
+                  pr: 2,
+                }}
+              >
                 {item.q}
               </Typography>
             </AccordionSummary>
-            <AccordionDetails>
-              <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
+            <AccordionDetails sx={{ px: 0, pb: 2.5 }}>
+              <Typography sx={{ color: 'text.secondary', lineHeight: 1.75 }}>
                 {item.a}
               </Typography>
             </AccordionDetails>
