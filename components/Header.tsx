@@ -35,7 +35,7 @@ export default function Header() {
       setScrolled(scrollY > 20);
 
       // Active section detection
-      const sections = ['home', 'features', 'case-studies', 'about', 'testimonials', 'contact'];
+      const sections = ['home', 'features', 'products', 'about', 'faq', 'contact'];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -90,10 +90,10 @@ export default function Header() {
 
   const navItems = [
     { href: '#home', label: 'Home', id: 'home' },
-    { href: '#features', label: 'Features', id: 'features' },
-    { href: '#case-studies', label: 'Case Studies', id: 'case-studies' },
+    { href: '#features', label: 'Services', id: 'features' },
+    { href: '#products', label: 'Products', id: 'products' },
     { href: '#about', label: 'About', id: 'about' },
-    { href: '#testimonials', label: 'Testimonials', id: 'testimonials' },
+    { href: '#faq', label: 'FAQ', id: 'faq' },
     { href: '#contact', label: 'Contact', id: 'contact' },
   ];
 
@@ -163,7 +163,7 @@ export default function Header() {
                 display: 'block',
               }}
             >
-              Innovative IT Solutions
+              Custom ERP · SaaS · E-commerce
             </Typography>
           </Box>
         </Box>
@@ -248,7 +248,7 @@ export default function Header() {
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
         >
-          Get Started
+          Request estimate
         </Button>
       </Box>
     </Box>
@@ -349,7 +349,7 @@ export default function Header() {
                         transition: 'opacity 0.3s ease',
                       }}
                     >
-                      Innovative IT Solutions
+                      Custom ERP · SaaS · E-commerce
                     </Typography>
                   </Box>
                 </Box>
@@ -442,7 +442,7 @@ export default function Header() {
                       },
                     }}
                   >
-                    Get Started
+                    Request estimate
                   </Button>
                 </Fade>
               </Box>

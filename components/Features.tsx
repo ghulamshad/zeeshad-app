@@ -111,10 +111,10 @@ export default function Features() {
         </Typography>
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 5 }, maxWidth: 800, mx: 'auto' }}>
           <Typography variant="h2" component="h2" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
-            Focused on what moves your business
+            Four things we actually deliver
           </Typography>
           <Typography variant="h6" component="p" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-            Custom ERP, SaaS MVPs, e-commerce, and automation—delivered with a clear process and modern stack.
+            Custom ERP, SaaS MVPs, e-commerce and automation—scoped clearly, built by the people you talk to.
           </Typography>
         </Box>
 
@@ -179,10 +179,10 @@ export default function Features() {
             Need something specific?
           </Typography>
           <Typography variant="body1" sx={{ mb: 4, color: 'text.secondary', maxWidth: 600, mx: 'auto', lineHeight: 1.7 }}>
-            We also handle integrations, legacy modernization, and end-to-end product delivery.
+            Not sure which of the four fits? Send a short brief—we will say clearly if we are the right team.
           </Typography>
           <Button component={Link} href="#contact" variant="contained" sx={{ px: 4, py: 1.5 }}>
-            Contact us for custom solutions
+            Request a scope & estimate
           </Button>
         </Box>
       </Container>

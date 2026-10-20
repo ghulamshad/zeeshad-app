@@ -20,27 +20,18 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://zeeshad.com"),
   title: {
-    default: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Business Automation",
+    default: "Custom ERP, SaaS MVP & E-commerce Builds | ZeeShad",
     template: "%s | ZeeShad",
   },
   description:
-    "ZeeShad builds custom ERP systems, SaaS MVPs, e-commerce platforms, and business automation solutions for SMEs and enterprises. We help businesses modernize operations, integrate systems, and launch scalable digital products from Karachi, Pakistan to clients worldwide.",
+    "ZeeShad builds custom ERP, SaaS MVPs, e-commerce and business automation for SMEs. Clear scopes, written estimates in two business days. Karachi-based, remote-friendly.",
   keywords: [
     "custom ERP development",
-    "ERP solutions Pakistan",
     "SaaS MVP development",
-    "SaaS product development",
     "e-commerce development",
-    "e-commerce platforms",
     "business process automation",
-    "workflow automation",
-    "enterprise software development",
-    "web application development",
-    "Karachi software company",
-    "IT services company Pakistan",
-    "ZeeShad",
-    "Z-ERP",
-    "Z-POS",
+    "ERP for SMEs",
+    "ZeeShad software",
     "Qr-Codify",
   ],
   authors: [{ name: "ZeeShad (Private) Limited" }],
@@ -67,25 +58,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "ZeeShad",
-    title: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Automation",
+    title: "Custom ERP, SaaS MVP & E-commerce Builds | ZeeShad",
     description:
-      "Custom ERP systems, SaaS MVPs, e-commerce platforms, and business automation solutions for SMEs and enterprises.",
+      "Custom ERP, SaaS MVPs, e-commerce and automation for SMEs. Written scope and estimate within two business days.",
     images: [
       {
         url: "/favicon.png",
         width: 1200,
         height: 630,
-        alt: "ZeeShad (Private) Limited Logo",
+        alt: "ZeeShad software delivery",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZeeShad - Custom ERP, SaaS MVP, E-commerce & Automation",
+    title: "Custom ERP, SaaS MVP & E-commerce Builds | ZeeShad",
     description:
-      "Custom ERP, SaaS MVP development, e-commerce platforms, and business automation solutions for growing businesses.",
+      "Custom ERP, SaaS MVPs, e-commerce and automation for growing businesses.",
     images: [{ url: "/favicon.png", width: 1200, height: 630, alt: "ZeeShad" }],
-    creator: "@zeeshad",
   },
   alternates: {
     canonical: "/",

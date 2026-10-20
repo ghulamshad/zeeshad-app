@@ -12,6 +12,9 @@ import {
   MenuItem,
   Alert,
   CircularProgress,
+  FormControlLabel,
+  Checkbox,
+  Link as MuiLink,
   useTheme,
   alpha,
 } from '@mui/material';
@@ -23,7 +26,9 @@ import {
   Business,
   Message,
   Person,
+  WhatsApp,
 } from '@mui/icons-material';
+import Link from 'next/link';
 import { submitLeadRequest, setField } from '@/store/slices/contactSlice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import type { ContactFormState } from '@/store/slices/contactSlice';
@@ -35,13 +40,17 @@ const SERVICE_OPTIONS = [
   'E-commerce Systems',
   'Business Automation',
   'Other',
-];
+] as const;
+
+const WHATSAPP_URL = 'https://wa.me/923040058323';
 
 export default function Contact() {
   const theme = useTheme();
   const dispatch = useAppDispatch();
   const { form, isSubmitting, submitStatus, error } = useAppSelector((state) => state.contact);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof ContactFormState, string>>>({});
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [privacyError, setPrivacyError] = useState(false);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -61,8 +70,10 @@ export default function Contact() {
     if (!form.email?.trim()) errors.email = 'Email is required';
     else if (!validateEmail(form.email)) errors.email = 'Enter a valid email address';
     if (!form.message?.trim()) errors.message = 'Message is required';
+    if (!privacyAccepted) setPrivacyError(true);
+    else setPrivacyError(false);
     setFieldErrors(errors);
-    if (Object.keys(errors).length > 0) return;
+    if (Object.keys(errors).length > 0 || !privacyAccepted) return;
     dispatch(submitLeadRequest(form));
   };
 
@@ -78,10 +89,11 @@ export default function Contact() {
       <Container maxWidth="xl">
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 5 }, maxWidth: 800, mx: 'auto' }}>
           <Typography variant="h2" component="h2" sx={{ mb: 2, fontWeight: 700 }}>
-            Get in <Box component="span" sx={{ color: 'primary.main' }}>Touch</Box>
+            Get in <Box component="span" sx={{ color: 'primary.main' }}>touch</Box>
           </Typography>
           <Typography variant="h6" component="p" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
-            Ready to build? Tell us about your project and we&apos;ll get back within 48 hours.
+            Send a short brief. We reply with a written scope outline and estimate within
+            two business days (PKT).
           </Typography>
         </Box>
 
@@ -95,28 +107,14 @@ export default function Contact() {
               }}
             >
               <CardContent sx={{ p: { xs: 4, md: 5 } }}>
-                <Typography variant="h5" component="h3" sx={{ mb: 4, fontWeight: 700, color: 'text.primary' }}>
+                <Typography variant="h5" component="h3" sx={{ mb: 4, fontWeight: 700 }}>
                   Contact information
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
-                      sx={{
-                        bgcolor: alpha(theme.palette.primary.main, 0.15),
-                        borderRadius: 2,
-                        p: 1.5,
-                        minWidth: 48,
-                        height: 48,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'primary.main',
-                      }}
-                    >
-                      <LocationOn />
-                    </Box>
+                    <LocationOn sx={{ color: 'primary.main', mt: 0.5 }} />
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
                         Registered office
                       </Typography>
                       <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
@@ -125,87 +123,51 @@ export default function Contact() {
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
-                      sx={{
-                        bgcolor: alpha(theme.palette.primary.main, 0.15),
-                        borderRadius: 2,
-                        p: 1.5,
-                        minWidth: 48,
-                        height: 48,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'primary.main',
-                      }}
-                    >
-                      <Email />
-                    </Box>
+                    <Email sx={{ color: 'primary.main' }} />
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
                         Email
                       </Typography>
-                      <Typography
-                        component="a"
-                        href="mailto:info@zeeshad.com"
-                        variant="body2"
-                        sx={{ color: 'primary.light', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
-                      >
+                      <MuiLink href="mailto:info@zeeshad.com" sx={{ color: 'primary.light' }}>
                         info@zeeshad.com
-                      </Typography>
+                      </MuiLink>
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
-                      sx={{
-                        bgcolor: alpha(theme.palette.primary.main, 0.15),
-                        borderRadius: 2,
-                        p: 1.5,
-                        minWidth: 48,
-                        height: 48,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'primary.main',
-                      }}
-                    >
-                      <Phone />
-                    </Box>
+                    <Phone sx={{ color: 'primary.main' }} />
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
                         Phone
                       </Typography>
-                      <Typography
-                        component="a"
-                        href="tel:+923040058323"
-                        variant="body2"
-                        sx={{ color: 'primary.light', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
-                      >
+                      <MuiLink href="tel:+923040058323" sx={{ color: 'primary.light' }}>
                         +92 304 0058323
-                      </Typography>
+                      </MuiLink>
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex', gap: 2 }}>
-                    <Box
-                      sx={{
-                        bgcolor: alpha(theme.palette.primary.main, 0.15),
-                        borderRadius: 2,
-                        p: 1.5,
-                        minWidth: 48,
-                        height: 48,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'primary.main',
-                      }}
-                    >
-                      <Business />
-                    </Box>
+                    <WhatsApp sx={{ color: 'primary.main' }} />
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5, color: 'text.primary' }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
+                        WhatsApp
+                      </Typography>
+                      <MuiLink
+                        href={WHATSAPP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{ color: 'primary.light' }}
+                      >
+                        Message on WhatsApp
+                      </MuiLink>
+                    </Box>
+                  </Box>
+                  <Box sx={{ display: 'flex', gap: 2 }}>
+                    <Business sx={{ color: 'primary.main' }} />
+                    <Box>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 0.5 }}>
                         Business hours
                       </Typography>
                       <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
-                        Mon–Fri: 9:00 AM – 6:00 PM · Sat: 10:00 AM – 2:00 PM
+                        Mon–Fri: 09:00–18:00 Pakistan Standard Time (PKT, UTC+5)
                       </Typography>
                     </Box>
                   </Box>
@@ -217,7 +179,7 @@ export default function Contact() {
           <Box sx={{ width: { xs: '100%', lg: '66.666%' } }}>
             <Card sx={{ bgcolor: 'background.paper', border: `1px solid ${alpha(theme.palette.common.white, 0.06)}` }}>
               <CardContent sx={{ p: { xs: 4, md: 5 } }}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} noValidate>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                     <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 3 }}>
                       <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
@@ -228,7 +190,6 @@ export default function Contact() {
                           name="name"
                           value={form.name}
                           onChange={handleChange}
-                          placeholder="John Doe"
                           error={Boolean(fieldErrors.name)}
                           helperText={fieldErrors.name}
                           InputProps={{ startAdornment: <Person sx={{ mr: 1, color: 'text.secondary' }} /> }}
@@ -243,7 +204,6 @@ export default function Contact() {
                           name="email"
                           value={form.email}
                           onChange={handleChange}
-                          placeholder="john@example.com"
                           error={Boolean(fieldErrors.email)}
                           helperText={fieldErrors.email}
                           InputProps={{ startAdornment: <Email sx={{ mr: 1, color: 'text.secondary' }} /> }}
@@ -258,7 +218,6 @@ export default function Contact() {
                           name="company"
                           value={form.company}
                           onChange={handleChange}
-                          placeholder="Your company"
                           InputProps={{ startAdornment: <Business sx={{ mr: 1, color: 'text.secondary' }} /> }}
                         />
                       </Box>
@@ -270,7 +229,6 @@ export default function Contact() {
                           name="phone"
                           value={form.phone}
                           onChange={handleChange}
-                          placeholder="+92 304 0058323"
                           InputProps={{ startAdornment: <Phone sx={{ mr: 1, color: 'text.secondary' }} /> }}
                         />
                       </Box>
@@ -278,15 +236,28 @@ export default function Contact() {
                     <TextField
                       fullWidth
                       select
+                      required
                       label="Service of interest"
                       name="service"
-                      value={form.service}
+                      value={form.service || ''}
                       onChange={handleChange}
-                      SelectProps={{ displayEmpty: true }}
+                      SelectProps={{
+                        displayEmpty: true,
+                        renderValue: (selected) => {
+                          if (!selected) {
+                            return <em style={{ opacity: 0.7 }}>Select a service</em>;
+                          }
+                          return String(selected);
+                        },
+                      }}
                     >
-                      <MenuItem value=""><em>Select a service</em></MenuItem>
+                      <MenuItem value="" disabled>
+                        <em>Select a service</em>
+                      </MenuItem>
                       {SERVICE_OPTIONS.map((opt) => (
-                        <MenuItem key={opt} value={opt}>{opt}</MenuItem>
+                        <MenuItem key={opt} value={opt}>
+                          {opt}
+                        </MenuItem>
                       ))}
                     </TextField>
                     <TextField
@@ -298,21 +269,50 @@ export default function Contact() {
                       name="message"
                       value={form.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your project..."
+                      placeholder="What do you need built? Industry, rough size and timeline help."
                       error={Boolean(fieldErrors.message)}
                       helperText={fieldErrors.message}
                       InputProps={{
-                        startAdornment: <Message sx={{ mr: 1, color: 'text.secondary', mb: 'auto', mt: 1 }} />,
+                        startAdornment: (
+                          <Message sx={{ mr: 1, color: 'text.secondary', mb: 'auto', mt: 1 }} />
+                        ),
                       }}
                     />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={privacyAccepted}
+                          onChange={(e) => {
+                            setPrivacyAccepted(e.target.checked);
+                            if (e.target.checked) setPrivacyError(false);
+                          }}
+                          color="primary"
+                        />
+                      }
+                      label={
+                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                          I agree to the processing of my details as described in the{' '}
+                          <MuiLink component={Link} href="/privacy" underline="hover" color="primary">
+                            Privacy Policy
+                          </MuiLink>
+                          .
+                        </Typography>
+                      }
+                    />
+                    {privacyError && (
+                      <Typography variant="caption" color="error">
+                        Please accept the privacy policy to continue.
+                      </Typography>
+                    )}
                     {submitStatus === 'success' && (
                       <Alert severity="success" role="status" aria-live="polite">
-                        Thanks! Your message was sent. We&apos;ll get back to you soon.
+                        Thanks—we received your message. Expect a written scope outline and
+                        estimate within two business days.
                       </Alert>
                     )}
                     {submitStatus === 'error' && (
                       <Alert severity="error" role="alert" aria-live="assertive">
-                        {error || 'Something went wrong. Please try again.'}
+                        {error || 'Something went wrong. Please try again or email info@zeeshad.com.'}
                       </Alert>
                     )}
                     <Button

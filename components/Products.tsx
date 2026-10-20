@@ -20,7 +20,6 @@ import {
   QrCode2,
   BusinessCenter,
   PointOfSale,
-  School,
   Launch,
   ArrowForward,
   FiberManualRecord,
@@ -34,61 +33,52 @@ interface Product {
   features: string[];
   link?: string;
   color: string;
+  ctaLabel: string;
 }
 
 const products: Product[] = [
   {
     icon: QrCode2,
     name: 'Qr-Codify',
-    description: 'Advanced QR code generation and management platform for businesses of all sizes.',
+    description:
+      'Our live QR code generation and management product for brands that need dynamic codes, branding and tracking.',
     features: [
-      'Dynamic QR Code Generation',
-      'Custom Branding & Design',
-      'Analytics & Tracking',
-      'Bulk QR Code Creation',
-      'API Integration',
+      'Dynamic QR code generation',
+      'Custom branding & design',
+      'Analytics & tracking',
+      'Bulk creation & API',
     ],
     link: 'https://qr-codify.com',
     color: '#6366f1',
+    ctaLabel: 'Learn more about Qr-Codify',
   },
   {
     icon: BusinessCenter,
-    name: 'Z-ERP',
-    description: 'Comprehensive Enterprise Resource Planning solution for streamlined business operations.',
+    name: 'Z-ERP framework',
+    description:
+      'An internal ERP delivery framework we use on client projects—finance, inventory, HR and reporting modules assembled to fit your process. Not a public SaaS product.',
     features: [
-      'Financial Management',
-      'Inventory Control',
-      'HR & Payroll',
-      'Sales & CRM',
-      'Reporting & Analytics',
+      'Financial management modules',
+      'Inventory & supply chain',
+      'HR & payroll building blocks',
+      'Reporting tailored to your ops',
     ],
     color: '#2563eb',
+    ctaLabel: 'Ask about an ERP build',
   },
   {
     icon: PointOfSale,
-    name: 'Z-POS',
-    description: 'Modern Point of Sale system designed for retail and hospitality businesses.',
+    name: 'Z-POS framework',
+    description:
+      'A POS-oriented framework we adapt for retail and hospitality projects. Ask for a walkthrough if you need counter sales tied to inventory.',
     features: [
-      'Real-time Sales Processing',
-      'Inventory Management',
-      'Payment Integration',
-      'Receipt Generation',
-      'Multi-location Support',
+      'Sales processing patterns',
+      'Inventory hooks',
+      'Payment integration patterns',
+      'Multi-location support patterns',
     ],
     color: '#10b981',
-  },
-  {
-    icon: School,
-    name: 'ZeeShad Academy',
-    description: 'Professional IT training and certification programs in emerging technologies.',
-    features: [
-      'Technical Training Courses',
-      'Industry Certifications',
-      'Hands-on Workshops',
-      'Online & In-person Classes',
-      'Career Development Programs',
-    ],
-    color: '#8b5cf6',
+    ctaLabel: 'Ask about a POS build',
   },
 ];
 
@@ -105,35 +95,22 @@ export default function Products() {
       }}
     >
       <Container maxWidth="xl">
-        {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 5 }, maxWidth: 800, mx: 'auto' }}>
-          <Typography
-            variant="h2"
-            component="h2"
-            sx={{
-              mb: 2,
-              fontWeight: 700,
-            }}
-          >
-            Our <Box component="span" sx={{ color: 'primary.main' }}>Products</Box>
+          <Typography variant="h2" component="h2" sx={{ mb: 2, fontWeight: 700 }}>
+            Products &{' '}
+            <Box component="span" sx={{ color: 'primary.main' }}>
+              frameworks
+            </Box>
           </Typography>
-          <Typography
-            variant="h6"
-            component="p"
-            sx={{
-              color: 'text.secondary',
-              lineHeight: 1.7,
-            }}
-          >
-            Innovative software solutions and training programs designed to empower businesses 
-            and professionals in the digital age.
+          <Typography variant="h6" component="p" sx={{ color: 'text.secondary', lineHeight: 1.7 }}>
+            One live product. Two delivery frameworks we use on client builds—labelled
+            honestly so you know what you are looking at.
           </Typography>
         </Box>
 
-        {/* Products Grid */}
         <Grid container spacing={3} sx={{ mb: { xs: 4, md: 5 } }}>
-          {products.map((product, index) => (
-            <Grid size={{ xs: 12, md: 6 }} key={index}>
+          {products.map((product) => (
+            <Grid size={{ xs: 12, md: 4 }} key={product.name}>
               <Card
                 sx={{
                   height: '100%',
@@ -141,18 +118,10 @@ export default function Products() {
                   flexDirection: 'column',
                   bgcolor: 'background.default',
                   border: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
-                  position: 'relative',
-                  overflow: 'visible',
-                  transition: 'all 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-4px)',
-                    borderColor: alpha(product.color, 0.4),
-                    boxShadow: `0 12px 40px ${alpha(theme.palette.common.black, 0.4)}`,
-                  },
                 }}
               >
-                <CardContent sx={{ flexGrow: 1, p: 3, position: 'relative', zIndex: 1 }}>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+                <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
                     <Box sx={{ color: product.color }}>
                       <product.icon sx={{ fontSize: 48 }} />
                     </Box>
@@ -164,62 +133,31 @@ export default function Products() {
                         rel="noopener noreferrer"
                         aria-label="Open Qr-Codify website"
                         size="small"
-                        sx={{
-                          color: 'text.secondary',
-                          '&:hover': {
-                            color: 'primary.main',
-                            bgcolor: alpha(theme.palette.primary.main, 0.1),
-                          },
-                        }}
+                        sx={{ color: 'text.secondary' }}
                       >
                         <Launch />
                       </IconButton>
                     )}
                   </Box>
-
-                  <Typography
-                    variant="h5"
-                    component="h3"
-                    sx={{
-                      mb: 1.5,
-                      fontWeight: 700,
-                    }}
-                  >
+                  <Typography variant="h5" component="h3" sx={{ mb: 1.5, fontWeight: 700 }}>
                     {product.name}
                   </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      mb: 2,
-                      color: 'text.secondary',
-                      lineHeight: 1.7,
-                    }}
-                  >
+                  <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary', lineHeight: 1.7 }}>
                     {product.description}
                   </Typography>
-
                   <List dense sx={{ p: 0, mb: 2 }}>
-                    {product.features.map((feature, idx) => (
-                      <ListItem key={idx} disablePadding sx={{ mb: 0.5 }}>
+                    {product.features.map((feature) => (
+                      <ListItem key={feature} disablePadding sx={{ mb: 0.5 }}>
                         <ListItemIcon sx={{ minWidth: 32 }}>
-                          <FiberManualRecord
-                            sx={{
-                              fontSize: 8,
-                              color: product.color,
-                            }}
-                          />
+                          <FiberManualRecord sx={{ fontSize: 8, color: product.color }} />
                         </ListItemIcon>
                         <ListItemText
                           primary={feature}
-                          primaryTypographyProps={{
-                            variant: 'body2',
-                            sx: { fontSize: '0.875rem' },
-                          }}
+                          primaryTypographyProps={{ variant: 'body2', sx: { fontSize: '0.875rem' } }}
                         />
                       </ListItem>
                     ))}
                   </List>
-
                   <Box sx={{ pt: 2, borderTop: 1, borderColor: 'divider' }}>
                     {product.link ? (
                       <Button
@@ -228,30 +166,18 @@ export default function Products() {
                         target="_blank"
                         rel="noopener noreferrer"
                         endIcon={<ArrowForward />}
-                        sx={{
-                          color: product.color,
-                          fontWeight: 600,
-                          '&:hover': {
-                            bgcolor: alpha(product.color, 0.1),
-                          },
-                        }}
+                        sx={{ color: product.color, fontWeight: 600 }}
                       >
-                        Learn more about Qr-Codify
+                        {product.ctaLabel}
                       </Button>
                     ) : (
                       <Button
                         component={Link}
                         href="#contact"
                         endIcon={<ArrowForward />}
-                        sx={{
-                          color: product.color,
-                          fontWeight: 600,
-                          '&:hover': {
-                            bgcolor: alpha(product.color, 0.1),
-                          },
-                        }}
+                        sx={{ color: product.color, fontWeight: 600 }}
                       >
-                        Contact Us
+                        {product.ctaLabel}
                       </Button>
                     )}
                   </Box>
@@ -260,49 +186,6 @@ export default function Products() {
             </Grid>
           ))}
         </Grid>
-
-        {/* Additional Info */}
-        <Box
-          sx={{
-            bgcolor: 'background.default',
-            borderRadius: 4,
-            p: { xs: 3, md: 4 },
-            textAlign: 'center',
-            border: `1px solid ${alpha(theme.palette.common.white, 0.06)}`,
-            maxWidth: 900,
-            mx: 'auto',
-            mt: { xs: 4, md: 5 },
-          }}
-        >
-          <Typography variant="h4" component="h3" sx={{ mb: 2, fontWeight: 700, color: 'text.primary' }}>
-            Looking for Custom Solutions?
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              mb: 4,
-              color: 'text.secondary',
-              maxWidth: 600,
-              mx: 'auto',
-              lineHeight: 1.7,
-            }}
-          >
-            Our products are designed to be scalable and customizable. We also offer 
-            custom development services to tailor solutions specifically to your business needs.
-          </Typography>
-          <Button
-            component={Link}
-            href="#contact"
-            variant="contained"
-            size="large"
-            sx={{
-              px: 4,
-              py: 1.5,
-            }}
-          >
-            Get Custom Solution
-          </Button>
-        </Box>
       </Container>
     </Box>
   );

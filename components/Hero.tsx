@@ -10,10 +10,11 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowForward } from '@mui/icons-material';
+import { ArrowForward, WhatsApp } from '@mui/icons-material';
 
 const HERO_BG = '/images/slider/slide-1.png';
-const HERO_RIGHT_IMAGE = '/images/hero-right.webp';
+const HERO_RIGHT_IMAGE = '/images/hero-right.png';
+const WHATSAPP_URL = 'https://wa.me/923040058323';
 
 export default function Hero() {
   const theme = useTheme();
@@ -33,7 +34,6 @@ export default function Hero() {
         pb: { xs: 8, md: 10 },
       }}
     >
-      {/* Background image */}
       <Box
         sx={{
           position: 'absolute',
@@ -45,39 +45,14 @@ export default function Hero() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          bgcolor: 'background.default',
         }}
       />
-      {/* Dark overlay for readability */}
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
-          background: `linear-gradient(180deg, ${alpha(theme.palette.common.black, 0.6)} 0%, ${alpha(theme.palette.common.black, 0.75)} 100%)`,
-        }}
-      />
-      {/* Subtle gradient orbs */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '20%',
-          left: '15%',
-          width: 300,
-          height: 300,
-          background: `radial-gradient(circle, ${alpha(theme.palette.primary.main, 0.2)} 0%, transparent 70%)`,
-          borderRadius: '50%',
-          filter: 'blur(60px)',
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '15%',
-          width: 300,
-          height: 300,
-          background: `radial-gradient(circle, ${alpha(theme.palette.secondary.main, 0.15)} 0%, transparent 70%)`,
-          borderRadius: '50%',
-          filter: 'blur(60px)',
+          background: `linear-gradient(180deg, ${alpha(theme.palette.common.black, 0.65)} 0%, ${alpha(theme.palette.common.black, 0.8)} 100%)`,
         }}
       />
 
@@ -88,22 +63,20 @@ export default function Hero() {
             gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
             gap: { xs: 3, sm: 4, md: 6 },
             alignItems: 'center',
-            gridTemplateRows: { xs: 'auto auto', md: '1fr' },
           }}
         >
-          {/* Left: text content — first on mobile */}
-          <Box sx={{ textAlign: { xs: 'center', md: 'left' }, order: { xs: 0, md: 0 } }}>
+          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
             <Typography
               variant="overline"
               sx={{
                 display: 'block',
-                letterSpacing: 4,
+                letterSpacing: 3,
                 color: 'primary.light',
                 fontWeight: 700,
                 mb: 2,
               }}
             >
-              Custom ERP · SaaS · E-commerce · Automation
+              ZeeShad Software Delivery · Karachi
             </Typography>
 
             <Typography
@@ -118,7 +91,7 @@ export default function Hero() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Build what your business needs.
+              Custom ERP, SaaS MVP and e-commerce builds that fit how you actually work.
             </Typography>
 
             <Typography
@@ -127,13 +100,14 @@ export default function Hero() {
               sx={{
                 mb: 4,
                 color: 'text.secondary',
-                maxWidth: { md: 480 },
+                maxWidth: { md: 520 },
                 mx: { xs: 'auto', md: 0 },
                 lineHeight: 1.7,
                 fontWeight: 400,
               }}
             >
-              Custom ERP solutions, SaaS MVPs, e-commerce systems, and business automation—from idea to launch.
+              For SME and mid-size operators who need finance, inventory, sales or workflows
+              under one system—or a first SaaS or store that ships without a bloated IT menu.
             </Typography>
 
             <Box
@@ -143,6 +117,7 @@ export default function Hero() {
                 gap: 2,
                 justifyContent: { xs: 'center', md: 'flex-start' },
                 alignItems: 'center',
+                flexWrap: 'wrap',
               }}
             >
               <Button
@@ -151,20 +126,18 @@ export default function Hero() {
                 variant="contained"
                 size="large"
                 endIcon={<ArrowForward />}
-                sx={{
-                  px: 4,
-                  py: 1.75,
-                  fontSize: '1.05rem',
-                  borderRadius: 2,
-                }}
+                sx={{ px: 4, py: 1.75, fontSize: '1.05rem', borderRadius: 2 }}
               >
-                Get in Touch
+                Request a scope & estimate
               </Button>
               <Button
-                component={Link}
-                href="#features"
+                component="a"
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 variant="outlined"
                 size="large"
+                startIcon={<WhatsApp />}
                 sx={{
                   px: 4,
                   py: 1.75,
@@ -178,14 +151,11 @@ export default function Hero() {
                   },
                 }}
               >
-                Explore solutions
+                WhatsApp us
               </Button>
             </Box>
-
-            
           </Box>
 
-          {/* Right: hero image — second on mobile, responsive sizing */}
           <Box
             sx={{
               position: 'relative',
@@ -199,12 +169,11 @@ export default function Hero() {
               maxHeight: { xs: 280, sm: 320, md: 520 },
               minHeight: 0,
               bgcolor: alpha(theme.palette.background.paper, 0.3),
-              order: { xs: 1, md: 0 },
             }}
           >
             <Image
               src={HERO_RIGHT_IMAGE}
-              alt="ZeeShad IT solutions"
+              alt="Custom software delivery for ERP, SaaS and e-commerce"
               fill
               sizes="(max-width: 600px) 360px, (max-width: 960px) 420px, 50vw"
               style={{ objectFit: 'cover', objectPosition: 'center' }}
