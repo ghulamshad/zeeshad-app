@@ -28,14 +28,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import type { ContactFormState } from '@/store/slices/contactSlice';
 import { validateEmail } from '@/lib/utils';
 import { Reveal } from '@/components/Motion';
-
-const SERVICE_OPTIONS = [
-  'Custom ERP Solutions',
-  'SaaS MVP Builds',
-  'E-commerce Systems',
-  'Business Automation',
-  'Other',
-] as const;
+import { SERVICE_SELECT_OPTIONS } from '@/lib/content/services';
 
 const WHATSAPP_URL = 'https://wa.me/923040058323';
 
@@ -90,8 +83,8 @@ export default function Contact() {
               Get in touch
             </Typography>
             <Typography sx={{ color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Send a short brief. We reply with a written scope outline and estimate within two
-              business days (PKT).
+              Tell us whether you need Business Solutions, Digital Marketing, Consultancy—or a mix.
+              We reply with a written scope outline and estimate within two business days (PKT).
             </Typography>
           </Box>
         </Reveal>
@@ -236,7 +229,7 @@ export default function Contact() {
                   <MenuItem value="" disabled>
                     <em>Select a service</em>
                   </MenuItem>
-                  {SERVICE_OPTIONS.map((opt) => (
+                      {SERVICE_SELECT_OPTIONS.map((opt) => (
                     <MenuItem key={opt} value={opt}>
                       {opt}
                     </MenuItem>

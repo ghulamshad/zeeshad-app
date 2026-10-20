@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
+import { MAIN_SERVICES, COMPANY_ONE_LINER } from '@/lib/content/services';
 
 const sectionLoading = () => (
   <div className="section-loading" aria-hidden="true">
@@ -28,8 +29,7 @@ export default function Home() {
     legalName: 'ZeeShad (Private) Limited',
     url: canonicalUrl,
     logo: `${canonicalUrl}/header-logo.png`,
-    description:
-      'ZeeShad builds custom ERP systems, SaaS MVPs, e-commerce platforms, and business automation for growing businesses. Based in Karachi, Pakistan.',
+    description: COMPANY_ONE_LINER,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'D-17 Ground Floor, Gulistan Society',
@@ -54,40 +54,28 @@ export default function Home() {
     sameAs: ['https://qr-codify.com'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Software delivery services',
+      name: 'ZeeShad services',
       itemListElement: [
-        {
+        ...MAIN_SERVICES.map((service) => ({
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Custom ERP Solutions',
-            description: 'Tailored enterprise resource planning systems for finance, inventory, HR and operations',
+            name: service.title,
+            description: service.description,
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: `${service.title} sub-services`,
+              itemListElement: service.subServices.map((sub) => ({
+                '@type': 'Offer',
+                itemOffered: {
+                  '@type': 'Service',
+                  name: sub.name,
+                  description: sub.summary,
+                },
+              })),
+            },
           },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'SaaS MVP Builds',
-            description: 'Scoped, secure SaaS products from idea to first release',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'E-commerce Systems',
-            description: 'Online stores and marketplaces with payments and fulfillment integrations',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Business Automation',
-            description: 'Workflows, approvals and system integrations that reduce manual work',
-          },
-        },
+        })),
         {
           '@type': 'Offer',
           itemOffered: {
@@ -107,7 +95,7 @@ export default function Home() {
     name: 'ZeeShad',
     url: canonicalUrl,
     description:
-      'Custom ERP, SaaS MVP, e-commerce and business automation delivery for SMEs and mid-size companies.',
+      'Business Solutions, Digital Marketing and Consultancy from ZeeShad (Private) Limited.',
     publisher: { '@id': `${canonicalUrl}#organization` },
     inLanguage: 'en',
   };
@@ -118,10 +106,10 @@ export default function Home() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What does ZeeShad build?',
+        name: 'What services does ZeeShad offer?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'ZeeShad builds custom ERP systems, SaaS MVPs, e-commerce platforms and business automation. We focus on software delivery for growing businesses that need systems that work together—not a long menu of unrelated IT services.',
+          text: 'Three main lines: Business Solutions (custom ERP, SaaS and product builds, e-commerce, automation and integrations), Digital Marketing (SEO, paid media, social, creative, email/CRM and analytics), and Consultancy (transformation advisory, technology selection, operations, growth advisory, scoping and vendor oversight).',
         },
       },
       {
@@ -129,7 +117,15 @@ export default function Home() {
         name: 'Who is ZeeShad a good fit for?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Owners and operations leads at SMEs and mid-size companies who need a custom ERP, a first SaaS product, an online store or marketplace, or automation that connects existing tools. If you need a large multi-vendor IT department for hardware, networking and cybersecurity, we are not the right fit.',
+          text: 'Owners, marketing leads and operations managers at SMEs and mid-size companies who need better systems, clearer demand generation, or independent advice before a major software or marketing investment.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can we combine services?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Many briefs mix lines—for example a Business Solutions build with Digital Marketing launch support, or Consultancy first to define scope before delivery.',
         },
       },
       {
@@ -145,7 +141,7 @@ export default function Home() {
         name: 'How do I start a project with ZeeShad?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Send a short brief via the contact form, email info@zeeshad.com, or WhatsApp. We reply with a written scope outline and estimate within two business days—so you know what we propose before any build starts.',
+          text: 'Send a short brief via the contact form, email info@zeeshad.com, or WhatsApp. Include which service line you care about. We reply with a written scope outline and estimate within two business days.',
         },
       },
     ],

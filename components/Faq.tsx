@@ -14,12 +14,16 @@ import { Reveal } from '@/components/Motion';
 
 const FAQS = [
   {
-    q: 'What does ZeeShad build?',
-    a: 'Custom ERP systems, SaaS MVPs, e-commerce platforms and business automation. We focus on software delivery for growing businesses that need systems that work together—not a long menu of unrelated IT services.',
+    q: 'What services does ZeeShad offer?',
+    a: 'Three main lines: Business Solutions (custom ERP, SaaS and product builds, e-commerce, automation and integrations), Digital Marketing (SEO, paid media, social, creative, email/CRM and analytics), and Consultancy (transformation advisory, technology selection, operations, growth advisory, scoping and vendor oversight).',
   },
   {
     q: 'Who is ZeeShad a good fit for?',
-    a: 'Owners and operations leads at SMEs and mid-size companies who need a custom ERP, a first SaaS product, an online store or marketplace, or automation that connects existing tools. If you need a large multi-vendor IT department for hardware, networking and cybersecurity, we are not the right fit.',
+    a: 'Owners, marketing leads and operations managers at SMEs and mid-size companies who need better systems, clearer demand generation, or independent advice before a major software or marketing investment. If you only need commodity hardware supply or a large multi-vendor IT department, we are not the right fit.',
+  },
+  {
+    q: 'Can we combine services?',
+    a: 'Yes. Many briefs mix lines—for example a Business Solutions build with Digital Marketing launch support, or Consultancy first to define scope before delivery. We will say clearly what belongs in one engagement and what should be sequenced.',
   },
   {
     q: 'Where is ZeeShad based and how do you work with remote clients?',
@@ -27,7 +31,7 @@ const FAQS = [
   },
   {
     q: 'How do I start a project with ZeeShad?',
-    a: 'Send a short brief via the contact form, email info@zeeshad.com, or WhatsApp. We reply with a written scope outline and estimate within two business days—so you know what we propose before any build starts.',
+    a: 'Send a short brief via the contact form, email info@zeeshad.com, or WhatsApp. Include which service line you care about (Business Solutions, Digital Marketing or Consultancy). We reply with a written scope outline and estimate within two business days.',
   },
 ];
 
@@ -53,11 +57,7 @@ export default function Faq() {
           >
             FAQ
           </Typography>
-          <Typography
-            variant="h2"
-            component="h2"
-            sx={{ textAlign: 'center', mb: 5 }}
-          >
+          <Typography variant="h2" component="h2" sx={{ textAlign: 'center', mb: 5 }}>
             Straight answers
           </Typography>
         </Reveal>

@@ -27,18 +27,19 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://zeeshad.com"),
   title: {
-    default: "Custom ERP, SaaS MVP & E-commerce Builds | ZeeShad",
+    default: "Business Solutions, Digital Marketing & Consultancy | ZeeShad",
     template: "%s | ZeeShad",
   },
   description:
-    "ZeeShad builds custom ERP, SaaS MVPs, e-commerce and business automation for SMEs. Clear scopes, written estimates in two business days. Karachi-based, remote-friendly.",
+    "ZeeShad offers Business Solutions, Digital Marketing and Consultancy for growing companies. Clear scopes and written estimates in two business days. Karachi-based, remote-friendly.",
   keywords: [
+    "business solutions",
+    "digital marketing agency Karachi",
+    "business consultancy Pakistan",
     "custom ERP development",
-    "SaaS MVP development",
-    "e-commerce development",
-    "business process automation",
-    "ERP for SMEs",
-    "ZeeShad software",
+    "SEO and paid media",
+    "digital transformation consulting",
+    "ZeeShad",
     "Qr-Codify",
   ],
   authors: [{ name: "ZeeShad (Private) Limited" }],
@@ -65,23 +66,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "ZeeShad",
-    title: "Custom ERP, SaaS MVP & E-commerce Builds | ZeeShad",
+    title: "Business Solutions, Digital Marketing & Consultancy | ZeeShad",
     description:
-      "Custom ERP, SaaS MVPs, e-commerce and automation for SMEs. Written scope and estimate within two business days.",
+      "Systems, growth marketing and consultancy for SMEs. Written scope and estimate within two business days.",
     images: [
       {
         url: "/images/brand/hero-atmosphere.jpg",
         width: 1200,
         height: 630,
-        alt: "ZeeShad software delivery studio",
+        alt: "ZeeShad business solutions studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom ERP, SaaS MVP & E-commerce Builds | ZeeShad",
+    title: "Business Solutions, Digital Marketing & Consultancy | ZeeShad",
     description:
-      "Custom ERP, SaaS MVPs, e-commerce and automation for growing businesses.",
+      "Business Solutions, Digital Marketing and Consultancy for growing businesses.",
     images: [
       {
         url: "/images/brand/hero-atmosphere.jpg",

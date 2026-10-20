@@ -74,13 +74,14 @@ export default function Products() {
         >
           <Reveal>
             <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-              Products & frameworks
+              Business Solutions · Products
             </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
               One live product. Two frameworks we use on client builds.
             </Typography>
-            <Typography sx={{ color: 'text.secondary', fontSize: '1.05rem', maxWidth: 480 }}>
-              Labelled honestly so you know what you are looking at—shipping software, not theatre.
+            <Typography sx={{ color: 'text.secondary', fontSize: '1.05rem', maxWidth: 500 }}>
+              Part of our Business Solutions line—labelled honestly so you know what is a public
+              product versus an internal delivery framework.
             </Typography>
           </Reveal>
           <Reveal delay={0.12}>
@@ -98,7 +99,7 @@ export default function Products() {
             >
               <Image
                 src="/images/brand/systems-modules.jpg"
-                alt="Modular systems representing ERP and SaaS delivery frameworks"
+                alt="Modular systems representing ZeeShad business solution frameworks"
                 fill
                 sizes="(max-width: 900px) 100vw, 380px"
                 style={{ objectFit: 'cover' }}

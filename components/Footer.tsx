@@ -14,10 +14,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    { href: '#features', label: 'Custom ERP' },
-    { href: '#features', label: 'SaaS MVP' },
-    { href: '#features', label: 'E-commerce' },
-    { href: '#features', label: 'Business Automation' },
+    { href: '#business-solutions', label: 'Business Solutions' },
+    { href: '#digital-marketing', label: 'Digital Marketing' },
+    { href: '#consultancy', label: 'Consultancy' },
   ];
 
   const quickLinks = [
@@ -94,8 +93,8 @@ export default function Footer() {
               </Box>
             </Link>
             <Typography sx={{ fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 280 }}>
-              Software delivery for custom ERP, SaaS MVPs, e-commerce and automation. Based in
-              Karachi, Pakistan.
+              Business Solutions, Digital Marketing and Consultancy for growing companies. Based
+              in Karachi, Pakistan.
             </Typography>
           </Box>
 

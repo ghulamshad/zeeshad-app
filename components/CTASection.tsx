@@ -39,7 +39,7 @@ export default function CTASection() {
         >
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h2" component="h2" sx={{ mb: 2, color: '#fff' }}>
-              Ready to talk about a build?
+              Ready to talk about systems, growth or advice?
             </Typography>
             <Typography
               sx={{
@@ -47,12 +47,12 @@ export default function CTASection() {
                 mb: 4,
                 lineHeight: 1.7,
                 fontSize: '1.1rem',
-                maxWidth: 520,
+                maxWidth: 540,
                 mx: 'auto',
               }}
             >
-              Send a short brief. We reply with a written scope outline and estimate within two
-              business days.
+              Brief us on Business Solutions, Digital Marketing or Consultancy. We reply with a
+              written scope outline and estimate within two business days.
             </Typography>
             <Stack
               direction={{ xs: 'column', sm: 'row' }}

@@ -49,17 +49,19 @@ export default function About() {
               About ZeeShad
             </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
-              A focused software delivery studio—not a general IT supermarket.
+              A Karachi-based partner for systems, growth and clarity.
             </Typography>
             <Typography sx={{ color: 'text.secondary', mb: 2.5, lineHeight: 1.8 }}>
-              ZeeShad (Private) Limited is a Karachi-based software company. We design and build
-              custom ERP, SaaS MVPs, e-commerce systems and business automation for operators who
-              need systems that match how their business actually runs.
+              ZeeShad (Private) Limited helps growing businesses through three service lines:
+              Business Solutions, Digital Marketing and Consultancy. We keep the offer focused so
+              delivery stays accountable—when you talk to us, you talk to the people who will scope
+              and do the work.
             </Typography>
             <Typography sx={{ color: 'text.secondary', mb: 2.5, lineHeight: 1.8 }}>
-              We keep the offer narrow on purpose: four delivery areas we can own end to end. We do
-              not claim labs, training campuses or every IT category under the sun. When you talk to
-              us, you talk to the people who will scope and build the work.
+              Business Solutions cover the software and process systems that run day-to-day
+              operations. Digital Marketing builds demand with strategy, channels and measurement.
+              Consultancy gives you independent guidance on technology, operations and growth before
+              you commit budget.
             </Typography>
             <Typography sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
               Prefer clear scopes, written estimates and remote collaboration across time zones.

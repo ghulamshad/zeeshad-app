@@ -95,7 +95,7 @@ export default function Hero() {
                 maxWidth: 540,
               }}
             >
-              Custom ERP, SaaS MVP and e-commerce builds that fit how you actually work.
+              Business Solutions, Digital Marketing and Consultancy that move the business forward.
             </Typography>
             <Typography
               sx={{
@@ -103,11 +103,12 @@ export default function Hero() {
                 fontSize: { xs: '1rem', md: '1.1rem' },
                 lineHeight: 1.7,
                 mb: 4,
-                maxWidth: 480,
+                maxWidth: 500,
               }}
             >
-              For SME and mid-size operators who need finance, inventory, sales or workflows
-              under one system—or a first SaaS or store that ships without a bloated IT menu.
+              For owners and operators who need systems that run operations, campaigns that create
+              demand, and clear advice before the next investment—scoped in writing within two
+              business days.
             </Typography>
           </motion.div>
 
