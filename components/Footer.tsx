@@ -60,18 +60,17 @@ export default function Footer() {
                 <Box
                   sx={{
                     position: 'relative',
-                    width: 44,
-                    height: 44,
+                    width: { xs: 96, sm: 112 },
+                    height: { xs: 56, sm: 66 },
                     flexShrink: 0,
-                    filter: 'brightness(0) invert(1)',
                   }}
                 >
                   <Image
-                    src="/footer-logo-removebg-preview.png"
+                    src="/footer-logo.png"
                     alt="ZeeShad"
                     fill
                     style={{ objectFit: 'contain' }}
-                    sizes="44px"
+                    sizes="(max-width: 600px) 96px, 112px"
                   />
                 </Box>
                 <Box>
@@ -79,7 +78,7 @@ export default function Footer() {
                     sx={{
                       fontFamily: 'var(--font-syne), Syne, sans-serif',
                       fontWeight: 700,
-                      fontSize: '1.15rem',
+                      fontSize: '1.3rem',
                       color: '#fff',
                       letterSpacing: '-0.02em',
                     }}

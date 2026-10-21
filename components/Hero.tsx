@@ -18,7 +18,7 @@ export default function Hero() {
       id="home"
       sx={{
         position: 'relative',
-        minHeight: { xs: '92svh', md: 'calc(100vh - 78px)' },
+        minHeight: { xs: '92svh', md: 'calc(100vh - 88px)' },
         display: 'flex',
         alignItems: 'flex-end',
         overflow: 'hidden',

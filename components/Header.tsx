@@ -98,7 +98,7 @@ export default function Header() {
           <Toolbar
             disableGutters
             sx={{
-              minHeight: { xs: 68, md: 78 },
+              minHeight: { xs: 76, md: 88 },
               gap: 2,
             }}
           >
@@ -115,14 +115,21 @@ export default function Header() {
                 mr: { lg: 2 },
               }}
             >
-              <Box sx={{ position: 'relative', width: 44, height: 44, flexShrink: 0 }}>
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: { xs: 112, sm: 132, md: 152 },
+                  height: { xs: 58, sm: 68, md: 78 },
+                  flexShrink: 0,
+                }}
+              >
                 <Image
                   src="/header-logo.png"
                   alt="ZeeShad"
                   fill
-                  style={{ objectFit: 'contain' }}
+                  style={{ objectFit: 'contain', objectPosition: 'left center' }}
                   priority
-                  sizes="44px"
+                  sizes="(max-width: 600px) 112px, (max-width: 900px) 132px, 152px"
                 />
               </Box>
               <Box>
@@ -130,7 +137,7 @@ export default function Header() {
                   sx={{
                     fontFamily: 'var(--font-syne), Syne, sans-serif',
                     fontWeight: 700,
-                    fontSize: { xs: '1.15rem', md: '1.3rem' },
+                    fontSize: { xs: '1.25rem', md: '1.45rem' },
                     lineHeight: 1.1,
                     color: 'text.primary',
                     letterSpacing: '-0.02em',
@@ -143,7 +150,7 @@ export default function Header() {
                   sx={{
                     display: { xs: 'none', sm: 'block' },
                     color: 'text.secondary',
-                    fontSize: '0.68rem',
+                    fontSize: '0.72rem',
                     letterSpacing: '0.04em',
                     fontWeight: 500,
                   }}
@@ -300,7 +307,7 @@ export default function Header() {
         </Box>
       </Drawer>
 
-      <Toolbar sx={{ minHeight: { xs: 68, md: 78 } }} />
+      <Toolbar sx={{ minHeight: { xs: 76, md: 88 } }} />
     </>
   );
 }
