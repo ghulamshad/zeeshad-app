@@ -133,10 +133,10 @@ export default function Products() {
             <Typography variant="overline" sx={{ color: 'products.main', mb: 1.5, display: 'block' }}>
               Products
             </Typography>
-            <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 560 }}>
-              One live product. Frameworks we use on client builds.
+            <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 640 }}>
+              Live products. Frameworks we use on client builds.
             </Typography>
-            <Typography sx={{ color: 'text.secondary', mb: 4, maxWidth: 500 }}>
+            <Typography sx={{ color: 'text.secondary', mb: 4, maxWidth: 560 }}>
               Labelled honestly so you know what is a public product versus an internal delivery
               framework.
             </Typography>
@@ -145,11 +145,19 @@ export default function Products() {
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
+              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: 'repeat(4, 1fr)' },
               gap: 2.5,
             }}
           >
             {[
+              {
+                name: 'ZeeShad Desk',
+                badge: 'Live product',
+                description:
+                  'The daily desk for trading houses: follow-ups, quotes, yard stock, deliveries and invoices in Pakistani rupees—in one company, in the browser.',
+                href: 'https://desk.zeeshad.com/',
+                cta: 'Open ZeeShad Desk',
+              },
               {
                 name: 'Qr-Codify',
                 badge: 'Live product',

@@ -52,7 +52,7 @@ export default function Home() {
         closes: '18:00',
       },
     },
-    sameAs: ['https://qr-codify.com'],
+    sameAs: ['https://qr-codify.com', 'https://desk.zeeshad.com'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'ZeeShad services',

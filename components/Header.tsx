@@ -170,30 +170,54 @@ export default function Header() {
               })}
             </Box>
 
-            <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', lg: 'flex' }, ml: 'auto' }}>
+            <Stack
+              direction="row"
+              spacing={0.75}
+              alignItems="center"
+              sx={{ display: { xs: 'none', lg: 'flex' }, ml: 'auto', flexShrink: 0 }}
+            >
               <Button
                 component={Link}
                 href="#contact"
+                size="small"
                 variant="text"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick('#contact');
                 }}
-                sx={{ color: 'marketing.main', fontWeight: 700, px: 1.5 }}
+                sx={{
+                  color: 'marketing.main',
+                  fontWeight: 650,
+                  fontSize: '0.8125rem',
+                  px: 1.25,
+                  py: 0.5,
+                  minHeight: 32,
+                  borderRadius: 999,
+                  whiteSpace: 'nowrap',
+                }}
               >
-                Free Marketing Audit
+                Marketing Audit
               </Button>
               <Button
                 component={Link}
                 href="#contact"
+                size="small"
                 variant="contained"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick('#contact');
                 }}
-                sx={{ px: 2.5, py: 1.1 }}
+                sx={{
+                  fontSize: '0.8125rem',
+                  fontWeight: 650,
+                  px: 1.75,
+                  py: 0.65,
+                  minHeight: 32,
+                  borderRadius: 999,
+                  whiteSpace: 'nowrap',
+                }}
               >
-                Free Discovery Session
+                Discovery Session
               </Button>
             </Stack>
 
@@ -254,25 +278,34 @@ export default function Header() {
             </ListItem>
           ))}
         </List>
-        <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', gap: 1.25 }}>
+        <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', gap: 1 }}>
           <Button
             component={Link}
             href="#contact"
+            size="small"
             variant="outlined"
             fullWidth
             onClick={() => handleNavClick('#contact')}
-            sx={{ borderColor: 'marketing.main', color: 'marketing.main' }}
+            sx={{
+              borderColor: 'marketing.main',
+              color: 'marketing.main',
+              fontSize: '0.875rem',
+              py: 0.85,
+              minHeight: 36,
+            }}
           >
-            Free Marketing Audit
+            Marketing Audit
           </Button>
           <Button
             component={Link}
             href="#contact"
+            size="small"
             variant="contained"
             fullWidth
             onClick={() => handleNavClick('#contact')}
+            sx={{ fontSize: '0.875rem', py: 0.85, minHeight: 36 }}
           >
-            Free Discovery Session
+            Discovery Session
           </Button>
         </Box>
       </Drawer>
