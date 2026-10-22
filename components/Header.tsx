@@ -16,24 +16,22 @@ import {
   Typography,
   useTheme,
   alpha,
+  Stack,
 } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, Close, ArrowForward } from '@mui/icons-material';
-import { motion, useReducedMotion } from 'framer-motion';
+import { Menu, Close } from '@mui/icons-material';
 
 const navItems = [
-  { href: '#home', label: 'Home', id: 'home' },
-  { href: '#features', label: 'Services', id: 'features' },
+  { href: '#solutions', label: 'Solutions', id: 'solutions' },
+  { href: '#marketing', label: 'Marketing', id: 'marketing' },
   { href: '#products', label: 'Products', id: 'products' },
-  { href: '#about', label: 'About', id: 'about' },
-  { href: '#faq', label: 'FAQ', id: 'faq' },
-  { href: '#contact', label: 'Contact', id: 'contact' },
+  { href: '#about', label: 'Company', id: 'about' },
+  { href: '#faq', label: 'Resources', id: 'faq' },
 ];
 
 export default function Header() {
   const theme = useTheme();
-  const reduce = useReducedMotion();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -41,13 +39,13 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 16);
-      const sections = ['home', 'features', 'products', 'about', 'faq', 'contact'];
+      setScrolled(window.scrollY > 8);
+      const sections = ['home', 'solutions', 'marketing', 'products', 'about', 'faq', 'contact'];
       const current = sections.find((section) => {
         const el = document.getElementById(section);
         if (!el) return false;
         const rect = el.getBoundingClientRect();
-        return rect.top <= 100 && rect.bottom >= 100;
+        return rect.top <= 120 && rect.bottom >= 120;
       });
       if (current) setActiveSection(current);
     };
@@ -70,9 +68,10 @@ export default function Header() {
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
+    if (href.startsWith('/')) return;
     const element = document.querySelector(href);
     if (element) {
-      const headerHeight = headerRef.current?.offsetHeight || 80;
+      const headerHeight = headerRef.current?.offsetHeight || 88;
       const top = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -82,26 +81,17 @@ export default function Header() {
     <>
       <AppBar
         ref={headerRef}
-        position="fixed"
+        position="sticky"
         elevation={0}
         sx={{
           zIndex: theme.zIndex.appBar,
-          bgcolor: scrolled
-            ? alpha(theme.palette.background.paper, 0.92)
-            : alpha(theme.palette.background.paper, 0.72),
-          backdropFilter: 'blur(16px) saturate(140%)',
+          bgcolor: scrolled ? alpha('#FFFFFF', 0.92) : '#FFFFFF',
+          backdropFilter: 'blur(14px)',
           borderBottom: `1px solid ${scrolled ? theme.palette.divider : 'transparent'}`,
-          transition: 'background-color 0.3s ease, border-color 0.3s ease',
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar
-            disableGutters
-            sx={{
-              minHeight: { xs: 76, md: 88 },
-              gap: 2,
-            }}
-          >
+          <Toolbar disableGutters sx={{ minHeight: { xs: 72, md: 80 }, gap: 1.5 }}>
             <Box
               component={Link}
               href="/"
@@ -109,17 +99,17 @@ export default function Header() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1.5,
+                gap: 1.25,
                 textDecoration: 'none',
                 color: 'inherit',
-                mr: { lg: 2 },
+                mr: { lg: 1 },
               }}
             >
               <Box
                 sx={{
                   position: 'relative',
-                  width: { xs: 112, sm: 132, md: 152 },
-                  height: { xs: 58, sm: 68, md: 78 },
+                  width: { xs: 108, md: 132 },
+                  height: { xs: 56, md: 68 },
                   flexShrink: 0,
                 }}
               >
@@ -129,33 +119,31 @@ export default function Header() {
                   fill
                   style={{ objectFit: 'contain', objectPosition: 'left center' }}
                   priority
-                  sizes="(max-width: 600px) 112px, (max-width: 900px) 132px, 152px"
+                  sizes="132px"
                 />
               </Box>
-              <Box>
+              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 <Typography
                   sx={{
-                    fontFamily: 'var(--font-syne), Syne, sans-serif',
+                    fontFamily: 'var(--font-manrope), Manrope, sans-serif',
                     fontWeight: 700,
-                    fontSize: { xs: '1.25rem', md: '1.45rem' },
+                    fontSize: '1.05rem',
                     lineHeight: 1.1,
                     color: 'text.primary',
-                    letterSpacing: '-0.02em',
                   }}
                 >
                   ZeeShad
                 </Typography>
                 <Typography
-                  variant="caption"
                   sx={{
-                    display: { xs: 'none', sm: 'block' },
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
                     color: 'text.secondary',
-                    fontSize: '0.72rem',
-                    letterSpacing: '0.04em',
-                    fontWeight: 500,
+                    fontWeight: 600,
                   }}
                 >
-                  Private Limited
+                  Software and growth
                 </Typography>
               </Box>
             </Box>
@@ -184,25 +172,9 @@ export default function Header() {
                     sx={{
                       color: active ? 'primary.main' : 'text.secondary',
                       fontWeight: active ? 700 : 500,
-                      px: 1.75,
-                      py: 1,
+                      px: 1.5,
                       minWidth: 0,
-                      position: 'relative',
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        left: 12,
-                        right: 12,
-                        bottom: 6,
-                        height: 2,
-                        bgcolor: 'primary.main',
-                        transform: active ? 'scaleX(1)' : 'scaleX(0)',
-                        transition: 'transform 0.25s ease',
-                      },
-                      '&:hover': {
-                        color: 'primary.main',
-                        bgcolor: 'transparent',
-                      },
+                      '&:hover': { color: 'primary.main', bgcolor: 'transparent' },
                     }}
                   >
                     {item.label}
@@ -211,23 +183,40 @@ export default function Header() {
               })}
             </Box>
 
-            <Box sx={{ display: { xs: 'none', lg: 'flex' }, ml: 'auto' }}>
-              <motion.div whileHover={reduce ? undefined : { y: -2 }} whileTap={reduce ? undefined : { scale: 0.98 }}>
-                <Button
-                  component={Link}
-                  href="#contact"
-                  variant="contained"
-                  endIcon={<ArrowForward sx={{ fontSize: 18 }} />}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick('#contact');
-                  }}
-                  sx={{ px: 2.5, py: 1.15 }}
-                >
-                  Request estimate
-                </Button>
-              </motion.div>
-            </Box>
+            <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', lg: 'flex' }, ml: 'auto' }}>
+              <Button
+                component={Link}
+                href="#contact"
+                variant="outlined"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('#contact');
+                }}
+                sx={{
+                  borderColor: 'marketing.main',
+                  color: 'marketing.main',
+                  px: 2,
+                  '&:hover': {
+                    borderColor: 'marketing.dark',
+                    bgcolor: 'marketing.light',
+                  },
+                }}
+              >
+                Free Marketing Audit
+              </Button>
+              <Button
+                component={Link}
+                href="#contact"
+                variant="contained"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('#contact');
+                }}
+                sx={{ px: 2.25 }}
+              >
+                Free Discovery Session
+              </Button>
+            </Stack>
 
             <IconButton
               aria-label="Open menu"
@@ -256,13 +245,7 @@ export default function Header() {
         sx={{ display: { lg: 'none' } }}
       >
         <Box sx={{ p: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Typography
-            sx={{
-              fontFamily: 'var(--font-syne), Syne, sans-serif',
-              fontWeight: 700,
-              fontSize: '1.25rem',
-            }}
-          >
+          <Typography sx={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 700 }}>
             ZeeShad
           </Typography>
           <IconButton aria-label="Close menu" onClick={() => setMobileOpen(false)}>
@@ -280,7 +263,6 @@ export default function Header() {
                     activeSection === item.id
                       ? alpha(theme.palette.primary.main, 0.08)
                       : 'transparent',
-                  color: activeSection === item.id ? 'primary.main' : 'text.primary',
                 }}
               >
                 <ListItemText
@@ -293,21 +275,20 @@ export default function Header() {
             </ListItem>
           ))}
         </List>
-        <Box sx={{ p: 2.5, mt: 'auto' }}>
-          <Button
-            component={Link}
-            href="#contact"
-            variant="contained"
-            fullWidth
-            endIcon={<ArrowForward />}
+        <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', gap: 1.25 }}>
+          <Button component={Link} href="#contact" variant="outlined" color="inherit" fullWidth
+            onClick={() => handleNavClick('#contact')}
+            sx={{ borderColor: 'marketing.main', color: 'marketing.main' }}
+          >
+            Free Marketing Audit
+          </Button>
+          <Button component={Link} href="#contact" variant="contained" fullWidth
             onClick={() => handleNavClick('#contact')}
           >
-            Request estimate
+            Free Discovery Session
           </Button>
         </Box>
       </Drawer>
-
-      <Toolbar sx={{ minHeight: { xs: 76, md: 88 } }} />
     </>
   );
 }

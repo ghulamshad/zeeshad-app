@@ -1,13 +1,10 @@
 'use client';
 
-import { Box, Container, Typography, Button, Stack } from '@mui/material';
-import Image from 'next/image';
+import { Box, Container, Typography, Button, Stack, Chip } from '@mui/material';
 import Link from 'next/link';
-import { ArrowForward, WhatsApp } from '@mui/icons-material';
+import { ArrowForward } from '@mui/icons-material';
 import { motion, useReducedMotion } from 'framer-motion';
-
-const WHATSAPP_URL = 'https://wa.me/923040058323';
-const HERO_IMG = '/images/brand/hero-atmosphere.jpg';
+import { HOME_HERO } from '@/lib/content/solutions';
 
 export default function Hero() {
   const reduce = useReducedMotion();
@@ -18,149 +15,171 @@ export default function Hero() {
       id="home"
       sx={{
         position: 'relative',
-        minHeight: { xs: '92svh', md: 'calc(100vh - 88px)' },
-        display: 'flex',
-        alignItems: 'flex-end',
         overflow: 'hidden',
-        color: '#fff',
+        bgcolor: 'background.default',
+        pt: { xs: 6, md: 10 },
+        pb: { xs: 8, md: 12 },
       }}
     >
-      <Box sx={{ position: 'absolute', inset: 0 }}>
-        <Image
-          src={HERO_IMG}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
-        />
+      <Box
+        aria-hidden
+        sx={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'radial-gradient(ellipse 70% 55% at 85% 0%, rgba(36,87,245,0.12), transparent 55%), radial-gradient(ellipse 50% 40% at 10% 90%, rgba(194,65,12,0.08), transparent 50%)',
+        }}
+      />
+
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Box
           sx={{
-            position: 'absolute',
-            inset: 0,
-            background: {
-              xs: 'linear-gradient(180deg, rgba(14,26,36,0.55) 0%, rgba(14,26,36,0.88) 72%, rgba(14,26,36,0.94) 100%)',
-              md: 'linear-gradient(105deg, rgba(14,26,36,0.92) 0%, rgba(14,26,36,0.72) 42%, rgba(14,26,36,0.35) 100%)',
-            },
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', md: '1.15fr 0.85fr' },
+            gap: { xs: 5, md: 6 },
+            alignItems: 'center',
           }}
-        />
-      </Box>
+        >
+          <Box>
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Typography variant="overline" sx={{ color: 'primary.main', mb: 2, display: 'block' }}>
+                {HOME_HERO.eyebrow}
+              </Typography>
+              <Typography
+                variant="h1"
+                component="h1"
+                sx={{ mb: 2.5, maxWidth: 620, fontSize: { xs: '2.4rem', md: '3.5rem' } }}
+              >
+                {HOME_HERO.h1Lead}{' '}
+                <Box component="span" sx={{ color: 'primary.main' }}>
+                  {HOME_HERO.h1Accent}
+                </Box>
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{ color: 'text.secondary', mb: 3.5, maxWidth: 520, fontSize: { xs: '1.05rem', md: '1.2rem' } }}
+              >
+                {HOME_HERO.subhead}
+              </Typography>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mb: 3.5 }}>
+                <Button
+                  component={Link}
+                  href="#contact"
+                  variant="contained"
+                  size="large"
+                  endIcon={<ArrowForward />}
+                  sx={{ px: 3, py: 1.5 }}
+                >
+                  {HOME_HERO.primaryCta}
+                </Button>
+                <Button
+                  component={Link}
+                  href="#contact"
+                  variant="outlined"
+                  size="large"
+                  sx={{
+                    px: 3,
+                    py: 1.5,
+                    borderColor: 'marketing.main',
+                    color: 'marketing.main',
+                    '&:hover': { borderColor: 'marketing.dark', bgcolor: 'marketing.light' },
+                  }}
+                >
+                  {HOME_HERO.secondaryCta}
+                </Button>
+              </Stack>
+              <Stack direction="row" flexWrap="wrap" gap={1}>
+                {HOME_HERO.proofs.map((proof) => (
+                  <Chip
+                    key={proof}
+                    label={`✓ ${proof}`}
+                    sx={{
+                      bgcolor: 'background.paper',
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      fontWeight: 600,
+                      fontSize: '0.8rem',
+                      height: 34,
+                    }}
+                  />
+                ))}
+              </Stack>
+            </motion.div>
+          </Box>
 
-      <Container
-        maxWidth="lg"
-        sx={{
-          position: 'relative',
-          zIndex: 1,
-          pt: { xs: 10, md: 14 },
-          pb: { xs: 8, md: 12 },
-        }}
-      >
-        <Box sx={{ maxWidth: { md: 640 } }}>
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Typography
-              component="p"
+            <Box
               sx={{
-                fontFamily: 'var(--font-syne), Syne, sans-serif',
-                fontWeight: 700,
-                fontSize: { xs: 'clamp(2.8rem, 12vw, 4.5rem)', md: 'clamp(4rem, 7vw, 5.75rem)' },
-                lineHeight: 0.95,
-                letterSpacing: '-0.04em',
-                mb: 2.5,
-                color: '#fff',
+                p: { xs: 2.5, md: 3 },
+                borderRadius: 3,
+                bgcolor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
               }}
             >
-              ZeeShad
-            </Typography>
-          </motion.div>
-
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Typography
-              variant="h1"
-              component="h1"
-              sx={{
-                color: '#fff',
-                fontSize: { xs: '1.45rem', sm: '1.7rem', md: '1.95rem' },
-                fontWeight: 650,
-                lineHeight: 1.25,
-                letterSpacing: '-0.02em',
-                mb: 2,
-                maxWidth: 540,
-              }}
-            >
-              Business Solutions, Digital Marketing and Consultancy that move the business forward.
-            </Typography>
-            <Typography
-              sx={{
-                color: 'rgba(255,255,255,0.78)',
-                fontSize: { xs: '1rem', md: '1.1rem' },
-                lineHeight: 1.7,
-                mb: 4,
-                maxWidth: 500,
-              }}
-            >
-              For owners and operators who need systems that run operations, campaigns that create
-              demand, and clear advice before the next investment—scoped in writing within two
-              business days.
-            </Typography>
-          </motion.div>
-
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Stack
-              direction={{ xs: 'column', sm: 'row' }}
-              spacing={1.75}
-              alignItems={{ xs: 'stretch', sm: 'center' }}
-            >
-              <Button
-                component={Link}
-                href="#contact"
-                variant="contained"
-                size="large"
-                endIcon={<ArrowForward />}
+              <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
+                <Typography sx={{ fontWeight: 700, fontSize: '0.9rem' }}>Operations · live workflow</Typography>
+                <Chip label="LIVE" size="small" sx={{ bgcolor: 'products.light', color: 'products.dark', fontWeight: 700 }} />
+              </Stack>
+              {[
+                { label: 'Order to cash', status: 'Auto-synced' },
+                { label: 'Manual steps', status: 'Removed' },
+                { label: 'Leads booked', status: 'AI AGENT' },
+              ].map((row) => (
+                <Box
+                  key={row.label}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    py: 1.5,
+                    borderTop: '1px solid',
+                    borderColor: 'divider',
+                  }}
+                >
+                  <Typography sx={{ color: 'text.secondary', fontSize: '0.925rem' }}>{row.label}</Typography>
+                  <Typography sx={{ fontWeight: 700, fontSize: '0.85rem', color: 'primary.main' }}>
+                    {row.status}
+                  </Typography>
+                </Box>
+              ))}
+              <Box
                 sx={{
-                  bgcolor: 'primary.main',
-                  color: '#fff',
-                  px: 3.5,
-                  py: 1.6,
-                  fontSize: '1rem',
-                  '&:hover': { bgcolor: 'primary.dark' },
+                  mt: 2.5,
+                  p: 2,
+                  borderRadius: 2,
+                  bgcolor: 'solutions.light',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: 1.5,
                 }}
               >
-                Request a scope & estimate
-              </Button>
-              <Button
-                component="a"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outlined"
-                size="large"
-                startIcon={<WhatsApp />}
-                sx={{
-                  borderColor: 'rgba(255,255,255,0.45)',
-                  color: '#fff',
-                  px: 3,
-                  py: 1.6,
-                  '&:hover': {
-                    borderColor: '#fff',
-                    bgcolor: 'rgba(255,255,255,0.08)',
-                  },
-                }}
-              >
-                WhatsApp us
-              </Button>
-            </Stack>
+                <Box>
+                  <Typography sx={{ fontWeight: 800, fontSize: '1.5rem', color: 'primary.main', lineHeight: 1 }}>
+                    2 days
+                  </Typography>
+                  <Typography sx={{ fontSize: '0.8rem', color: 'text.secondary', mt: 0.5 }}>
+                    to a written scope
+                  </Typography>
+                </Box>
+                <Box>
+                  <Typography sx={{ fontWeight: 800, fontSize: '1.5rem', color: 'primary.main', lineHeight: 1 }}>
+                    Weekly
+                  </Typography>
+                  <Typography sx={{ fontSize: '0.8rem', color: 'text.secondary', mt: 0.5 }}>
+                    working demos
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
           </motion.div>
         </Box>
       </Container>

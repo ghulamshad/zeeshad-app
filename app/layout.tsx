@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Syne, Manrope } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import ThemeProvider from "@/components/ThemeProvider";
 import ReduxProvider from "@/components/ReduxProvider";
 import "./globals.css";
 
-const syne = Syne({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-inter",
   display: "swap",
   preload: true,
 });
@@ -21,26 +21,25 @@ const manrope = Manrope({
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#F3F5F7",
+  themeColor: "#F5F7FB",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://zeeshad.com"),
   title: {
-    default: "Business Solutions, Digital Marketing & Consultancy | ZeeShad",
+    default: "Software and Growth Partner | ZeeShad",
     template: "%s | ZeeShad",
   },
   description:
-    "ZeeShad offers Business Solutions, Digital Marketing and Consultancy for growing companies. Clear scopes and written estimates in two business days. Karachi-based, remote-friendly.",
+    "Custom software, AI agents and automation, plus performance marketing for scaling businesses in the US, UK and EU. Written scope in 2 business days.",
   keywords: [
-    "business solutions",
-    "digital marketing agency Karachi",
-    "business consultancy Pakistan",
-    "custom ERP development",
-    "SEO and paid media",
-    "digital transformation consulting",
+    "custom software development",
+    "AI agents",
+    "business automation",
+    "digital marketing",
+    "ERP-lite",
     "ZeeShad",
-    "Qr-Codify",
+    "Free Discovery Session",
   ],
   authors: [{ name: "ZeeShad (Private) Limited" }],
   creator: "ZeeShad (Private) Limited",
@@ -66,23 +65,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "ZeeShad",
-    title: "Business Solutions, Digital Marketing & Consultancy | ZeeShad",
+    title: "Software and Growth Partner | ZeeShad",
     description:
-      "Systems, growth marketing and consultancy for SMEs. Written scope and estimate within two business days.",
+      "Software that runs your business. Marketing that grows it. Scoped in writing within 2 business days.",
     images: [
       {
         url: "/images/brand/hero-atmosphere.jpg",
         width: 1200,
         height: 630,
-        alt: "ZeeShad business solutions studio",
+        alt: "ZeeShad software and growth partner",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Business Solutions, Digital Marketing & Consultancy | ZeeShad",
+    title: "Software and Growth Partner | ZeeShad",
     description:
-      "Business Solutions, Digital Marketing and Consultancy for growing businesses.",
+      "Custom software, AI and automation, plus performance marketing for scaling businesses.",
     images: [
       {
         url: "/images/brand/hero-atmosphere.jpg",
@@ -104,12 +103,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${manrope.variable}`}>
-      <body style={{ backgroundColor: "#F3F5F7" }}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+      <body style={{ backgroundColor: "#F5F7FB" }}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <div className="grain" aria-hidden="true" />
         <ReduxProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </ReduxProvider>

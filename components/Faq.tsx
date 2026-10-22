@@ -11,32 +11,10 @@ import {
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 import { Reveal } from '@/components/Motion';
-
-const FAQS = [
-  {
-    q: 'What services does ZeeShad offer?',
-    a: 'Three main lines: Business Solutions (custom ERP, SaaS and product builds, e-commerce, automation and integrations), Digital Marketing (SEO, paid media, social, creative, email/CRM and analytics), and Consultancy (transformation advisory, technology selection, operations, growth advisory, scoping and vendor oversight).',
-  },
-  {
-    q: 'Who is ZeeShad a good fit for?',
-    a: 'Owners, marketing leads and operations managers at SMEs and mid-size companies who need better systems, clearer demand generation, or independent advice before a major software or marketing investment. If you only need commodity hardware supply or a large multi-vendor IT department, we are not the right fit.',
-  },
-  {
-    q: 'Can we combine services?',
-    a: 'Yes. Many briefs mix lines—for example a Business Solutions build with Digital Marketing launch support, or Consultancy first to define scope before delivery. We will say clearly what belongs in one engagement and what should be sequenced.',
-  },
-  {
-    q: 'Where is ZeeShad based and how do you work with remote clients?',
-    a: 'We are based in Karachi, Pakistan. We work over email, video calls and messaging, and we aim to overlap with UK afternoons and US Eastern mornings when needed. Hours: Monday–Friday, 09:00–18:00 Pakistan Standard Time (PKT, UTC+5).',
-  },
-  {
-    q: 'How do I start a project with ZeeShad?',
-    a: 'Send a short brief via the contact form, email info@zeeshad.com, or WhatsApp. Include which service line you care about (Business Solutions, Digital Marketing or Consultancy). We reply with a written scope outline and estimate within two business days.',
-  },
-];
+import { SOLUTIONS_FAQ } from '@/lib/content/solutions';
 
 export default function Faq() {
-  const [expanded, setExpanded] = useState<string | false>(FAQS[0].q);
+  const [expanded, setExpanded] = useState<string | false>(SOLUTIONS_FAQ[0].q);
 
   return (
     <Box
@@ -44,9 +22,10 @@ export default function Faq() {
       id="faq"
       sx={{
         py: { xs: 9, md: 11 },
-        bgcolor: 'background.paper',
+        bgcolor: 'background.default',
         borderTop: '1px solid',
         borderColor: 'divider',
+        scrollMarginTop: 96,
       }}
     >
       <Container maxWidth="md">
@@ -55,14 +34,14 @@ export default function Faq() {
             variant="overline"
             sx={{ color: 'primary.main', mb: 1.5, display: 'block', textAlign: 'center' }}
           >
-            FAQ
+            Resources · FAQ
           </Typography>
           <Typography variant="h2" component="h2" sx={{ textAlign: 'center', mb: 5 }}>
             Straight answers
           </Typography>
         </Reveal>
 
-        {FAQS.map((item) => (
+        {SOLUTIONS_FAQ.map((item) => (
           <Accordion
             key={item.q}
             disableGutters
@@ -85,8 +64,8 @@ export default function Faq() {
             >
               <Typography
                 sx={{
-                  fontFamily: 'var(--font-syne), Syne, sans-serif',
-                  fontWeight: 650,
+                  fontFamily: 'var(--font-manrope), Manrope, sans-serif',
+                  fontWeight: 700,
                   fontSize: '1.05rem',
                   color: 'text.primary',
                   pr: 2,
@@ -96,9 +75,7 @@ export default function Faq() {
               </Typography>
             </AccordionSummary>
             <AccordionDetails sx={{ px: 0, pb: 2.5 }}>
-              <Typography sx={{ color: 'text.secondary', lineHeight: 1.75 }}>
-                {item.a}
-              </Typography>
+              <Typography sx={{ color: 'text.secondary', lineHeight: 1.75 }}>{item.a}</Typography>
             </AccordionDetails>
           </Accordion>
         ))}

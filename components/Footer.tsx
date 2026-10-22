@@ -14,16 +14,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const services = [
-    { href: '#business-solutions', label: 'Business Solutions' },
-    { href: '#digital-marketing', label: 'Digital Marketing' },
-    { href: '#consultancy', label: 'Consultancy' },
+    { href: '#solutions', label: 'Business Solutions' },
+    { href: '#marketing', label: 'Digital Marketing' },
+    { href: '#products', label: 'Products' },
+    { href: '#about', label: 'Company' },
   ];
 
   const quickLinks = [
     { href: '#home', label: 'Home' },
-    { href: '#features', label: 'Services' },
-    { href: '#products', label: 'Products' },
-    { href: '#about', label: 'About' },
     { href: '#faq', label: 'FAQ' },
     { href: '#contact', label: 'Contact' },
     { href: '/privacy', label: 'Privacy Policy' },
@@ -40,7 +38,7 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        bgcolor: 'secondary.dark',
+        bgcolor: 'secondary.main',
         color: 'rgba(255,255,255,0.7)',
         pt: { xs: 7, md: 9 },
         pb: { xs: 4, md: 5 },
@@ -70,36 +68,34 @@ export default function Footer() {
                     alt="ZeeShad"
                     fill
                     style={{ objectFit: 'contain' }}
-                    sizes="(max-width: 600px) 96px, 112px"
+                    sizes="112px"
                   />
                 </Box>
                 <Box>
                   <Typography
                     sx={{
-                      fontFamily: 'var(--font-syne), Syne, sans-serif',
+                      fontFamily: 'var(--font-manrope), Manrope, sans-serif',
                       fontWeight: 700,
-                      fontSize: '1.3rem',
+                      fontSize: '1.2rem',
                       color: '#fff',
-                      letterSpacing: '-0.02em',
                     }}
                   >
                     ZeeShad
                   </Typography>
-                  <Typography sx={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)' }}>
-                    Private Limited
+                  <Typography sx={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    Software and growth
                   </Typography>
                 </Box>
               </Box>
             </Link>
             <Typography sx={{ fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 280 }}>
-              Business Solutions, Digital Marketing and Consultancy for growing companies. Based
-              in Karachi, Pakistan.
+              Software that runs your business. Marketing that grows it. US · UK · EU.
             </Typography>
           </Box>
 
           <Box component="nav" aria-label="Footer services">
             <Typography sx={{ color: '#fff', fontWeight: 700, mb: 2, fontSize: '0.95rem' }}>
-              Our services
+              Explore
             </Typography>
             <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
               {services.map((service) => (

@@ -2,10 +2,9 @@
 
 import { Box, Container, Typography, Button, Stack } from '@mui/material';
 import Link from 'next/link';
-import { ArrowForward, WhatsApp } from '@mui/icons-material';
+import { ArrowForward } from '@mui/icons-material';
 import { motion, useReducedMotion } from 'framer-motion';
-
-const WHATSAPP_URL = 'https://wa.me/923040058323';
+import { CTA_BAND } from '@/lib/content/solutions';
 
 export default function CTASection() {
   const reduce = useReducedMotion();
@@ -27,7 +26,7 @@ export default function CTASection() {
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse 70% 80% at 85% 20%, rgba(10,107,104,0.35), transparent 55%)',
+            'radial-gradient(ellipse 70% 80% at 90% 10%, rgba(36,87,245,0.45), transparent 55%)',
         }}
       />
       <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
@@ -39,7 +38,7 @@ export default function CTASection() {
         >
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant="h2" component="h2" sx={{ mb: 2, color: '#fff' }}>
-              Ready to talk about systems, growth or advice?
+              {CTA_BAND.title}
             </Typography>
             <Typography
               sx={{
@@ -47,12 +46,11 @@ export default function CTASection() {
                 mb: 4,
                 lineHeight: 1.7,
                 fontSize: '1.1rem',
-                maxWidth: 540,
+                maxWidth: 480,
                 mx: 'auto',
               }}
             >
-              Brief us on Business Solutions, Digital Marketing or Consultancy. We reply with a
-              written scope outline and estimate within two business days.
+              {CTA_BAND.line}
             </Typography>
             <Stack
               direction={{ xs: 'column', sm: 'row' }}
@@ -66,23 +64,15 @@ export default function CTASection() {
                 variant="contained"
                 size="large"
                 endIcon={<ArrowForward />}
-                sx={{
-                  bgcolor: 'primary.main',
-                  px: 3.5,
-                  py: 1.6,
-                  '&:hover': { bgcolor: 'primary.light' },
-                }}
+                sx={{ px: 3.5, py: 1.6 }}
               >
-                Request a scope & estimate
+                {CTA_BAND.primary}
               </Button>
               <Button
-                component="a"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                component={Link}
+                href="#contact"
                 variant="outlined"
                 size="large"
-                startIcon={<WhatsApp />}
                 sx={{
                   borderColor: 'rgba(255,255,255,0.4)',
                   color: '#fff',
@@ -94,7 +84,7 @@ export default function CTASection() {
                   },
                 }}
               >
-                WhatsApp
+                {CTA_BAND.secondary}
               </Button>
             </Stack>
           </Box>

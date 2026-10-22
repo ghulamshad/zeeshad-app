@@ -28,7 +28,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import type { ContactFormState } from '@/store/slices/contactSlice';
 import { validateEmail } from '@/lib/utils';
 import { Reveal } from '@/components/Motion';
-import { SERVICE_SELECT_OPTIONS } from '@/lib/content/services';
+import { SERVICE_SELECT_OPTIONS } from '@/lib/content/solutions';
 
 const WHATSAPP_URL = 'https://wa.me/923040058323';
 
@@ -83,8 +83,8 @@ export default function Contact() {
               Get in touch
             </Typography>
             <Typography sx={{ color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Tell us whether you need Business Solutions, Digital Marketing, Consultancy—or a mix.
-              We reply with a written scope outline and estimate within two business days (PKT).
+              Book a Free Discovery Session or Marketing Audit. We reply with a written scope outline
+              within two business days (PKT). NDA first if you want one.
             </Typography>
           </Box>
         </Reveal>
@@ -294,7 +294,7 @@ export default function Contact() {
                   endIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : <Send />}
                   sx={{ py: 1.5, mt: 0.5 }}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send message'}
+                      {isSubmitting ? 'Sending...' : 'Request Free Discovery Session'}
                 </Button>
               </Box>
             </Box>
