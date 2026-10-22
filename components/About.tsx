@@ -53,42 +53,45 @@ export default function About() {
           <Reveal delay={0.1}>
             <Box
               sx={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: 2,
+                p: { xs: 3, md: 4 },
+                borderRadius: 3,
+                bgcolor: 'background.default',
+                border: '1px solid',
+                borderColor: 'divider',
               }}
             >
+              <Typography sx={{ fontWeight: 700, mb: 2, fontSize: '1.05rem' }}>
+                How engagement works
+              </Typography>
               {[
-                { value: '2 days', label: 'to a written scope' },
-                { value: 'Weekly', label: 'working demos' },
-                { value: 'Yours', label: 'code and data' },
-                { value: 'Fixed', label: 'price per milestone' },
-              ].map((stat) => (
+                'Named lead from day one — the people who scope also build.',
+                'Written scope within 2 business days after Discovery.',
+                'Weekly working demos instead of slide decks.',
+                'You own the code, data and accounts from the first milestone.',
+              ].map((line) => (
                 <Box
-                  key={stat.label}
+                  key={line}
                   sx={{
-                    p: 3,
-                    borderRadius: 3,
-                    bgcolor: 'background.default',
-                    border: '1px solid',
+                    display: 'flex',
+                    gap: 1.5,
+                    py: 1.5,
+                    borderTop: '1px solid',
                     borderColor: 'divider',
+                    color: 'text.secondary',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.55,
+                    '&::before': {
+                      content: '""',
+                      width: 6,
+                      height: 6,
+                      borderRadius: '50%',
+                      bgcolor: 'primary.main',
+                      mt: 0.85,
+                      flexShrink: 0,
+                    },
                   }}
                 >
-                  <Typography
-                    sx={{
-                      fontFamily: 'var(--font-manrope), Manrope, sans-serif',
-                      fontWeight: 800,
-                      fontSize: '1.75rem',
-                      color: 'primary.main',
-                      lineHeight: 1,
-                      mb: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </Typography>
-                  <Typography sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>
-                    {stat.label}
-                  </Typography>
+                  {line}
                 </Box>
               ))}
             </Box>

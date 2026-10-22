@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Container, Typography, Button, Stack, Chip } from '@mui/material';
+import { Box, Container, Typography, Button, Stack } from '@mui/material';
 import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 import { motion, useReducedMotion } from 'framer-motion';
@@ -16,8 +16,10 @@ export default function Hero() {
       sx={{
         position: 'relative',
         overflow: 'hidden',
-        bgcolor: 'background.default',
-        pt: { xs: 6, md: 10 },
+        bgcolor: '#FFFFFF',
+        borderBottom: '1px solid',
+        borderColor: 'divider',
+        pt: { xs: 7, md: 11 },
         pb: { xs: 8, md: 12 },
       }}
     >
@@ -27,160 +29,163 @@ export default function Hero() {
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse 70% 55% at 85% 0%, rgba(36,87,245,0.12), transparent 55%), radial-gradient(ellipse 50% 40% at 10% 90%, rgba(194,65,12,0.08), transparent 50%)',
+            'radial-gradient(ellipse 60% 50% at 100% 0%, rgba(36,87,245,0.10), transparent 55%)',
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1.15fr 0.85fr' },
-            gap: { xs: 5, md: 6 },
-            alignItems: 'center',
-          }}
-        >
-          <Box>
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, width: '100%' }}>
+        <Box sx={{ width: '100%' }}>
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Typography
+              variant="overline"
+              sx={{ color: 'primary.main', mb: 2, display: 'block', letterSpacing: '0.14em' }}
             >
-              <Typography variant="overline" sx={{ color: 'primary.main', mb: 2, display: 'block' }}>
-                {HOME_HERO.eyebrow}
-              </Typography>
-              <Typography
-                variant="h1"
-                component="h1"
-                sx={{ mb: 2.5, maxWidth: 620, fontSize: { xs: '2.4rem', md: '3.5rem' } }}
+              {HOME_HERO.eyebrow}
+            </Typography>
+            <Typography
+              variant="h1"
+              component="h1"
+              sx={{
+                mb: 2.5,
+                maxWidth: { md: '18ch' },
+                fontSize: { xs: 'clamp(2.2rem, 8vw, 3rem)', md: '3.75rem' },
+                letterSpacing: '-0.035em',
+                lineHeight: 1.05,
+              }}
+            >
+              {HOME_HERO.h1Lead}
+              <br />
+              <Box component="span" sx={{ color: 'primary.main' }}>
+                {HOME_HERO.h1Accent}
+              </Box>
+            </Typography>
+            <Typography
+              sx={{
+                color: 'text.secondary',
+                mb: 4,
+                maxWidth: 640,
+                fontSize: { xs: '1.05rem', md: '1.2rem' },
+                lineHeight: 1.65,
+              }}
+            >
+              {HOME_HERO.subhead}
+            </Typography>
+            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mb: 4 }}>
+              <Button
+                component={Link}
+                href="#contact"
+                variant="contained"
+                size="large"
+                endIcon={<ArrowForward />}
+                sx={{ px: 3.25, py: 1.55, fontSize: '1rem' }}
               >
-                {HOME_HERO.h1Lead}{' '}
-                <Box component="span" sx={{ color: 'primary.main' }}>
-                  {HOME_HERO.h1Accent}
-                </Box>
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{ color: 'text.secondary', mb: 3.5, maxWidth: 520, fontSize: { xs: '1.05rem', md: '1.2rem' } }}
+                {HOME_HERO.primaryCta}
+              </Button>
+              <Button
+                component={Link}
+                href="#contact"
+                variant="outlined"
+                size="large"
+                sx={{
+                  px: 3.25,
+                  py: 1.55,
+                  fontSize: '1rem',
+                  borderColor: 'marketing.main',
+                  color: 'marketing.main',
+                  '&:hover': { borderColor: 'marketing.dark', bgcolor: 'marketing.light' },
+                }}
               >
-                {HOME_HERO.subhead}
-              </Typography>
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mb: 3.5 }}>
-                <Button
-                  component={Link}
-                  href="#contact"
-                  variant="contained"
-                  size="large"
-                  endIcon={<ArrowForward />}
-                  sx={{ px: 3, py: 1.5 }}
-                >
-                  {HOME_HERO.primaryCta}
-                </Button>
-                <Button
-                  component={Link}
-                  href="#contact"
-                  variant="outlined"
-                  size="large"
+                {HOME_HERO.secondaryCta}
+              </Button>
+            </Stack>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={{ xs: 1.25, sm: 3 }}
+              divider={
+                <Box
                   sx={{
-                    px: 3,
-                    py: 1.5,
-                    borderColor: 'marketing.main',
-                    color: 'marketing.main',
-                    '&:hover': { borderColor: 'marketing.dark', bgcolor: 'marketing.light' },
+                    display: { xs: 'none', sm: 'block' },
+                    width: '1px',
+                    bgcolor: 'divider',
+                    alignSelf: 'stretch',
+                  }}
+                />
+              }
+            >
+              {HOME_HERO.proofs.map((proof) => (
+                <Typography
+                  key={proof}
+                  sx={{
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    color: 'text.secondary',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1,
                   }}
                 >
-                  {HOME_HERO.secondaryCta}
-                </Button>
-              </Stack>
-              <Stack direction="row" flexWrap="wrap" gap={1}>
-                {HOME_HERO.proofs.map((proof) => (
-                  <Chip
-                    key={proof}
-                    label={`✓ ${proof}`}
+                  <Box
+                    component="span"
                     sx={{
-                      bgcolor: 'background.paper',
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      fontWeight: 600,
-                      fontSize: '0.8rem',
-                      height: 34,
+                      width: 6,
+                      height: 6,
+                      borderRadius: '50%',
+                      bgcolor: 'primary.main',
+                      flexShrink: 0,
                     }}
                   />
-                ))}
-              </Stack>
-            </motion.div>
-          </Box>
+                  {proof}
+                </Typography>
+              ))}
+            </Stack>
+          </motion.div>
+        </Box>
 
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          >
+        <Box
+          sx={{
+            mt: { xs: 6, md: 8 },
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' },
+            gap: 2,
+          }}
+        >
+          {[
+            { value: '2 days', label: 'to a written scope' },
+            { value: 'Weekly', label: 'working demos' },
+            { value: 'Yours', label: 'code and data' },
+            { value: 'Fixed', label: 'price per milestone' },
+          ].map((item) => (
             <Box
+              key={item.label}
               sx={{
-                p: { xs: 2.5, md: 3 },
-                borderRadius: 3,
-                bgcolor: 'background.paper',
+                p: { xs: 2, md: 2.5 },
+                borderRadius: 2.5,
+                bgcolor: 'background.default',
                 border: '1px solid',
                 borderColor: 'divider',
               }}
             >
-              <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
-                <Typography sx={{ fontWeight: 700, fontSize: '0.9rem' }}>Operations · live workflow</Typography>
-                <Chip label="LIVE" size="small" sx={{ bgcolor: 'products.light', color: 'products.dark', fontWeight: 700 }} />
-              </Stack>
-              {[
-                { label: 'Order to cash', status: 'Auto-synced' },
-                { label: 'Manual steps', status: 'Removed' },
-                { label: 'Leads booked', status: 'AI AGENT' },
-              ].map((row) => (
-                <Box
-                  key={row.label}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    py: 1.5,
-                    borderTop: '1px solid',
-                    borderColor: 'divider',
-                  }}
-                >
-                  <Typography sx={{ color: 'text.secondary', fontSize: '0.925rem' }}>{row.label}</Typography>
-                  <Typography sx={{ fontWeight: 700, fontSize: '0.85rem', color: 'primary.main' }}>
-                    {row.status}
-                  </Typography>
-                </Box>
-              ))}
-              <Box
+              <Typography
                 sx={{
-                  mt: 2.5,
-                  p: 2,
-                  borderRadius: 2,
-                  bgcolor: 'solutions.light',
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: 1.5,
+                  fontFamily: 'var(--font-manrope), Manrope, sans-serif',
+                  fontWeight: 800,
+                  fontSize: { xs: '1.35rem', md: '1.6rem' },
+                  color: 'primary.main',
+                  letterSpacing: '-0.03em',
+                  mb: 0.5,
                 }}
               >
-                <Box>
-                  <Typography sx={{ fontWeight: 800, fontSize: '1.5rem', color: 'primary.main', lineHeight: 1 }}>
-                    2 days
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.8rem', color: 'text.secondary', mt: 0.5 }}>
-                    to a written scope
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 800, fontSize: '1.5rem', color: 'primary.main', lineHeight: 1 }}>
-                    Weekly
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.8rem', color: 'text.secondary', mt: 0.5 }}>
-                    working demos
-                  </Typography>
-                </Box>
-              </Box>
+                {item.value}
+              </Typography>
+              <Typography sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>
+                {item.label}
+              </Typography>
             </Box>
-          </motion.div>
+          ))}
         </Box>
       </Container>
     </Box>

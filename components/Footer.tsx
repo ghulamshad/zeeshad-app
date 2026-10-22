@@ -8,7 +8,7 @@ import {
   Divider,
 } from '@mui/material';
 import Link from 'next/link';
-import Image from 'next/image';
+import BrandMark from '@/components/BrandMark';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -48,46 +48,37 @@ export default function Footer() {
         <Box
           sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1.2fr 1fr 1fr 1.2fr' },
+            gridTemplateColumns: { xs: '1fr', sm: '1.3fr 1fr 1fr 1.2fr' },
             gap: { xs: 4, md: 5 },
           }}
         >
           <Box>
-            <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'inline-block' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
-                <Box
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
+              <BrandMark size={44} invert />
+              <Box>
+                <Typography
                   sx={{
-                    position: 'relative',
-                    width: { xs: 96, sm: 112 },
-                    height: { xs: 56, sm: 66 },
-                    flexShrink: 0,
+                    fontFamily: 'var(--font-manrope), Manrope, sans-serif',
+                    fontWeight: 800,
+                    fontSize: '1.2rem',
+                    color: '#fff',
+                    letterSpacing: '-0.02em',
                   }}
                 >
-                  <Image
-                    src="/footer-logo.png"
-                    alt="ZeeShad"
-                    fill
-                    style={{ objectFit: 'contain' }}
-                    sizes="112px"
-                  />
-                </Box>
-                <Box>
-                  <Typography
-                    sx={{
-                      fontFamily: 'var(--font-manrope), Manrope, sans-serif',
-                      fontWeight: 700,
-                      fontSize: '1.2rem',
-                      color: '#fff',
-                    }}
-                  >
-                    ZeeShad
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                    Software and growth
-                  </Typography>
-                </Box>
+                  ZeeShad
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: '0.65rem',
+                    color: 'rgba(255,255,255,0.5)',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Software and growth partner
+                </Typography>
               </Box>
-            </Link>
+            </Box>
             <Typography sx={{ fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 280 }}>
               Software that runs your business. Marketing that grows it. US · UK · EU.
             </Typography>

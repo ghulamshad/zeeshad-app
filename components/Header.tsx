@@ -18,9 +18,9 @@ import {
   alpha,
   Stack,
 } from '@mui/material';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, Close } from '@mui/icons-material';
+import BrandMark from '@/components/BrandMark';
 
 const navItems = [
   { href: '#solutions', label: 'Solutions', id: 'solutions' },
@@ -85,13 +85,13 @@ export default function Header() {
         elevation={0}
         sx={{
           zIndex: theme.zIndex.appBar,
-          bgcolor: scrolled ? alpha('#FFFFFF', 0.92) : '#FFFFFF',
-          backdropFilter: 'blur(14px)',
-          borderBottom: `1px solid ${scrolled ? theme.palette.divider : 'transparent'}`,
+          bgcolor: scrolled ? alpha('#FFFFFF', 0.94) : '#FFFFFF',
+          backdropFilter: 'blur(16px)',
+          borderBottom: `1px solid ${theme.palette.divider}`,
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ minHeight: { xs: 72, md: 80 }, gap: 1.5 }}>
+          <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 76 }, gap: 2 }}>
             <Box
               component={Link}
               href="/"
@@ -99,51 +99,37 @@ export default function Header() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1.25,
+                gap: 1.5,
                 textDecoration: 'none',
                 color: 'inherit',
-                mr: { lg: 1 },
+                minWidth: 0,
               }}
             >
-              <Box
-                sx={{
-                  position: 'relative',
-                  width: { xs: 108, md: 132 },
-                  height: { xs: 56, md: 68 },
-                  flexShrink: 0,
-                }}
-              >
-                <Image
-                  src="/header-logo.png"
-                  alt="ZeeShad"
-                  fill
-                  style={{ objectFit: 'contain', objectPosition: 'left center' }}
-                  priority
-                  sizes="132px"
-                />
-              </Box>
-              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              <BrandMark size={48} />
+              <Box sx={{ minWidth: 0 }}>
                 <Typography
                   sx={{
                     fontFamily: 'var(--font-manrope), Manrope, sans-serif',
-                    fontWeight: 700,
-                    fontSize: '1.05rem',
+                    fontWeight: 800,
+                    fontSize: { xs: '1.15rem', md: '1.25rem' },
                     lineHeight: 1.1,
                     color: 'text.primary',
+                    letterSpacing: '-0.02em',
                   }}
                 >
                   ZeeShad
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: '0.65rem',
-                    letterSpacing: '0.08em',
+                    fontSize: '0.62rem',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     color: 'text.secondary',
                     fontWeight: 600,
+                    whiteSpace: 'nowrap',
                   }}
                 >
-                  Software and growth
+                  Software and growth partner
                 </Typography>
               </Box>
             </Box>
@@ -153,7 +139,7 @@ export default function Header() {
               aria-label="Main navigation"
               sx={{
                 display: { xs: 'none', lg: 'flex' },
-                gap: 0.25,
+                gap: 0.5,
                 flexGrow: 1,
                 justifyContent: 'center',
               }}
@@ -172,9 +158,10 @@ export default function Header() {
                     sx={{
                       color: active ? 'primary.main' : 'text.secondary',
                       fontWeight: active ? 700 : 500,
-                      px: 1.5,
+                      px: 1.75,
                       minWidth: 0,
-                      '&:hover': { color: 'primary.main', bgcolor: 'transparent' },
+                      fontSize: '0.925rem',
+                      '&:hover': { color: 'primary.main', bgcolor: alpha(theme.palette.primary.main, 0.06) },
                     }}
                   >
                     {item.label}
@@ -187,20 +174,12 @@ export default function Header() {
               <Button
                 component={Link}
                 href="#contact"
-                variant="outlined"
+                variant="text"
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick('#contact');
                 }}
-                sx={{
-                  borderColor: 'marketing.main',
-                  color: 'marketing.main',
-                  px: 2,
-                  '&:hover': {
-                    borderColor: 'marketing.dark',
-                    bgcolor: 'marketing.light',
-                  },
-                }}
+                sx={{ color: 'marketing.main', fontWeight: 700, px: 1.5 }}
               >
                 Free Marketing Audit
               </Button>
@@ -212,7 +191,7 @@ export default function Header() {
                   e.preventDefault();
                   handleNavClick('#contact');
                 }}
-                sx={{ px: 2.25 }}
+                sx={{ px: 2.5, py: 1.1 }}
               >
                 Free Discovery Session
               </Button>
@@ -245,7 +224,7 @@ export default function Header() {
         sx={{ display: { lg: 'none' } }}
       >
         <Box sx={{ p: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Typography sx={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 700 }}>
+          <Typography sx={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 800 }}>
             ZeeShad
           </Typography>
           <IconButton aria-label="Close menu" onClick={() => setMobileOpen(false)}>
@@ -276,13 +255,21 @@ export default function Header() {
           ))}
         </List>
         <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', gap: 1.25 }}>
-          <Button component={Link} href="#contact" variant="outlined" color="inherit" fullWidth
+          <Button
+            component={Link}
+            href="#contact"
+            variant="outlined"
+            fullWidth
             onClick={() => handleNavClick('#contact')}
             sx={{ borderColor: 'marketing.main', color: 'marketing.main' }}
           >
             Free Marketing Audit
           </Button>
-          <Button component={Link} href="#contact" variant="contained" fullWidth
+          <Button
+            component={Link}
+            href="#contact"
+            variant="contained"
+            fullWidth
             onClick={() => handleNavClick('#contact')}
           >
             Free Discovery Session

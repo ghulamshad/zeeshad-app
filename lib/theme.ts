@@ -128,7 +128,6 @@ const theme = createTheme({
     body1: {
       fontSize: '1rem',
       lineHeight: 1.7,
-      maxWidth: '68ch',
     },
     body2: {
       fontSize: '0.925rem',
@@ -203,9 +202,35 @@ const theme = createTheme({
     },
     MuiCssBaseline: {
       styleOverrides: {
+        html: {
+          width: '100%',
+        },
         body: {
           backgroundColor: '#F5F7FB',
           color: '#0B1324',
+          width: '100%',
+          maxWidth: 'none',
+          margin: 0,
+        },
+        '#main-content, main': {
+          width: '100%',
+          maxWidth: 'none',
+        },
+      },
+    },
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'lg',
+      },
+      styleOverrides: {
+        root: {
+          width: '100%',
+        },
+        maxWidthLg: {
+          maxWidth: '1200px !important',
+        },
+        maxWidthXl: {
+          maxWidth: '1280px !important',
         },
       },
     },
