@@ -12,10 +12,14 @@ type RevealProps = {
   once?: boolean;
 } & Omit<HTMLMotionProps<'div'>, 'children'>;
 
+/**
+ * Reveal on enter-viewport. Avoid large negative viewport margins — they can
+ * leave above-the-fold content stuck at opacity:0 (observed on /contact).
+ */
 export function Reveal({
   children,
   delay = 0,
-  y = 28,
+  y = 20,
   once = true,
   ...rest
 }: RevealProps) {
@@ -29,8 +33,8 @@ export function Reveal({
     <motion.div
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: '-10% 0px' }}
-      transition={{ duration: 0.7, delay, ease }}
+      viewport={{ once, amount: 0.05 }}
+      transition={{ duration: 0.55, delay, ease }}
       {...rest}
     >
       {children}
@@ -65,7 +69,7 @@ export function Stagger({
       style={style}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '-8% 0px' }}
+      viewport={{ once: true, amount: 0.05 }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: 0.1, delayChildren: delay } },

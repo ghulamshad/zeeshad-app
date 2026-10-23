@@ -29,6 +29,27 @@ export const HOME_HERO = {
   secondaryCta: { label: 'Explore Our Solutions', href: '/solutions' },
 } as const;
 
+/**
+ * Owner-approved client names only. No logos, quotes, or results unless separately cleared.
+ */
+export const CLIENTS = [
+  {
+    name: 'Mushaz Perfumes',
+    href: 'https://www.mushaz.com/',
+    note: 'Fragrance brand',
+  },
+  {
+    name: 'Ornavibe',
+    href: 'https://www.ornavibe.com/',
+    note: 'ornavibe.com',
+  },
+  {
+    name: 'Al Zohra Welfare Association',
+    href: 'https://www.al-zohra.org/',
+    note: 'Welfare & education',
+  },
+] as const;
+
 export const HOW_WE_WORK = [
   {
     title: 'Written scope',
@@ -129,22 +150,6 @@ export const PRODUCTS: ProductRecord[] = [
     ctaHref: 'https://desk.zeeshad.com/',
   },
   {
-    slug: 'qr-codify',
-    name: 'Qr-Codify',
-    status: 'Commercial product',
-    purpose: 'QR code generation and management for brands that need dynamic codes, branding and tracking.',
-    customer: 'Marketing and operations teams that need managed QR codes at scale.',
-    features: [
-      'Dynamic QR generation',
-      'Custom branding',
-      'Analytics and tracking',
-      'Bulk creation and API',
-    ],
-    href: 'https://qr-codify.com',
-    ctaLabel: 'Open Qr-Codify',
-    ctaHref: 'https://qr-codify.com',
-  },
-  {
     slug: 'z-erp-framework',
     name: 'Z-ERP framework',
     status: 'Internal delivery framework',
@@ -158,7 +163,7 @@ export const PRODUCTS: ProductRecord[] = [
       'Reporting tailored per engagement',
     ],
     ctaLabel: 'Discuss an ERP build',
-    ctaHref: '/contact?interest=Business%20Solutions%20%E2%80%94%20Custom%20software',
+    ctaHref: '/contact?interest=Custom%20software',
   },
   {
     slug: 'z-pos-framework',
@@ -174,7 +179,7 @@ export const PRODUCTS: ProductRecord[] = [
       'Multi-location patterns',
     ],
     ctaLabel: 'Discuss a POS build',
-    ctaHref: '/contact?interest=Business%20Solutions%20%E2%80%94%20Custom%20software',
+    ctaHref: '/contact?interest=Custom%20software',
   },
 ];
 
@@ -219,7 +224,6 @@ export const CONTACT_INTERESTS = [
   'Discuss a project',
   'Request a proposal',
   'ZeeShad Desk demo / trial',
-  'Qr-Codify',
   'Enterprise / government inquiry',
   'Custom software',
   'AI & automation',
@@ -231,7 +235,7 @@ export const COMPANY_OVERVIEW = {
   headline: 'A Karachi-based software and growth partner',
   paragraphs: [
     'ZeeShad (Private) Limited designs, builds and supports business systems for organizations that need software that fits how they work—not a generic brochure of every IT category.',
-    'Our commercial focus is enterprise business systems, custom software and SaaS, and AI-enabled automation, alongside live products such as ZeeShad Desk and Qr-Codify.',
+    'Our commercial focus is enterprise business systems, custom software and SaaS, and AI-enabled automation, alongside live products such as ZeeShad Desk.',
     'We work with clients over email, video calls and messaging. We aim to overlap UK afternoons and US Eastern mornings when a project needs it.',
   ],
 } as const;

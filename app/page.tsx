@@ -3,6 +3,7 @@ import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import HowWeWork from '@/components/HowWeWork';
+import Clients from '@/components/Clients';
 import Footer from '@/components/Footer';
 import { COMPANY_ONE_LINER, MAIN_SERVICES, SOLUTIONS_FAQ } from '@/lib/content/solutions';
 import { SOLUTION_PILLARS } from '@/lib/content/site';
@@ -51,7 +52,7 @@ export default function Home() {
       telephone: '+92-304-0058323',
       email: 'info@zeeshad.com',
       contactType: 'sales',
-      areaServed: ['PK', 'US', 'GB', 'EU'],
+      areaServed: 'PK',
       availableLanguage: ['English', 'Urdu'],
       hoursAvailable: {
         '@type': 'OpeningHoursSpecification',
@@ -60,7 +61,7 @@ export default function Home() {
         closes: '18:00',
       },
     },
-    sameAs: ['https://qr-codify.com', 'https://desk.zeeshad.com'],
+    sameAs: ['https://desk.zeeshad.com'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'ZeeShad solutions',
@@ -126,6 +127,7 @@ export default function Home() {
       <Header />
       <Hero />
       <HowWeWork />
+      <Clients />
       <Features />
       <Products />
       <DeliveryApproach />

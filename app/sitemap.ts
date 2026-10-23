@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/enterprise-government/capability-statement`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
     { url: `${baseUrl}/company`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },

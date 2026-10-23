@@ -103,7 +103,7 @@ export default function Header() {
               component="nav"
               aria-label="Main navigation"
               sx={{
-                display: { xs: 'none', lg: 'flex' },
+                display: { xs: 'none', md: 'flex' },
                 gap: 0.25,
                 flexGrow: 1,
                 justifyContent: 'center',
@@ -139,7 +139,7 @@ export default function Header() {
               direction="row"
               spacing={0.75}
               alignItems="center"
-              sx={{ display: { xs: 'none', lg: 'flex' }, ml: 'auto', flexShrink: 0 }}
+              sx={{ display: { xs: 'none', md: 'flex' }, ml: 'auto', flexShrink: 0 }}
             >
               <Button
                 component={Link}
@@ -166,7 +166,7 @@ export default function Header() {
               aria-controls="mobile-nav-drawer"
               edge="end"
               onClick={() => setMobileOpen(true)}
-              sx={{ display: { lg: 'none' }, ml: 'auto', color: 'text.primary' }}
+              sx={{ display: { md: 'none' }, ml: 'auto', color: 'text.primary' }}
             >
               <Menu />
             </IconButton>
@@ -187,7 +187,7 @@ export default function Header() {
             borderLeft: `1px solid ${theme.palette.divider}`,
           },
         }}
-        sx={{ display: { lg: 'none' } }}
+        sx={{ display: { md: 'none' } }}
       >
         <Box sx={{ p: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Typography sx={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 800 }}>

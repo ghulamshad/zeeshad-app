@@ -26,7 +26,7 @@ export type ProblemCard = {
 export const SOLUTIONS_SEO = {
   title: 'Custom Software, AI and Automation | ZeeShad',
   description:
-    'Custom software, mobile apps, AI agents and automation for growing businesses in the US, UK and Europe. Fixed price per milestone. Book a free session.',
+    'Enterprise business systems, custom software and SaaS, and AI automation from ZeeShad—with written scope before build starts.',
 };
 
 export const SOLUTIONS_HERO = {
@@ -248,7 +248,6 @@ export const SERVICE_SELECT_OPTIONS = [
   'Discuss a project',
   'Request a proposal',
   'ZeeShad Desk demo / trial',
-  'Qr-Codify',
   'Enterprise / government inquiry',
   'Custom software',
   'AI & automation',

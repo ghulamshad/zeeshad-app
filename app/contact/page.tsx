@@ -4,7 +4,7 @@ import ContactPageContent from '@/components/pages/ContactPageContent';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Contact ZeeShad to discuss a project, request a proposal, or ask about ZeeShad Desk and Qr-Codify.',
+    'Contact ZeeShad to discuss a project, request a proposal, or ask about ZeeShad Desk.',
   alternates: { canonical: '/contact' },
   openGraph: {
     title: 'Contact | ZeeShad',

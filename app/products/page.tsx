@@ -4,12 +4,12 @@ import ProductsCatalogueContent from '@/components/pages/ProductsCatalogueConten
 export const metadata: Metadata = {
   title: 'Products',
   description:
-    'ZeeShad Desk, Qr-Codify, and internal delivery frameworks—labelled by commercial status.',
+    'ZeeShad Desk and internal delivery frameworks—labelled by commercial status.',
   alternates: { canonical: '/products' },
   openGraph: {
     title: 'Products | ZeeShad',
     description:
-      'ZeeShad Desk, Qr-Codify, and internal delivery frameworks—labelled by commercial status.',
+      'ZeeShad Desk and internal delivery frameworks—labelled by commercial status.',
     url: '/products',
   },
 };

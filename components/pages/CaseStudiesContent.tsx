@@ -5,6 +5,7 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
 import SiteChrome from '@/components/SiteChrome';
 import { CASE_STUDIES_INTRO, DELIVERY_STEPS, HOW_WE_WORK } from '@/lib/content/site';
+import { PUBLISHED_CASE_STUDIES } from '@/lib/content/caseStudies';
 
 export default function CaseStudiesContent() {
   return (
@@ -34,6 +35,69 @@ export default function CaseStudiesContent() {
         </Box>
 
         <Container maxWidth="lg" sx={{ py: { xs: 7, md: 10 } }}>
+          <Typography variant="h2" component="h2" sx={{ mb: 3, fontSize: '1.5rem' }}>
+            Published case studies
+          </Typography>
+          {PUBLISHED_CASE_STUDIES.length === 0 ? (
+            <Box
+              sx={{
+                p: 3,
+                borderRadius: 3,
+                bgcolor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'divider',
+                mb: 6,
+              }}
+            >
+              <Typography sx={{ fontWeight: 700, mb: 1 }}>None published yet</Typography>
+              <Typography sx={{ color: 'text.secondary', lineHeight: 1.65 }}>
+                Approved client case studies will appear here when clients permit publication. We do
+                not invent names, logos, quotes, or results. Until then, use the delivery approach
+                below to evaluate how we work.
+              </Typography>
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+                gap: 2.5,
+                mb: 6,
+              }}
+            >
+              {PUBLISHED_CASE_STUDIES.map((study) => (
+                <Box
+                  key={study.slug}
+                  sx={{
+                    p: 3,
+                    borderRadius: 3,
+                    bgcolor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                  }}
+                >
+                  <Typography variant="overline" sx={{ color: 'primary.main', mb: 1, display: 'block' }}>
+                    {study.industry}
+                  </Typography>
+                  <Typography variant="h3" component="h3" sx={{ fontSize: '1.25rem', mb: 1 }}>
+                    {study.clientLabel}
+                  </Typography>
+                  <Typography sx={{ color: 'text.secondary', mb: 2, lineHeight: 1.65 }}>
+                    {study.problem}
+                  </Typography>
+                  <Button
+                    component={Link}
+                    href={`/case-studies/${study.slug}`}
+                    endIcon={<ArrowForward />}
+                    sx={{ px: 0, fontWeight: 700 }}
+                  >
+                    Read case study
+                  </Button>
+                </Box>
+              ))}
+            </Box>
+          )}
+
           <Typography variant="h2" component="h2" sx={{ mb: 3, fontSize: '1.5rem' }}>
             How we work
           </Typography>
@@ -93,24 +157,6 @@ export default function CaseStudiesContent() {
                 </Typography>
               </Box>
             ))}
-          </Box>
-
-          <Box
-            sx={{
-              p: 3,
-              borderRadius: 3,
-              bgcolor: 'solutions.light',
-              mb: 4,
-            }}
-          >
-            <Typography sx={{ fontWeight: 700, mb: 1 }}>Case studies</Typography>
-            <Typography sx={{ color: 'text.secondary', mb: 2, lineHeight: 1.65 }}>
-              Approved client case studies will appear here when clients permit publication. We do not
-              invent names, logos, quotes, or results.
-            </Typography>
-            <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-              Owner TODO: add 3–5 approved case studies with verified results and permission.
-            </Typography>
           </Box>
 
           <Button component={Link} href="/contact" variant="contained" endIcon={<ArrowForward />}>

@@ -9,6 +9,7 @@ type ContactPayload = {
   service?: string;
   message?: string;
   website?: string;
+  privacyAccepted?: boolean;
 };
 
 const recentByIp = new Map<string, number[]>();
@@ -98,6 +99,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true });
     }
 
+    if (body.privacyAccepted !== true) {
+      return NextResponse.json(
+        { ok: false, error: 'Please accept the privacy policy to continue.' },
+        { status: 400 }
+      );
+    }
+
     const name = body.name?.trim();
     const email = body.email?.trim();
     const message = body.message?.trim();
@@ -130,10 +138,9 @@ export async function POST(request: Request) {
     const delivery = await forwardEmail(record);
 
     console.info('[contact]', {
-      name: record.name,
-      email: record.email,
-      company: record.company,
-      phone: record.phone,
+      emailDomain: record.email.includes('@') ? record.email.split('@')[1] : 'unknown',
+      hasCompany: Boolean(record.company),
+      hasPhone: Boolean(record.phone),
       service: record.service,
       messageLength: message.length,
       delivery,

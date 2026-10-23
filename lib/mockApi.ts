@@ -1,6 +1,6 @@
-import type { ContactFormState } from '@/store/slices/contactSlice';
+import type { ContactSubmitPayload } from '@/store/slices/contactSlice';
 
-export async function submitContactApi(payload: ContactFormState): Promise<{ ok: boolean }> {
+export async function submitContactApi(payload: ContactSubmitPayload): Promise<{ ok: boolean }> {
   const res = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

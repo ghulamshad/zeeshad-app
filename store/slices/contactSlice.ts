@@ -9,6 +9,12 @@ export interface ContactFormState {
   message: string;
 }
 
+/** Fields sent with submit only (not stored in form state) */
+export type ContactSubmitPayload = ContactFormState & {
+  website?: string;
+  privacyAccepted?: boolean;
+};
+
 export interface ContactState {
   form: ContactFormState;
   isSubmitting: boolean;
@@ -48,7 +54,7 @@ const contactSlice = createSlice({
       state.error = null;
     },
     // Payload is consumed by the contact saga; reducer only toggles submitting state.
-    submitLeadRequest(state, action: PayloadAction<ContactFormState>) {
+    submitLeadRequest(state, action: PayloadAction<ContactSubmitPayload>) {
       void action.payload;
       state.isSubmitting = true;
       state.submitStatus = 'idle';

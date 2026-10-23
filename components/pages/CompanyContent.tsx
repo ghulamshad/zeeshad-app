@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
 import SiteChrome from '@/components/SiteChrome';
-import { COMPANY, COMPANY_OVERVIEW } from '@/lib/content/site';
+import { CLIENTS, COMPANY, COMPANY_OVERVIEW } from '@/lib/content/site';
 
 export default function CompanyContent() {
   return (
@@ -95,10 +95,50 @@ export default function CompanyContent() {
             </Box>
           </Box>
 
-          <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 3 }}>
-            Owner TODO: add approved leadership bios, headcount, or partner details only if verified
-            and cleared for publication. Do not invent team size or client counts.
-          </Typography>
+          <Box sx={{ mb: 5 }}>
+            <Typography variant="h2" component="h2" sx={{ fontSize: '1.35rem', mb: 2 }}>
+              Selected clients
+            </Typography>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3, 1fr)' },
+                gap: 2,
+                maxWidth: 960,
+              }}
+            >
+              {CLIENTS.map((client) => (
+                <Box
+                  key={client.href}
+                  sx={{
+                    p: 2.5,
+                    borderRadius: 2,
+                    bgcolor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                  }}
+                >
+                  <Box
+                    component={Link}
+                    href={client.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      fontWeight: 700,
+                      color: 'text.primary',
+                      textDecoration: 'none',
+                      '&:hover': { color: 'primary.main' },
+                    }}
+                  >
+                    {client.name}
+                  </Box>
+                  <Typography sx={{ color: 'text.secondary', fontSize: '0.9rem', mt: 0.75 }}>
+                    {client.note}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+          </Box>
 
           <Button component={Link} href="/contact" variant="contained" endIcon={<ArrowForward />}>
             Discuss Your Project

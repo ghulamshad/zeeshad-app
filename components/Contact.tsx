@@ -28,7 +28,6 @@ import { submitLeadRequest, setField } from '@/store/slices/contactSlice';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import type { ContactFormState } from '@/store/slices/contactSlice';
 import { validateEmail } from '@/lib/utils';
-import { Reveal } from '@/components/Motion';
 import { SERVICE_SELECT_OPTIONS } from '@/lib/content/solutions';
 import { COMPANY } from '@/lib/content/site';
 
@@ -83,7 +82,13 @@ export default function Contact({ embedded = false }: ContactProps) {
     else setPrivacyError(false);
     setFieldErrors(errors);
     if (Object.keys(errors).length > 0 || !privacyAccepted) return;
-    dispatch(submitLeadRequest(form));
+    dispatch(
+      submitLeadRequest({
+        ...form,
+        website: honeypot,
+        privacyAccepted: true,
+      })
+    );
   };
 
   const formBody = (
@@ -95,8 +100,7 @@ export default function Contact({ embedded = false }: ContactProps) {
         alignItems: 'start',
       }}
     >
-      <Reveal>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3.5 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3.5 }}>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <LocationOn sx={{ color: 'primary.main', mt: 0.25 }} />
             <Box>
@@ -150,10 +154,8 @@ export default function Contact({ embedded = false }: ContactProps) {
             </Box>
           </Box>
         </Box>
-      </Reveal>
 
-      <Reveal delay={0.08}>
-        <Box
+      <Box
           component="form"
           onSubmit={handleSubmit}
           noValidate
@@ -328,7 +330,6 @@ export default function Contact({ embedded = false }: ContactProps) {
             </Typography>
           </Box>
         </Box>
-      </Reveal>
     </Box>
   );
 
@@ -347,20 +348,18 @@ export default function Contact({ embedded = false }: ContactProps) {
       }}
     >
       <Container maxWidth="lg">
-        <Reveal>
-          <Box sx={{ mb: { xs: 5, md: 7 }, maxWidth: 640 }}>
-            <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-              Contact
-            </Typography>
-            <Typography variant="h2" component="h2" sx={{ mb: 1.5 }}>
-              Discuss Your Project
-            </Typography>
-            <Typography sx={{ color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Share a short brief. We reply with next steps and, where appropriate, a written scope
-              outline. NDA first if you want one.
-            </Typography>
-          </Box>
-        </Reveal>
+        <Box sx={{ mb: { xs: 5, md: 7 }, maxWidth: 640 }}>
+          <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
+            Contact
+          </Typography>
+          <Typography variant="h2" component="h2" sx={{ mb: 1.5 }}>
+            Discuss Your Project
+          </Typography>
+          <Typography sx={{ color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.7 }}>
+            Share a short brief. We reply with next steps and, where appropriate, a written scope
+            outline. NDA first if you want one.
+          </Typography>
+        </Box>
         {formBody}
       </Container>
     </Box>

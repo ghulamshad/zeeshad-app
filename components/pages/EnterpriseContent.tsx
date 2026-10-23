@@ -104,13 +104,17 @@ export default function EnterpriseContent() {
             ))}
           </Box>
 
-          <Typography sx={{ color: 'text.secondary', fontSize: '0.95rem', lineHeight: 1.7, maxWidth: 640 }}>
+          <Typography sx={{ color: 'text.secondary', fontSize: '0.95rem', lineHeight: 1.7, maxWidth: 640, mb: 3 }}>
             {ENTERPRISE_PAGE.ctaNote}
           </Typography>
-          <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mt: 2 }}>
-            Owner TODO: confirm whether a formal capability statement PDF and any registrations or
-            certifications may be shared under NDA, and provide approved documents.
-          </Typography>
+          <Button
+            component={Link}
+            href="/enterprise-government/capability-statement"
+            variant="outlined"
+            endIcon={<ArrowForward />}
+          >
+            Request Corporate Profile
+          </Button>
         </Container>
       </Box>
     </SiteChrome>
