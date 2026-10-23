@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowForward, Launch } from '@mui/icons-material';
 import { Reveal, Stagger, StaggerItem } from '@/components/Motion';
 import { MARKETING_TEASER } from '@/lib/content/solutions';
+import { PRODUCTS } from '@/lib/content/site';
 
 export default function Products() {
   return (
@@ -41,7 +42,7 @@ export default function Products() {
               </Typography>
               <Button
                 component={Link}
-                href="#contact"
+                href="/contact?interest=Digital%20marketing"
                 variant="contained"
                 endIcon={<ArrowForward />}
                 sx={{
@@ -49,7 +50,7 @@ export default function Products() {
                   '&:hover': { bgcolor: 'marketing.dark' },
                 }}
               >
-                {MARKETING_TEASER.cta}
+                Discuss marketing work
               </Button>
             </Reveal>
 
@@ -86,36 +87,6 @@ export default function Products() {
               </Box>
             </Stagger>
           </Box>
-
-          <Box
-            sx={{
-              mt: 5,
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr 1fr' },
-              gap: 2,
-            }}
-          >
-            {[
-              { step: '01 Attract', line: 'Ads and search bring the right buyers' },
-              { step: '02 Convert', line: 'Landing pages turn visits into enquiries' },
-              { step: '03 Grow', line: 'Nurture and CRO turn enquiries into revenue' },
-            ].map((row) => (
-              <Box
-                key={row.step}
-                sx={{
-                  p: 2.5,
-                  borderRadius: 2.5,
-                  border: '1px solid',
-                  borderColor: 'divider',
-                }}
-              >
-                <Typography sx={{ fontWeight: 800, color: 'marketing.main', mb: 0.75, fontSize: '0.85rem' }}>
-                  {row.step}
-                </Typography>
-                <Typography sx={{ color: 'text.secondary', fontSize: '0.925rem' }}>{row.line}</Typography>
-              </Box>
-            ))}
-          </Box>
         </Container>
       </Box>
 
@@ -134,11 +105,10 @@ export default function Products() {
               Products
             </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 640 }}>
-              Live products. Frameworks we use on client builds.
+              Live products and delivery frameworks—labelled honestly
             </Typography>
             <Typography sx={{ color: 'text.secondary', mb: 4, maxWidth: 560 }}>
-              Labelled honestly so you know what is a public product versus an internal delivery
-              framework.
+              Commercial products you can open today, plus internal frameworks used on custom builds.
             </Typography>
           </Reveal>
 
@@ -147,44 +117,12 @@ export default function Products() {
               display: 'grid',
               gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: 'repeat(4, 1fr)' },
               gap: 2.5,
+              mb: 4,
             }}
           >
-            {[
-              {
-                name: 'ZeeShad Desk',
-                badge: 'Live product',
-                description:
-                  'The daily desk for trading houses: follow-ups, quotes, yard stock, deliveries and invoices in Pakistani rupees—in one company, in the browser.',
-                href: 'https://desk.zeeshad.com/',
-                cta: 'Open ZeeShad Desk',
-              },
-              {
-                name: 'Qr-Codify',
-                badge: 'Live product',
-                description:
-                  'QR code generation and management for brands that need dynamic codes, branding and tracking.',
-                href: 'https://qr-codify.com',
-                cta: 'Learn more about Qr-Codify',
-              },
-              {
-                name: 'Z-ERP framework',
-                badge: 'Delivery framework',
-                description:
-                  'Internal ERP delivery framework for finance, inventory, HR and reporting modules—assembled to fit. Not a public SaaS product.',
-                href: '#contact',
-                cta: 'Ask about an ERP build',
-              },
-              {
-                name: 'Z-POS framework',
-                badge: 'Delivery framework',
-                description:
-                  'POS-oriented framework adapted for retail and hospitality projects when counter sales need inventory tied in.',
-                href: '#contact',
-                cta: 'Ask about a POS build',
-              },
-            ].map((product) => (
+            {PRODUCTS.map((product) => (
               <Box
-                key={product.name}
+                key={product.slug}
                 sx={{
                   p: 3,
                   borderRadius: 3,
@@ -195,44 +133,52 @@ export default function Products() {
                   flexDirection: 'column',
                 }}
               >
-                <Typography
-                  variant="overline"
-                  sx={{ color: 'products.main', mb: 1, display: 'block' }}
-                >
-                  {product.badge}
+                <Typography variant="overline" sx={{ color: 'products.main', mb: 1, display: 'block' }}>
+                  {product.status}
                 </Typography>
                 <Typography variant="h3" component="h3" sx={{ mb: 1.25, fontSize: '1.2rem' }}>
                   {product.name}
                 </Typography>
                 <Typography sx={{ color: 'text.secondary', mb: 3, flexGrow: 1, lineHeight: 1.7 }}>
-                  {product.description}
+                  {product.purpose}
                 </Typography>
-                <Stack>
-                  {product.href.startsWith('http') ? (
+                <Stack spacing={1}>
+                  <Button
+                    component={Link}
+                    href={`/products/${product.slug}`}
+                    endIcon={<ArrowForward sx={{ fontSize: 16 }} />}
+                    sx={{ color: 'products.main', fontWeight: 700, px: 0, alignSelf: 'flex-start' }}
+                  >
+                    Product details
+                  </Button>
+                  {product.href ? (
                     <Button
                       component="a"
                       href={product.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       endIcon={<Launch sx={{ fontSize: 16 }} />}
-                      sx={{ color: 'products.main', fontWeight: 700, px: 0, alignSelf: 'flex-start' }}
+                      sx={{ color: 'text.secondary', fontWeight: 600, px: 0, alignSelf: 'flex-start' }}
                     >
-                      {product.cta}
+                      {product.ctaLabel}
                     </Button>
                   ) : (
                     <Button
                       component={Link}
-                      href={product.href}
-                      endIcon={<ArrowForward sx={{ fontSize: 16 }} />}
-                      sx={{ color: 'products.main', fontWeight: 700, px: 0, alignSelf: 'flex-start' }}
+                      href={product.ctaHref}
+                      sx={{ color: 'text.secondary', fontWeight: 600, px: 0, alignSelf: 'flex-start' }}
                     >
-                      {product.cta}
+                      {product.ctaLabel}
                     </Button>
                   )}
                 </Stack>
               </Box>
             ))}
           </Box>
+
+          <Button component={Link} href="/products" variant="outlined" endIcon={<ArrowForward />}>
+            View all products
+          </Button>
         </Container>
       </Box>
     </>

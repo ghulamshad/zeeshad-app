@@ -25,15 +25,15 @@ export default function AnnouncementBar() {
               fontSize: '0.7rem',
             }}
           >
-            NEW
+            CONTACT
           </Box>
-          Free Project Cost Estimator — get a price range in 3 minutes.{' '}
+          Discuss a project or request a written estimate.{' '}
           <MuiLink
             component={Link}
-            href="#contact"
+            href="/contact"
             sx={{ color: '#fff', fontWeight: 700, textDecoration: 'underline' }}
           >
-            Try it →
+            Get in touch →
           </MuiLink>
         </Typography>
       </Container>

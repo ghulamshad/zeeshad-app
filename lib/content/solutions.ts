@@ -33,9 +33,9 @@ export const SOLUTIONS_HERO = {
   eyebrow: 'Business Solutions',
   h1: 'Systems that run the business, built around how it actually works',
   subhead:
-    'When off-the-shelf tools fall short, we build the software, AI and automation that fit. Scoped in writing within 2 business days.',
-  primaryCta: 'Free Discovery Session',
-  secondaryCta: 'Estimate my project',
+    'When off-the-shelf tools fall short, we build the software, AI and automation that fit—with a written scope before build starts.',
+  primaryCta: 'Discuss Your Project',
+  secondaryCta: 'Explore products',
 };
 
 export const PROBLEM_CARDS: ProblemCard[] = [
@@ -170,15 +170,15 @@ export const PRICING_MODELS: PricingModel[] = [
 export const SOLUTIONS_FAQ = [
   {
     q: 'How much does custom software cost?',
-    a: 'Most first systems are scoped to your process and budget. The free Project Cost Estimator gives a range for your project in about 3 minutes, and a Discovery Session produces a written scope within 2 business days.',
+    a: 'Price depends on scope. After a short discovery conversation we send a written scope outline and estimate so you can decide before any build starts.',
   },
   {
     q: 'How do you work across time zones?',
-    a: 'You get a named lead, a fixed weekly demo slot and replies within agreed business hours. We aim to overlap UK afternoons and US Eastern mornings when needed.',
+    a: 'You get a named lead and replies within agreed business hours. We aim to overlap UK afternoons and US Eastern mornings when a project needs it.',
   },
   {
     q: 'Do we own what you build?',
-    a: 'Yes. Code, data and accounts are yours from the first milestone.',
+    a: 'For custom builds, code, data and accounts are yours from the first milestone, as agreed in the engagement.',
   },
   {
     q: 'Can you work with our existing team?',
@@ -187,16 +187,10 @@ export const SOLUTIONS_FAQ = [
 ];
 
 export const CTA_BAND = {
-  title: 'Get a written scope in 2 business days',
-  line: 'Free 30-minute session. NDA first if you want one.',
-  primary: 'Free Discovery Session',
-  secondary: 'Estimate my project',
-};
-
-export const ESTIMATOR_BAND = {
-  title: 'Not ready to talk?',
-  line: 'Get a price range in 3 minutes.',
-  cta: 'Try the Project Cost Estimator',
+  title: 'Ready to discuss a project?',
+  line: 'Tell us what you need. We reply with next steps and, where appropriate, a written scope outline.',
+  primary: 'Discuss Your Project',
+  secondary: 'Explore Our Solutions',
 };
 
 /** Homepage pillars matching the design system */
@@ -204,41 +198,42 @@ export const FOUR_WAYS = [
   {
     title: 'Digitize operations',
     line: 'Replace spreadsheets with one system for orders, stock and finance.',
-    href: '#solutions',
+    href: '/solutions#enterprise-business-systems',
   },
   {
     title: 'Modernize systems',
     line: 'Move off legacy software in safe stages, without stopping the business.',
-    href: '#solutions',
+    href: '/solutions#custom-software-saas',
   },
   {
     title: 'Enable AI',
-    line: 'AI agents and automation that take repetitive work off your team.',
-    href: '#solutions',
+    line: 'Automation and AI workflows that take repetitive work off your team.',
+    href: '/solutions#ai-automation',
   },
   {
     title: 'Grow revenue',
-    line: 'Paid media, SEO and content measured on enquiries and revenue.',
-    href: '#marketing',
+    line: 'Paid media, SEO and content planned around qualified enquiries.',
+    href: '/#marketing',
   },
 ];
 
+/** @deprecated Prefer HOME_HERO from lib/content/site.ts */
 export const HOME_HERO = {
-  eyebrow: 'US · UK · EU',
-  h1Lead: 'Software that runs your business.',
-  h1Accent: 'Marketing that grows it.',
+  eyebrow: 'Enterprise Software · AI · Digital Transformation',
+  h1Lead: 'Technology that moves',
+  h1Accent: 'your business forward.',
   subhead:
-    'Custom software, AI agents and automation, plus performance marketing that fills the pipeline. Scoped in writing within 2 business days.',
-  primaryCta: 'Free Discovery Session',
-  secondaryCta: 'Free Marketing Audit',
-  proofs: ['NDA before the first call', 'You own the code', 'Fixed price per milestone'],
+    'We design, build and support business systems that simplify operations, connect teams and help organizations grow.',
+  primaryCta: 'Discuss Your Project',
+  secondaryCta: 'Explore Our Solutions',
+  proofs: ['Written scope before build', 'Milestone delivery', 'You own custom work'],
 };
 
 export const MARKETING_TEASER = {
   eyebrow: 'Digital Marketing',
   h2: 'Marketing measured in pipeline, not likes',
   line: 'Paid media, SEO, social and brand, planned for one goal: qualified enquiries for any industry.',
-  cta: 'Get my free marketing audit',
+  cta: 'Discuss marketing work',
   items: [
     'Paid media — Google, Meta, LinkedIn, TikTok',
     'SEO and AEO — Rank in search and AI answers',
@@ -250,20 +245,14 @@ export const MARKETING_TEASER = {
 };
 
 export const SERVICE_SELECT_OPTIONS = [
-  'Business Solutions — Free Discovery Session',
-  'Business Solutions — Custom software',
-  'Business Solutions — Mobile apps',
-  'Business Solutions — Websites and web apps',
-  'Business Solutions — Digital platforms',
-  'Business Solutions — AI agents',
-  'Business Solutions — Workflow automation',
-  'Business Solutions — Integrations and APIs',
-  'Business Solutions — Business modernization',
-  'Business Solutions — Consultancy',
-  'Digital Marketing — Free Marketing Audit',
-  'Digital Marketing — Paid media',
-  'Digital Marketing — SEO and AEO',
-  'Project Cost Estimator',
+  'Discuss a project',
+  'Request a proposal',
+  'ZeeShad Desk demo / trial',
+  'Qr-Codify',
+  'Enterprise / government inquiry',
+  'Custom software',
+  'AI & automation',
+  'Digital marketing',
   'Other',
 ] as const;
 
@@ -332,4 +321,4 @@ export const MAIN_SERVICES = [
 ];
 
 export const COMPANY_ONE_LINER =
-  'ZeeShad is a software and growth partner for scaling businesses: custom software, AI and automation, plus performance marketing. Based in Karachi, serving US, UK and EU clients.';
+  'ZeeShad (Private) Limited designs, builds and supports business systems—enterprise software, custom SaaS, and AI-enabled automation—from Karachi, working with clients in Pakistan and internationally.';

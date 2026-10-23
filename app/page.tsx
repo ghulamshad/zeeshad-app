@@ -2,8 +2,10 @@ import dynamic from 'next/dynamic';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import HowWeWork from '@/components/HowWeWork';
 import Footer from '@/components/Footer';
 import { COMPANY_ONE_LINER, MAIN_SERVICES, SOLUTIONS_FAQ } from '@/lib/content/solutions';
+import { SOLUTION_PILLARS } from '@/lib/content/site';
 
 const sectionLoading = () => (
   <div className="section-loading" aria-hidden="true">
@@ -13,10 +15,16 @@ const sectionLoading = () => (
 
 const Features = dynamic(() => import('@/components/Features'), { loading: sectionLoading });
 const Products = dynamic(() => import('@/components/Products'), { loading: sectionLoading });
+const DeliveryApproach = dynamic(() => import('@/components/DeliveryApproach'), {
+  loading: sectionLoading,
+});
+const EnterpriseTeaser = dynamic(() => import('@/components/EnterpriseTeaser'), {
+  loading: sectionLoading,
+});
 const About = dynamic(() => import('@/components/About'), { loading: sectionLoading });
 const Faq = dynamic(() => import('@/components/Faq'), { loading: sectionLoading });
 const CTASection = dynamic(() => import('@/components/CTASection'), { loading: sectionLoading });
-const Contact = dynamic(() => import('@/components/Contact'), { loading: sectionLoading });
+const Contact = dynamic(() => import('@/components/ContactSection'), { loading: sectionLoading });
 
 export default function Home() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zeeshad.com';
@@ -42,7 +50,7 @@ export default function Home() {
       '@type': 'ContactPoint',
       telephone: '+92-304-0058323',
       email: 'info@zeeshad.com',
-      contactType: 'Customer Service',
+      contactType: 'sales',
       areaServed: ['PK', 'US', 'GB', 'EU'],
       availableLanguage: ['English', 'Urdu'],
       hoursAvailable: {
@@ -55,15 +63,25 @@ export default function Home() {
     sameAs: ['https://qr-codify.com', 'https://desk.zeeshad.com'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'ZeeShad services',
-      itemListElement: MAIN_SERVICES.map((service) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: service.title,
-          description: service.description,
-        },
-      })),
+      name: 'ZeeShad solutions',
+      itemListElement: [
+        ...SOLUTION_PILLARS.map((pillar) => ({
+          '@type': 'Offer' as const,
+          itemOffered: {
+            '@type': 'Service' as const,
+            name: pillar.title,
+            description: pillar.outcome,
+          },
+        })),
+        ...MAIN_SERVICES.map((service) => ({
+          '@type': 'Offer' as const,
+          itemOffered: {
+            '@type': 'Service' as const,
+            name: service.title,
+            description: service.description,
+          },
+        })),
+      ],
     },
   };
 
@@ -72,7 +90,7 @@ export default function Home() {
     '@type': 'WebSite',
     name: 'ZeeShad',
     url: canonicalUrl,
-    description: 'Software and growth partner for scaling businesses.',
+    description: COMPANY_ONE_LINER,
     publisher: { '@id': `${canonicalUrl}#organization` },
     inLanguage: 'en',
   };
@@ -107,8 +125,11 @@ export default function Home() {
       <AnnouncementBar />
       <Header />
       <Hero />
+      <HowWeWork />
       <Features />
       <Products />
+      <DeliveryApproach />
+      <EnterpriseTeaser />
       <About />
       <Faq />
       <CTASection />

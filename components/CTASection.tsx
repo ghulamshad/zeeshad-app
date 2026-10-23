@@ -60,7 +60,7 @@ export default function CTASection() {
             >
               <Button
                 component={Link}
-                href="#contact"
+                href="/contact"
                 variant="contained"
                 size="large"
                 endIcon={<ArrowForward />}
@@ -70,7 +70,7 @@ export default function CTASection() {
               </Button>
               <Button
                 component={Link}
-                href="#contact"
+                href="/solutions"
                 variant="outlined"
                 size="large"
                 sx={{

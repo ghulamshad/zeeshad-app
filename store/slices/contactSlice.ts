@@ -47,7 +47,9 @@ const contactSlice = createSlice({
       state.submitStatus = 'idle';
       state.error = null;
     },
+    // Payload is consumed by the contact saga; reducer only toggles submitting state.
     submitLeadRequest(state, action: PayloadAction<ContactFormState>) {
+      void action.payload;
       state.isSubmitting = true;
       state.submitStatus = 'idle';
       state.error = null;

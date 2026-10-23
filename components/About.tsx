@@ -4,6 +4,7 @@ import { Container, Box, Typography, Button } from '@mui/material';
 import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 import { Reveal } from '@/components/Motion';
+import { COMPANY, COMPANY_OVERVIEW, HOW_WE_WORK } from '@/lib/content/site';
 
 export default function About() {
   return (
@@ -29,24 +30,24 @@ export default function About() {
         >
           <Reveal>
             <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-              Why ZeeShad
+              Company
             </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 2 }}>
-              A prototype is easy. A system your team actually uses is the hard part.
+              {COMPANY_OVERVIEW.headline}
             </Typography>
-            <Typography sx={{ color: 'text.secondary', mb: 2.5, lineHeight: 1.8, fontSize: '1.05rem' }}>
-              ZeeShad (Private) Limited is a software and growth partner for scaling businesses. We
-              build custom software, AI agents and automation—and we run performance marketing that
-              fills the pipeline. Senior people scope the work, the same people build it, and you see
-              working software every week.
-            </Typography>
+            {COMPANY_OVERVIEW.paragraphs.map((p) => (
+              <Typography
+                key={p.slice(0, 24)}
+                sx={{ color: 'text.secondary', mb: 2, lineHeight: 1.8, fontSize: '1.05rem' }}
+              >
+                {p}
+              </Typography>
+            ))}
             <Typography sx={{ color: 'text.secondary', mb: 3.5, lineHeight: 1.8 }}>
-              Serving clients across the US, UK and Europe. Business hours: Monday–Friday,
-              09:00–18:00 Pakistan Standard Time (PKT, UTC+5). We aim to overlap UK afternoons and US
-              Eastern mornings when your project needs it.
+              Business hours: {COMPANY.hours}.
             </Typography>
-            <Button component={Link} href="#contact" variant="contained" endIcon={<ArrowForward />}>
-              Get my build plan
+            <Button component={Link} href="/company" variant="contained" endIcon={<ArrowForward />}>
+              About the company
             </Button>
           </Reveal>
 
@@ -63,14 +64,9 @@ export default function About() {
               <Typography sx={{ fontWeight: 700, mb: 2, fontSize: '1.05rem' }}>
                 How engagement works
               </Typography>
-              {[
-                'Named lead from day one — the people who scope also build.',
-                'Written scope within 2 business days after Discovery.',
-                'Weekly working demos instead of slide decks.',
-                'You own the code, data and accounts from the first milestone.',
-              ].map((line) => (
+              {HOW_WE_WORK.map((item) => (
                 <Box
-                  key={line}
+                  key={item.title}
                   sx={{
                     display: 'flex',
                     gap: 1.5,
@@ -91,7 +87,12 @@ export default function About() {
                     },
                   }}
                 >
-                  {line}
+                  <Box>
+                    <Box component="span" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                      {item.title}.{' '}
+                    </Box>
+                    {item.line}
+                  </Box>
                 </Box>
               ))}
             </Box>

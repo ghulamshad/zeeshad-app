@@ -4,15 +4,8 @@ import { Container, Box, Typography, Button, Chip } from '@mui/material';
 import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 import { Reveal, Stagger, StaggerItem } from '@/components/Motion';
-import {
-  FOUR_WAYS,
-  PROBLEM_CARDS,
-  SOLUTION_SERVICES,
-  HOW_IT_WORKS,
-  PRICING_MODELS,
-  CTA_BAND,
-  ESTIMATOR_BAND,
-} from '@/lib/content/solutions';
+import { SOLUTION_PILLARS } from '@/lib/content/site';
+import { FOUR_WAYS, SOLUTION_SERVICES } from '@/lib/content/solutions';
 
 export default function Features() {
   return (
@@ -21,7 +14,7 @@ export default function Features() {
         <Container maxWidth="lg">
           <Reveal>
             <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-              Four ways we help
+              Where we help
             </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 560 }}>
               Pick the path that fits where you are
@@ -78,62 +71,94 @@ export default function Features() {
         </Container>
       </Box>
 
-      <Box component="section" id="solutions" sx={{ py: { xs: 9, md: 12 }, bgcolor: 'background.default', scrollMarginTop: 96 }}>
+      <Box
+        component="section"
+        id="solutions"
+        sx={{ py: { xs: 9, md: 12 }, bgcolor: 'background.default', scrollMarginTop: 96 }}
+      >
         <Container maxWidth="lg">
           <Reveal>
             <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-              Business Solutions
+              Solutions
             </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 640 }}>
-              Systems that run the business
+              Three offers with clear outcomes
             </Typography>
             <Typography sx={{ color: 'text.secondary', maxWidth: 560, mb: 5, fontSize: '1.1rem' }}>
-              Custom builds and AI where off-the-shelf tools fall short. Every Solutions page sells one
-              next step: the Free Discovery Session.
+              Enterprise systems, custom software, and AI automation—scoped to the problem, not a
+              laundry list of every IT service.
             </Typography>
           </Reveal>
 
-          <Typography variant="h3" component="h3" sx={{ mb: 2.5, fontSize: '1.25rem' }}>
-            What is slowing you down?
-          </Typography>
           <Box
             sx={{
               display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
-              gap: 2,
+              gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' },
+              gap: 2.5,
               mb: { xs: 6, md: 8 },
             }}
           >
-            {PROBLEM_CARDS.map((card) => (
+            {SOLUTION_PILLARS.map((pillar) => (
               <Box
-                key={card.problem}
+                key={pillar.slug}
                 sx={{
-                  p: 2.5,
-                  borderRadius: 2.5,
+                  p: 3,
+                  borderRadius: 3,
                   bgcolor: 'background.paper',
                   border: '1px solid',
                   borderColor: 'divider',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
               >
-                <Typography sx={{ color: 'text.secondary', mb: 1, fontSize: '0.925rem', lineHeight: 1.5 }}>
-                  {card.problem}
+                <Typography variant="h3" component="h3" sx={{ mb: 1.25, fontSize: '1.2rem' }}>
+                  {pillar.title}
                 </Typography>
-                <Typography sx={{ fontWeight: 700, color: 'primary.main', fontSize: '0.95rem' }}>
-                  → {card.solution}
+                <Typography sx={{ color: 'text.secondary', mb: 1.5, fontSize: '0.925rem', lineHeight: 1.6 }}>
+                  <Box component="span" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                    Problem:{' '}
+                  </Box>
+                  {pillar.problem}
                 </Typography>
+                <Typography sx={{ color: 'text.secondary', mb: 2, fontSize: '0.925rem', lineHeight: 1.6 }}>
+                  <Box component="span" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                    Outcome:{' '}
+                  </Box>
+                  {pillar.outcome}
+                </Typography>
+                <Box component="ul" sx={{ m: 0, pl: 2.25, mb: 2.5, flexGrow: 1 }}>
+                  {pillar.deliverables.map((d) => (
+                    <Box
+                      component="li"
+                      key={d}
+                      sx={{ mb: 0.5, color: 'text.secondary', fontSize: '0.875rem' }}
+                    >
+                      {d}
+                    </Box>
+                  ))}
+                </Box>
+                <Button
+                  component={Link}
+                  href={pillar.href}
+                  endIcon={<ArrowForward sx={{ fontSize: 16 }} />}
+                  sx={{ alignSelf: 'flex-start', px: 0, fontWeight: 700 }}
+                >
+                  Learn more
+                </Button>
               </Box>
             ))}
           </Box>
 
           <Typography variant="h3" component="h3" sx={{ mb: 2.5, fontSize: '1.25rem' }}>
-            What we build
+            What we commonly build
           </Typography>
           <Box
             sx={{
               display: 'grid',
               gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: '1fr 1fr 1fr' },
               gap: 2.5,
-              mb: { xs: 7, md: 9 },
+              mb: 4,
             }}
           >
             {SOLUTION_SERVICES.map((service) => (
@@ -169,179 +194,11 @@ export default function Features() {
             ))}
           </Box>
 
-          <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-            How it works
-          </Typography>
-          <Typography variant="h3" component="h3" sx={{ mb: 3, fontSize: '1.35rem' }}>
-            Five stages from discovery to support
-          </Typography>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: 'repeat(5, 1fr)' },
-              gap: 2,
-              mb: { xs: 7, md: 9 },
-            }}
-          >
-            {HOW_IT_WORKS.map((stage, i) => (
-              <Box
-                key={stage.stage}
-                sx={{
-                  p: 2.5,
-                  borderRadius: 2.5,
-                  bgcolor: 'background.paper',
-                  border: '1px solid',
-                  borderColor: 'divider',
-                }}
-              >
-                <Typography sx={{ color: 'primary.main', fontWeight: 800, mb: 1, fontSize: '0.85rem' }}>
-                  0{i + 1}
-                </Typography>
-                <Typography sx={{ fontWeight: 700, mb: 0.5 }}>{stage.stage}</Typography>
-                <Typography sx={{ color: 'text.secondary', fontSize: '0.8rem', mb: 1.25 }}>
-                  {stage.time}
-                </Typography>
-                <Typography sx={{ color: 'text.secondary', fontSize: '0.875rem', lineHeight: 1.6 }}>
-                  {stage.line}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-
-          <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-            Engagement and pricing
-          </Typography>
-          <Typography variant="h3" component="h3" sx={{ mb: 3, fontSize: '1.35rem' }}>
-            Three ways to work with us
-          </Typography>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' },
-              gap: 2.5,
-              mb: { xs: 6, md: 8 },
-            }}
-          >
-            {PRICING_MODELS.map((model) => (
-              <Box
-                key={model.name}
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: model.featured ? 'secondary.main' : 'background.paper',
-                  color: model.featured ? '#fff' : 'text.primary',
-                  border: model.featured ? 'none' : '1px solid',
-                  borderColor: 'divider',
-                  height: '100%',
-                }}
-              >
-                {model.featured && (
-                  <Chip
-                    label="Most chosen"
-                    size="small"
-                    sx={{ mb: 1.5, bgcolor: 'rgba(255,255,255,0.15)', color: '#fff', fontWeight: 700 }}
-                  />
-                )}
-                <Typography variant="h3" component="h3" sx={{ mb: 0.75, fontSize: '1.15rem', color: 'inherit' }}>
-                  {model.name}
-                </Typography>
-                <Typography
-                  sx={{
-                    mb: 1.5,
-                    fontWeight: 700,
-                    color: model.featured ? 'rgba(255,255,255,0.75)' : 'primary.main',
-                    fontSize: '0.9rem',
-                  }}
-                >
-                  {model.priceLine}
-                </Typography>
-                <Typography
-                  sx={{
-                    mb: 2,
-                    color: model.featured ? 'rgba(255,255,255,0.72)' : 'text.secondary',
-                    fontSize: '0.925rem',
-                    lineHeight: 1.65,
-                  }}
-                >
-                  {model.description}
-                </Typography>
-                <Box component="ul" sx={{ m: 0, pl: 2.25 }}>
-                  {model.points.map((point) => (
-                    <Box
-                      component="li"
-                      key={point}
-                      sx={{
-                        mb: 0.75,
-                        color: model.featured ? 'rgba(255,255,255,0.8)' : 'text.secondary',
-                        fontSize: '0.875rem',
-                      }}
-                    >
-                      {point}
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            ))}
-          </Box>
-
-          <Box
-            sx={{
-              p: { xs: 3, md: 4 },
-              borderRadius: 3,
-              bgcolor: 'solutions.light',
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: { sm: 'center' },
-              justifyContent: 'space-between',
-              gap: 2.5,
-              mb: 3,
-            }}
-          >
-            <Box>
-              <Typography variant="h3" component="h3" sx={{ mb: 0.75, fontSize: '1.25rem' }}>
-                {CTA_BAND.title}
-              </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>{CTA_BAND.line}</Typography>
-            </Box>
-            <StackButtons />
-          </Box>
-
-          <Box
-            sx={{
-              p: { xs: 3, md: 3.5 },
-              borderRadius: 3,
-              border: '1px dashed',
-              borderColor: 'primary.main',
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: { sm: 'center' },
-              justifyContent: 'space-between',
-              gap: 2,
-            }}
-          >
-            <Box>
-              <Typography sx={{ fontWeight: 700, mb: 0.5 }}>{ESTIMATOR_BAND.title}</Typography>
-              <Typography sx={{ color: 'text.secondary' }}>{ESTIMATOR_BAND.line}</Typography>
-            </Box>
-            <Button component={Link} href="#contact" variant="outlined" endIcon={<ArrowForward />}>
-              {ESTIMATOR_BAND.cta}
-            </Button>
-          </Box>
+          <Button component={Link} href="/solutions" variant="contained" endIcon={<ArrowForward />}>
+            Explore Our Solutions
+          </Button>
         </Container>
       </Box>
     </>
-  );
-}
-
-function StackButtons() {
-  return (
-    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 1.25, flexShrink: 0 }}>
-      <Button component={Link} href="#contact" variant="contained" endIcon={<ArrowForward />}>
-        {CTA_BAND.primary}
-      </Button>
-      <Button component={Link} href="#contact" variant="outlined">
-        {CTA_BAND.secondary}
-      </Button>
-    </Box>
   );
 }

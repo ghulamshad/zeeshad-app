@@ -27,19 +27,19 @@ export const viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://zeeshad.com"),
   title: {
-    default: "Software and Growth Partner | ZeeShad",
+    default: "Enterprise Software, AI & Digital Transformation | ZeeShad",
     template: "%s | ZeeShad",
   },
   description:
-    "Custom software, AI agents and automation, plus performance marketing for scaling businesses in the US, UK and EU. Written scope in 2 business days.",
+    "ZeeShad designs, builds and supports business systems that simplify operations, connect teams and help organizations grow.",
   keywords: [
+    "enterprise software",
     "custom software development",
-    "AI agents",
-    "business automation",
-    "digital marketing",
-    "ERP-lite",
+    "AI automation",
+    "ERP",
+    "SaaS",
     "ZeeShad",
-    "Free Discovery Session",
+    "ZeeShad Desk",
   ],
   authors: [{ name: "ZeeShad (Private) Limited" }],
   creator: "ZeeShad (Private) Limited",
@@ -65,23 +65,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "ZeeShad",
-    title: "Software and Growth Partner | ZeeShad",
+    title: "Technology that moves your business forward | ZeeShad",
     description:
-      "Software that runs your business. Marketing that grows it. Scoped in writing within 2 business days.",
+      "Enterprise software, AI and digital transformation from ZeeShad (Private) Limited.",
     images: [
       {
         url: "/images/brand/hero-atmosphere.jpg",
         width: 1200,
         height: 630,
-        alt: "ZeeShad software and growth partner",
+        alt: "ZeeShad enterprise software and AI",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Software and Growth Partner | ZeeShad",
+    title: "Technology that moves your business forward | ZeeShad",
     description:
-      "Custom software, AI and automation, plus performance marketing for scaling businesses.",
+      "Enterprise software, AI and digital transformation from ZeeShad (Private) Limited.",
     images: [
       {
         url: "/images/brand/hero-atmosphere.jpg",

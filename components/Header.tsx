@@ -19,62 +19,28 @@ import {
   Stack,
 } from '@mui/material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, Close } from '@mui/icons-material';
 import BrandMark from '@/components/BrandMark';
-
-const navItems = [
-  { href: '#solutions', label: 'Solutions', id: 'solutions' },
-  { href: '#marketing', label: 'Marketing', id: 'marketing' },
-  { href: '#products', label: 'Products', id: 'products' },
-  { href: '#about', label: 'Company', id: 'about' },
-  { href: '#faq', label: 'Resources', id: 'faq' },
-];
+import { NAV_PRIMARY } from '@/lib/content/site';
 
 export default function Header() {
   const theme = useTheme();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 8);
-      const sections = ['home', 'solutions', 'marketing', 'products', 'about', 'faq', 'contact'];
-      const current = sections.find((section) => {
-        const el = document.getElementById(section);
-        if (!el) return false;
-        const rect = el.getBoundingClientRect();
-        return rect.top <= 120 && rect.bottom >= 120;
-      });
-      if (current) setActiveSection(current);
-    };
-
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
+    const handleScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
-    setMobileOpen(false);
-    if (href.startsWith('/')) return;
-    const element = document.querySelector(href);
-    if (element) {
-      const headerHeight = headerRef.current?.offsetHeight || 88;
-      const top = element.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   return (
@@ -91,11 +57,10 @@ export default function Header() {
         }}
       >
         <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 76 }, gap: 2 }}>
+          <Toolbar disableGutters sx={{ minHeight: { xs: 68, md: 76 }, gap: 1.5 }}>
             <Box
               component={Link}
               href="/"
-              onClick={() => handleNavClick('#home')}
               sx={{
                 display: 'flex',
                 alignItems: 'center',
@@ -122,14 +87,14 @@ export default function Header() {
                 <Typography
                   sx={{
                     fontSize: '0.62rem',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                     color: 'text.secondary',
                     fontWeight: 600,
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  Software and growth partner
+                  Enterprise software · AI · transformation
                 </Typography>
               </Box>
             </Box>
@@ -139,29 +104,29 @@ export default function Header() {
               aria-label="Main navigation"
               sx={{
                 display: { xs: 'none', lg: 'flex' },
-                gap: 0.5,
+                gap: 0.25,
                 flexGrow: 1,
                 justifyContent: 'center',
               }}
             >
-              {navItems.map((item) => {
-                const active = activeSection === item.id;
+              {NAV_PRIMARY.filter((item) => item.href !== '/contact').map((item) => {
+                const active = isActive(item.href);
                 return (
                   <Button
-                    key={item.id}
+                    key={item.href}
                     component={Link}
                     href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(item.href);
-                    }}
+                    aria-current={active ? 'page' : undefined}
                     sx={{
                       color: active ? 'primary.main' : 'text.secondary',
                       fontWeight: active ? 700 : 500,
-                      px: 1.75,
+                      px: 1.35,
                       minWidth: 0,
-                      fontSize: '0.925rem',
-                      '&:hover': { color: 'primary.main', bgcolor: alpha(theme.palette.primary.main, 0.06) },
+                      fontSize: '0.875rem',
+                      '&:hover': {
+                        color: 'primary.main',
+                        bgcolor: alpha(theme.palette.primary.main, 0.06),
+                      },
                     }}
                   >
                     {item.label}
@@ -178,35 +143,9 @@ export default function Header() {
             >
               <Button
                 component={Link}
-                href="#contact"
-                size="small"
-                variant="text"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('#contact');
-                }}
-                sx={{
-                  color: 'marketing.main',
-                  fontWeight: 650,
-                  fontSize: '0.8125rem',
-                  px: 1.25,
-                  py: 0.5,
-                  minHeight: 32,
-                  borderRadius: 999,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Marketing Audit
-              </Button>
-              <Button
-                component={Link}
-                href="#contact"
+                href="/contact"
                 size="small"
                 variant="contained"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('#contact');
-                }}
                 sx={{
                   fontSize: '0.8125rem',
                   fontWeight: 650,
@@ -217,12 +156,14 @@ export default function Header() {
                   whiteSpace: 'nowrap',
                 }}
               >
-                Discovery Session
+                Discuss Your Project
               </Button>
             </Stack>
 
             <IconButton
-              aria-label="Open menu"
+              aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav-drawer"
               edge="end"
               onClick={() => setMobileOpen(true)}
               sx={{ display: { lg: 'none' }, ml: 'auto', color: 'text.primary' }}
@@ -234,6 +175,7 @@ export default function Header() {
       </AppBar>
 
       <Drawer
+        id="mobile-nav-drawer"
         anchor="right"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
@@ -256,56 +198,41 @@ export default function Header() {
           </IconButton>
         </Box>
         <List component="nav" aria-label="Mobile navigation" sx={{ px: 1.5 }}>
-          {navItems.map((item) => (
-            <ListItem key={item.id} disablePadding sx={{ mb: 0.5 }}>
-              <ListItemButton
-                onClick={() => handleNavClick(item.href)}
-                sx={{
-                  borderRadius: 2,
-                  bgcolor:
-                    activeSection === item.id
-                      ? alpha(theme.palette.primary.main, 0.08)
-                      : 'transparent',
-                }}
-              >
-                <ListItemText
-                  primary={item.label}
-                  primaryTypographyProps={{
-                    fontWeight: activeSection === item.id ? 700 : 500,
+          {NAV_PRIMARY.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <ListItem key={item.href} disablePadding sx={{ mb: 0.5 }}>
+                <ListItemButton
+                  component={Link}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  selected={active}
+                  aria-current={active ? 'page' : undefined}
+                  sx={{
+                    borderRadius: 2,
+                    bgcolor: active ? alpha(theme.palette.primary.main, 0.08) : 'transparent',
                   }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                >
+                  <ListItemText
+                    primary={item.label}
+                    primaryTypographyProps={{ fontWeight: active ? 700 : 500 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            );
+          })}
         </List>
-        <Box sx={{ p: 2.5, display: 'flex', flexDirection: 'column', gap: 1 }}>
+        <Box sx={{ p: 2.5 }}>
           <Button
             component={Link}
-            href="#contact"
-            size="small"
-            variant="outlined"
-            fullWidth
-            onClick={() => handleNavClick('#contact')}
-            sx={{
-              borderColor: 'marketing.main',
-              color: 'marketing.main',
-              fontSize: '0.875rem',
-              py: 0.85,
-              minHeight: 36,
-            }}
-          >
-            Marketing Audit
-          </Button>
-          <Button
-            component={Link}
-            href="#contact"
+            href="/contact"
             size="small"
             variant="contained"
             fullWidth
-            onClick={() => handleNavClick('#contact')}
+            onClick={() => setMobileOpen(false)}
             sx={{ fontSize: '0.875rem', py: 0.85, minHeight: 36 }}
           >
-            Discovery Session
+            Discuss Your Project
           </Button>
         </Box>
       </Drawer>

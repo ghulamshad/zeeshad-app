@@ -2,20 +2,18 @@
 
 import Link from 'next/link';
 import { Container, Box, Typography, Button } from '@mui/material';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import SiteChrome from '@/components/SiteChrome';
 
 export default function PrivacyPage() {
   return (
-    <>
-      <Header />
+    <SiteChrome showAnnouncement={false}>
       <Box component="main" id="main-content" sx={{ py: { xs: 6, md: 10 }, bgcolor: 'background.default' }}>
         <Container maxWidth="md">
           <Typography variant="h1" sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, fontWeight: 800, mb: 2 }}>
             Privacy Policy
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary', mb: 4 }}>
-            Last updated: 20 October 2026
+            Last updated: 23 October 2026
           </Typography>
 
           <Box sx={{ color: 'text.secondary', lineHeight: 1.8 }}>
@@ -62,10 +60,23 @@ export default function PrivacyPage() {
               component="h2"
               sx={{ fontSize: '1.35rem', fontWeight: 700, color: 'text.primary', mt: 3, mb: 2 }}
             >
+              How form submissions are handled
+            </Typography>
+            <Typography sx={{ mb: 2 }}>
+              Contact form submissions are processed by our website server. When an email delivery
+              service is configured, we forward the enquiry to our team mailbox. Server logs may
+              retain submission metadata for troubleshooting. We aim to keep enquiry records only as
+              long as needed for sales follow-up and project records.
+            </Typography>
+
+            <Typography
+              variant="h2"
+              component="h2"
+              sx={{ fontSize: '1.35rem', fontWeight: 700, color: 'text.primary', mt: 3, mb: 2 }}
+            >
               Retention and sharing
             </Typography>
             <Typography sx={{ mb: 2 }}>
-              We keep enquiry records only as long as needed for sales follow-up and project records.
               We may use email and hosting providers as processors. We do not share your details for
               unrelated marketing lists.
             </Typography>
@@ -97,12 +108,11 @@ export default function PrivacyPage() {
             </Typography>
           </Box>
 
-          <Button component={Link} href="/#contact" variant="contained" sx={{ mt: 4 }}>
-            Back to contact
+          <Button component={Link} href="/contact" variant="contained" sx={{ mt: 4 }}>
+            Contact ZeeShad
           </Button>
         </Container>
       </Box>
-      <Footer />
-    </>
+    </SiteChrome>
   );
 }
