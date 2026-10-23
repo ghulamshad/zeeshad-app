@@ -144,7 +144,7 @@ export default function Footer() {
           }}
         >
           <Typography sx={{ fontSize: '0.85rem' }}>
-            © {currentYear} ZeeShad (Private) Limited. All rights reserved.
+            © {currentYear} ZeeShad (Private) Limited. All rights reserved. · v1.0.0.1
           </Typography>
           <Typography sx={{ fontSize: '0.85rem' }}>
             Incorporated under Companies Act, 2017 (XIX of 2017)
