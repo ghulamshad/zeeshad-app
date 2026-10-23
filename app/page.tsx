@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import HowWeWork from '@/components/HowWeWork';
 import Clients from '@/components/Clients';
 import Footer from '@/components/Footer';
 import { COMPANY_ONE_LINER, MAIN_SERVICES, SOLUTIONS_FAQ } from '@/lib/content/solutions';
@@ -14,9 +13,16 @@ const sectionLoading = () => (
   </div>
 );
 
+const ProblemPathways = dynamic(() => import('@/components/ProblemPathways'), {
+  loading: sectionLoading,
+});
+const ProofStrip = dynamic(() => import('@/components/ProofStrip'), { loading: sectionLoading });
 const Features = dynamic(() => import('@/components/Features'), { loading: sectionLoading });
 const Products = dynamic(() => import('@/components/Products'), { loading: sectionLoading });
 const DeliveryApproach = dynamic(() => import('@/components/DeliveryApproach'), {
+  loading: sectionLoading,
+});
+const Testimonials = dynamic(() => import('@/components/Testimonials'), {
   loading: sectionLoading,
 });
 const EnterpriseTeaser = dynamic(() => import('@/components/EnterpriseTeaser'), {
@@ -26,6 +32,7 @@ const About = dynamic(() => import('@/components/About'), { loading: sectionLoad
 const Faq = dynamic(() => import('@/components/Faq'), { loading: sectionLoading });
 const CTASection = dynamic(() => import('@/components/CTASection'), { loading: sectionLoading });
 const Contact = dynamic(() => import('@/components/ContactSection'), { loading: sectionLoading });
+const HowWeWork = dynamic(() => import('@/components/HowWeWork'), { loading: sectionLoading });
 
 export default function Home() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://zeeshad.com';
@@ -126,11 +133,14 @@ export default function Home() {
       <AnnouncementBar />
       <Header />
       <Hero />
-      <HowWeWork />
       <Clients />
+      <ProofStrip />
+      <ProblemPathways />
       <Features />
       <Products />
+      <HowWeWork />
       <DeliveryApproach />
+      <Testimonials />
       <EnterpriseTeaser />
       <About />
       <Faq />

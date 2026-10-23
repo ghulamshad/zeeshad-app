@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function AnnouncementBar() {
   return (
-    <Box sx={{ bgcolor: 'secondary.main', color: '#fff', py: 1.1 }}>
+    <Box sx={{ bgcolor: '#070C16', color: '#fff', py: 1.1 }}>
       <Container maxWidth="lg">
         <Typography
           sx={{
@@ -21,19 +21,19 @@ export default function AnnouncementBar() {
               fontWeight: 800,
               color: '#A8C0FF',
               mr: 1,
-              letterSpacing: '0.06em',
+              letterSpacing: '0.08em',
               fontSize: '0.7rem',
             }}
           >
-            CONTACT
+            DISCOVERY_
           </Box>
-          Discuss a project or request a written estimate.{' '}
+          Share a brief—get a straight answer on what to build next.{' '}
           <MuiLink
             component={Link}
             href="/contact"
             sx={{ color: '#fff', fontWeight: 700, textDecoration: 'underline' }}
           >
-            Get in touch →
+            Book a conversation →
           </MuiLink>
         </Typography>
       </Container>

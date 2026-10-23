@@ -5,72 +5,11 @@ import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 import { Reveal, Stagger, StaggerItem } from '@/components/Motion';
 import { SOLUTION_PILLARS } from '@/lib/content/site';
-import { FOUR_WAYS, SOLUTION_SERVICES } from '@/lib/content/solutions';
+import { SOLUTION_SERVICES } from '@/lib/content/solutions';
 
 export default function Features() {
   return (
     <>
-      <Box component="section" sx={{ py: { xs: 8, md: 10 }, bgcolor: 'background.paper' }}>
-        <Container maxWidth="lg">
-          <Reveal>
-            <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-              Where we help
-            </Typography>
-            <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 560 }}>
-              Pick the path that fits where you are
-            </Typography>
-          </Reveal>
-          <Stagger>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: 'repeat(4, 1fr)' },
-                gap: 2.5,
-                mt: 4,
-              }}
-            >
-              {FOUR_WAYS.map((item, i) => (
-                <StaggerItem key={item.title}>
-                  <Box
-                    component={Link}
-                    href={item.href}
-                    sx={{
-                      display: 'block',
-                      height: '100%',
-                      p: 3,
-                      borderRadius: 3,
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      bgcolor: 'background.default',
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      transition: 'border-color 0.2s, transform 0.2s',
-                      '&:hover': {
-                        borderColor: 'primary.main',
-                        transform: 'translateY(-2px)',
-                      },
-                    }}
-                  >
-                    <Typography sx={{ color: 'primary.main', fontWeight: 800, mb: 1.5, fontSize: '0.85rem' }}>
-                      0{i + 1}
-                    </Typography>
-                    <Typography variant="h3" component="h3" sx={{ mb: 1.25, fontSize: '1.15rem' }}>
-                      {item.title}
-                    </Typography>
-                    <Typography sx={{ color: 'text.secondary', mb: 2, fontSize: '0.925rem', lineHeight: 1.65 }}>
-                      {item.line}
-                    </Typography>
-                    <Typography sx={{ color: 'primary.main', fontWeight: 700, fontSize: '0.9rem' }}>
-                      Explore →
-                    </Typography>
-                  </Box>
-                </StaggerItem>
-              ))}
-            </Box>
-          </Stagger>
-        </Container>
-      </Box>
-
       <Box
         component="section"
         id="solutions"
@@ -78,15 +17,24 @@ export default function Features() {
       >
         <Container maxWidth="lg">
           <Reveal>
-            <Typography variant="overline" sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}>
-              Solutions
+            <Typography
+              sx={{
+                color: 'primary.main',
+                fontWeight: 800,
+                letterSpacing: '0.12em',
+                fontSize: '0.72rem',
+                mb: 1.5,
+                textTransform: 'uppercase',
+              }}
+            >
+              Our services_
             </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 1.5, maxWidth: 640 }}>
-              Three offers with clear outcomes
+              Services that fix real day-to-day problems
             </Typography>
             <Typography sx={{ color: 'text.secondary', maxWidth: 560, mb: 5, fontSize: '1.1rem' }}>
               Enterprise systems, custom software, and AI automation—scoped to the problem, not a
-              laundry list of every IT service.
+              laundry list of every IT category.
             </Typography>
           </Reveal>
 
@@ -98,20 +46,37 @@ export default function Features() {
               mb: { xs: 6, md: 8 },
             }}
           >
-            {SOLUTION_PILLARS.map((pillar) => (
+            {SOLUTION_PILLARS.map((pillar, i) => (
               <Box
                 key={pillar.slug}
                 sx={{
                   p: 3,
-                  borderRadius: 3,
+                  borderRadius: 2.5,
                   bgcolor: 'background.paper',
                   border: '1px solid',
                   borderColor: 'divider',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
+                  transition: 'border-color 0.2s, box-shadow 0.2s',
+                  '&:hover': {
+                    borderColor: 'primary.light',
+                    boxShadow: '0 12px 40px rgba(11,19,36,0.06)',
+                  },
                 }}
               >
+                <Typography
+                  sx={{
+                    color: 'primary.main',
+                    fontWeight: 800,
+                    fontSize: '0.72rem',
+                    letterSpacing: '0.1em',
+                    mb: 1.5,
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Solution {String(i + 1).padStart(2, '0')}_
+                </Typography>
                 <Typography variant="h3" component="h3" sx={{ mb: 1.25, fontSize: '1.2rem' }}>
                   {pillar.title}
                 </Typography>
@@ -144,7 +109,7 @@ export default function Features() {
                   endIcon={<ArrowForward sx={{ fontSize: 16 }} />}
                   sx={{ alignSelf: 'flex-start', px: 0, fontWeight: 700 }}
                 >
-                  Learn more
+                  Explore more
                 </Button>
               </Box>
             ))}
@@ -153,49 +118,52 @@ export default function Features() {
           <Typography variant="h3" component="h3" sx={{ mb: 2.5, fontSize: '1.25rem' }}>
             What we commonly build
           </Typography>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: '1fr 1fr 1fr' },
-              gap: 2.5,
-              mb: 4,
-            }}
-          >
-            {SOLUTION_SERVICES.map((service) => (
-              <Box
-                key={service.name}
-                sx={{
-                  p: 3,
-                  borderRadius: 3,
-                  bgcolor: 'background.paper',
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  height: '100%',
-                }}
-              >
-                <Chip
-                  label={service.group}
-                  size="small"
-                  sx={{
-                    mb: 1.5,
-                    fontWeight: 700,
-                    bgcolor: 'solutions.light',
-                    color: 'primary.dark',
-                    height: 26,
-                  }}
-                />
-                <Typography variant="h3" component="h3" sx={{ mb: 1, fontSize: '1.1rem' }}>
-                  {service.name}
-                </Typography>
-                <Typography sx={{ color: 'text.secondary', fontSize: '0.925rem', lineHeight: 1.65 }}>
-                  {service.summary}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
+          <Stagger>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: '1fr 1fr 1fr' },
+                gap: 2.5,
+                mb: 4,
+              }}
+            >
+              {SOLUTION_SERVICES.map((service) => (
+                <StaggerItem key={service.name}>
+                  <Box
+                    sx={{
+                      p: 3,
+                      borderRadius: 2.5,
+                      bgcolor: 'background.paper',
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      height: '100%',
+                    }}
+                  >
+                    <Chip
+                      label={service.group}
+                      size="small"
+                      sx={{
+                        mb: 1.5,
+                        fontWeight: 700,
+                        bgcolor: 'solutions.light',
+                        color: 'primary.dark',
+                        height: 26,
+                      }}
+                    />
+                    <Typography variant="h3" component="h3" sx={{ mb: 1, fontSize: '1.1rem' }}>
+                      {service.name}
+                    </Typography>
+                    <Typography sx={{ color: 'text.secondary', fontSize: '0.925rem', lineHeight: 1.65 }}>
+                      {service.summary}
+                    </Typography>
+                  </Box>
+                </StaggerItem>
+              ))}
+            </Box>
+          </Stagger>
 
           <Button component={Link} href="/solutions" variant="contained" endIcon={<ArrowForward />}>
-            Explore Our Solutions
+            Explore all solutions
           </Button>
         </Container>
       </Box>

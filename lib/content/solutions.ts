@@ -65,6 +65,41 @@ export const PROBLEM_CARDS: ProblemCard[] = [
   },
 ];
 
+/** Homepage “where do you stand” pathways (Code District–style structure; ZeeShad facts only) */
+export type ProblemPathway = {
+  label: string;
+  quote: string;
+  outcome: string;
+  href: string;
+};
+
+export const PROBLEM_PATHWAYS: ProblemPathway[] = [
+  {
+    label: 'Digitize operations',
+    quote: "I'm stuck on spreadsheets and manual processes.",
+    outcome: 'Move to purpose-built systems for orders, stock, invoices and reporting.',
+    href: '/solutions#enterprise-business-systems',
+  },
+  {
+    label: 'Modernize systems',
+    quote: 'Our legacy stack slows every change.',
+    outcome: 'Rebuild or replace aging software in stages—without stopping the business.',
+    href: '/solutions#custom-software-saas',
+  },
+  {
+    label: 'Enable AI',
+    quote: "The software works, but repetitive work still eats the week.",
+    outcome: 'Automation and AI workflows that cut re-typing and keep people in the loop.',
+    href: '/solutions#ai-automation',
+  },
+  {
+    label: 'Connect systems',
+    quote: 'Every team has its own version of the truth.',
+    outcome: 'APIs and integrations so CRM, accounts, warehouse and sales share one record.',
+    href: '/solutions#custom-software-saas',
+  },
+];
+
 export const SOLUTION_SERVICES: SubService[] = [
   {
     group: 'Build',
@@ -187,9 +222,10 @@ export const SOLUTIONS_FAQ = [
 ];
 
 export const CTA_BAND = {
-  title: 'Ready to discuss a project?',
-  line: 'Tell us what you need. We reply with next steps and, where appropriate, a written scope outline.',
-  primary: 'Discuss Your Project',
+  eyebrow: "LET'S TALK_",
+  title: "Don't know where to start?",
+  line: 'Share a short brief. We reply with what’s possible, next steps, and—where appropriate—a written scope outline. No invented promises.',
+  primary: 'Book a discovery conversation',
   secondary: 'Explore Our Solutions',
 };
 
@@ -211,8 +247,8 @@ export const FOUR_WAYS = [
     href: '/solutions#ai-automation',
   },
   {
-    title: 'Grow revenue',
-    line: 'Paid media, SEO and content planned around qualified enquiries.',
+    title: 'Connect & grow',
+    line: 'Integrations, portals and—where needed—marketing measured in enquiries.',
     href: '/#marketing',
   },
 ];

@@ -156,7 +156,7 @@ export default function Header() {
                   whiteSpace: 'nowrap',
                 }}
               >
-                Discuss Your Project
+                Book a discovery conversation
               </Button>
             </Stack>
 
@@ -232,7 +232,7 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
             sx={{ fontSize: '0.875rem', py: 0.85, minHeight: 36 }}
           >
-            Discuss Your Project
+            Book a discovery conversation
           </Button>
         </Box>
       </Drawer>

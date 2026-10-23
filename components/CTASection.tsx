@@ -37,6 +37,18 @@ export default function CTASection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Box sx={{ textAlign: 'center' }}>
+            <Typography
+              sx={{
+                color: '#A8C0FF',
+                fontWeight: 800,
+                letterSpacing: '0.14em',
+                fontSize: '0.72rem',
+                mb: 2,
+                textTransform: 'uppercase',
+              }}
+            >
+              {CTA_BAND.eyebrow}
+            </Typography>
             <Typography variant="h2" component="h2" sx={{ mb: 2, color: '#fff' }}>
               {CTA_BAND.title}
             </Typography>
@@ -46,7 +58,7 @@ export default function CTASection() {
                 mb: 4,
                 lineHeight: 1.7,
                 fontSize: '1.1rem',
-                maxWidth: 480,
+                maxWidth: 520,
                 mx: 'auto',
               }}
             >

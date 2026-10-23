@@ -4,7 +4,7 @@ import { Box, Container, Typography, Button, Stack } from '@mui/material';
 import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 import { motion, useReducedMotion } from 'framer-motion';
-import { HOME_HERO, HOW_WE_WORK } from '@/lib/content/site';
+import { HOME_HERO, HOW_WE_WORK, SOLUTION_PILLARS } from '@/lib/content/site';
 
 export default function Hero() {
   const reduce = useReducedMotion();
@@ -16,11 +16,11 @@ export default function Hero() {
       sx={{
         position: 'relative',
         overflow: 'hidden',
-        bgcolor: '#FFFFFF',
-        borderBottom: '1px solid',
-        borderColor: 'divider',
-        pt: { xs: 7, md: 11 },
-        pb: { xs: 8, md: 12 },
+        bgcolor: 'secondary.main',
+        color: '#fff',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
+        pt: { xs: 7, md: 10 },
+        pb: { xs: 0, md: 0 },
       }}
     >
       <Box
@@ -29,42 +29,56 @@ export default function Hero() {
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse 60% 50% at 100% 0%, rgba(36,87,245,0.10), transparent 55%)',
+            'radial-gradient(ellipse 70% 60% at 85% -10%, rgba(36,87,245,0.45), transparent 55%), radial-gradient(ellipse 40% 40% at 0% 100%, rgba(20,184,166,0.12), transparent 50%)',
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, width: '100%' }}>
-        <Box sx={{ width: '100%' }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, width: '100%', pb: { xs: 6, md: 8 } }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', lg: '1.15fr 0.85fr' },
+            gap: { xs: 5, lg: 6 },
+            alignItems: 'end',
+          }}
+        >
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <Typography
-              variant="overline"
-              sx={{ color: 'primary.main', mb: 2, display: 'block', letterSpacing: '0.14em' }}
+              sx={{
+                color: '#A8C0FF',
+                fontWeight: 800,
+                letterSpacing: '0.14em',
+                fontSize: '0.72rem',
+                mb: 2,
+                textTransform: 'uppercase',
+              }}
             >
-              {HOME_HERO.eyebrow}
+              {HOME_HERO.eyebrow}_
             </Typography>
             <Typography
               variant="h1"
               component="h1"
               sx={{
                 mb: 2.5,
-                maxWidth: { md: '16ch' },
-                fontSize: { xs: 'clamp(2.2rem, 8vw, 3rem)', md: '3.75rem' },
+                maxWidth: { md: '14ch' },
+                fontSize: { xs: 'clamp(2.35rem, 8vw, 3.1rem)', md: '3.85rem' },
                 letterSpacing: '-0.035em',
                 lineHeight: 1.05,
+                color: '#fff',
               }}
             >
               {HOME_HERO.h1}
             </Typography>
             <Typography
               sx={{
-                color: 'text.secondary',
+                color: 'rgba(255,255,255,0.68)',
                 mb: 4,
-                maxWidth: 640,
-                fontSize: { xs: '1.05rem', md: '1.2rem' },
+                maxWidth: 560,
+                fontSize: { xs: '1.05rem', md: '1.15rem' },
                 lineHeight: 1.65,
               }}
             >
@@ -86,7 +100,17 @@ export default function Hero() {
                 href={HOME_HERO.secondaryCta.href}
                 variant="outlined"
                 size="large"
-                sx={{ px: 3.25, py: 1.55, fontSize: '1rem' }}
+                sx={{
+                  px: 3.25,
+                  py: 1.55,
+                  fontSize: '1rem',
+                  borderColor: 'rgba(255,255,255,0.35)',
+                  color: '#fff',
+                  '&:hover': {
+                    borderColor: '#fff',
+                    bgcolor: 'rgba(255,255,255,0.06)',
+                  },
+                }}
               >
                 {HOME_HERO.secondaryCta.label}
               </Button>
@@ -99,7 +123,7 @@ export default function Hero() {
                   sx={{
                     display: { xs: 'none', sm: 'block' },
                     width: '1px',
-                    bgcolor: 'divider',
+                    bgcolor: 'rgba(255,255,255,0.2)',
                     alignSelf: 'stretch',
                   }}
                 />
@@ -109,9 +133,9 @@ export default function Hero() {
                 <Typography
                   key={item.title}
                   sx={{
-                    fontSize: '0.9rem',
+                    fontSize: '0.875rem',
                     fontWeight: 600,
-                    color: 'text.secondary',
+                    color: 'rgba(255,255,255,0.7)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: 1,
@@ -123,7 +147,7 @@ export default function Hero() {
                       width: 6,
                       height: 6,
                       borderRadius: '50%',
-                      bgcolor: 'primary.main',
+                      bgcolor: 'primary.light',
                       flexShrink: 0,
                     }}
                   />
@@ -131,6 +155,54 @@ export default function Hero() {
                 </Typography>
               ))}
             </Stack>
+          </motion.div>
+
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+              {SOLUTION_PILLARS.map((pillar, i) => (
+                <Box
+                  key={pillar.slug}
+                  component={Link}
+                  href={pillar.href}
+                  sx={{
+                    p: 2.25,
+                    borderRadius: 2,
+                    border: '1px solid rgba(255,255,255,0.12)',
+                    bgcolor: 'rgba(255,255,255,0.05)',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    transition: 'border-color 0.2s, background 0.2s',
+                    '&:hover': {
+                      borderColor: 'rgba(168,192,255,0.5)',
+                      bgcolor: 'rgba(36,87,245,0.2)',
+                    },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: '#A8C0FF',
+                      fontWeight: 800,
+                      fontSize: '0.68rem',
+                      letterSpacing: '0.1em',
+                      mb: 0.75,
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    Solution {String(i + 1).padStart(2, '0')}_
+                  </Typography>
+                  <Typography sx={{ fontWeight: 700, color: '#fff', mb: 0.5, fontSize: '1rem' }}>
+                    {pillar.title}
+                  </Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.85rem', lineHeight: 1.5 }}>
+                    {pillar.outcome}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
           </motion.div>
         </Box>
       </Container>

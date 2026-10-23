@@ -24,8 +24,8 @@ export const COMPANY = {
 export const HOME_HERO = {
   eyebrow: 'Enterprise Software · AI · Digital Transformation',
   h1: 'Technology that moves your business forward.',
-  body: 'We design, build and support business systems that simplify operations, connect teams and help organizations grow.',
-  primaryCta: { label: 'Discuss Your Project', href: '/contact' },
+  body: 'We design, build and support business systems that simplify operations, connect teams and help organizations grow—for mid-market teams that need software that fits how they work.',
+  primaryCta: { label: 'Book a discovery conversation', href: '/contact' },
   secondaryCta: { label: 'Explore Our Solutions', href: '/solutions' },
 } as const;
 
@@ -263,3 +263,44 @@ export const CASE_STUDIES_INTRO = {
   headline: 'Delivery you can evaluate—without invented proof.',
   body: 'Approved case studies will be published here as clients permit. Until then, this page explains how we deliver so you can judge the approach, not marketing claims.',
 } as const;
+
+/**
+ * DRAFT proof layout (Code District–style structure).
+ * Replace every value with owner-approved ZeeShad facts, then set PROOF_DRAFT = false.
+ * Do not treat placeholder copy as live company claims.
+ */
+export const PROOF_DRAFT = true;
+
+export const PROOF_METRICS = [
+  { value: 'XX', label: 'Replace — client outcomes / savings' },
+  { value: 'XX+', label: 'Replace — solutions delivered' },
+  { value: 'X+', label: 'Replace — years in business' },
+] as const;
+
+export const PROOF_RECOGNITIONS = [
+  { label: 'Recognition 1', note: 'Replace when verified' },
+  { label: 'Recognition 2', note: 'Replace when verified' },
+  { label: 'Certification', note: 'Replace when verified' },
+  { label: 'Listing / award', note: 'Replace when verified' },
+] as const;
+
+export const PROOF_TESTIMONIALS = [
+  {
+    quote: 'Replace with an approved client quote. Do not publish without permission.',
+    name: 'Client name',
+    role: 'Title, organisation',
+    result: 'Replace — outcome headline (only if verified)',
+  },
+  {
+    quote: 'Replace with an approved client quote. Do not publish without permission.',
+    name: 'Client name',
+    role: 'Title, organisation',
+    result: 'Replace — outcome headline (only if verified)',
+  },
+  {
+    quote: 'Replace with an approved client quote. Do not publish without permission.',
+    name: 'Client name',
+    role: 'Title, organisation',
+    result: 'Replace — outcome headline (only if verified)',
+  },
+] as const;

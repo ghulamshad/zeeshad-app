@@ -1,8 +1,6 @@
 'use client';
 
 import { Box, Container, Typography, Link as MuiLink } from '@mui/material';
-import { OpenInNew } from '@mui/icons-material';
-import { Reveal } from '@/components/Motion';
 import { CLIENTS } from '@/lib/content/site';
 
 export default function Clients() {
@@ -12,7 +10,7 @@ export default function Clients() {
       id="clients"
       aria-labelledby="clients-heading"
       sx={{
-        py: { xs: 5, md: 6 },
+        py: { xs: 3.5, md: 4 },
         bgcolor: 'background.paper',
         borderBottom: '1px solid',
         borderColor: 'divider',
@@ -20,65 +18,57 @@ export default function Clients() {
       }}
     >
       <Container maxWidth="lg">
-        <Reveal>
-          <Typography
-            id="clients-heading"
-            variant="overline"
-            sx={{ color: 'primary.main', mb: 1.5, display: 'block' }}
-          >
-            Selected clients
-          </Typography>
-          <Typography
-            variant="h2"
-            component="h2"
-            sx={{ mb: 3, fontSize: { xs: '1.35rem', md: '1.5rem' }, maxWidth: 480 }}
-          >
-            Organizations we have worked with
-          </Typography>
-        </Reveal>
         <Box
           sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3, 1fr)' },
-            gap: 2,
-            maxWidth: 960,
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: { md: 'center' },
+            gap: { xs: 2, md: 4 },
           }}
         >
-          {CLIENTS.map((client) => (
-            <Box
-              key={client.href}
-              sx={{
-                p: 2.5,
-                borderRadius: 2,
-                border: '1px solid',
-                borderColor: 'divider',
-                bgcolor: 'background.default',
-              }}
-            >
+          <Typography
+            id="clients-heading"
+            sx={{
+              fontWeight: 800,
+              fontSize: '0.72rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'text.secondary',
+              flexShrink: 0,
+            }}
+          >
+            Our clients_
+          </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              gap: { xs: 2, sm: 3.5 },
+              flexGrow: 1,
+            }}
+          >
+            {CLIENTS.map((client) => (
               <MuiLink
+                key={client.href}
                 href={client.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${client.name} (opens in a new tab)`}
                 sx={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 0.75,
                   fontWeight: 700,
-                  fontSize: '1.05rem',
+                  fontSize: { xs: '0.95rem', md: '1.05rem' },
                   color: 'text.primary',
                   textDecoration: 'none',
-                  '&:hover': { color: 'primary.main' },
+                  opacity: 0.78,
+                  letterSpacing: '-0.01em',
+                  '&:hover': { opacity: 1, color: 'primary.main' },
                 }}
               >
                 {client.name}
-                <OpenInNew sx={{ fontSize: 16, opacity: 0.7 }} aria-hidden />
               </MuiLink>
-              <Typography sx={{ color: 'text.secondary', fontSize: '0.9rem', mt: 0.75 }}>
-                {client.note}
-              </Typography>
-            </Box>
-          ))}
+            ))}
+          </Box>
         </Box>
       </Container>
     </Box>
