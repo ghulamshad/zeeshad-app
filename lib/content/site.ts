@@ -23,11 +23,19 @@ export const COMPANY = {
 /** Audit-recommended positioning (owner-authorized via audit.md) */
 export const HOME_HERO = {
   eyebrow: 'Enterprise Software · AI · Digital Transformation',
-  h1: 'Technology that moves your business forward.',
-  body: 'We design, build and support business systems that simplify operations, connect teams and help organizations grow—for mid-market teams that need software that fits how they work.',
-  primaryCta: { label: 'Book a discovery conversation', href: '/contact' },
+  h1: 'Enterprise software, AI and automation,',
+  h1Accent: 'powered by clear delivery',
+  body: 'Custom business systems and workflow automation for mid-market companies that need software that fits how they work.',
+  primaryCta: { label: 'Free Discovery', href: '/contact' },
   secondaryCta: { label: 'Explore Our Solutions', href: '/solutions' },
 } as const;
+
+export const HOME_HERO_TAGS = [
+  { label: 'Digitize Operations', href: '/solutions#enterprise-business-systems' },
+  { label: 'Modernize Systems', href: '/solutions#custom-software-saas' },
+  { label: 'Enable AI', href: '/solutions#ai-automation' },
+  { label: 'Connect Systems', href: '/solutions#custom-software-saas' },
+] as const;
 
 /**
  * Owner-approved client names only. No logos, quotes, or results unless separately cleared.

@@ -71,7 +71,10 @@ export default function Hero() {
                 color: '#fff',
               }}
             >
-              {HOME_HERO.h1}
+              {HOME_HERO.h1}{' '}
+              <Box component="span" sx={{ color: '#A8C0FF' }}>
+                {HOME_HERO.h1Accent}
+              </Box>
             </Typography>
             <Typography
               sx={{
