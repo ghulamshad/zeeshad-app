@@ -17,10 +17,10 @@ import {
   Collapse,
   Stack,
 } from '@mui/material';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, Close, Add, NorthEast } from '@mui/icons-material';
-import BrandMark from '@/components/BrandMark';
 import {
   HEADER_COMPANY_LINKS,
   HEADER_CTAS,
@@ -175,24 +175,28 @@ export default function Header() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 1.25,
                 textDecoration: 'none',
                 color: 'inherit',
                 flexShrink: 0,
+                lineHeight: 0,
               }}
             >
-              <BrandMark size={40} />
-              <Typography
+              <Box
                 sx={{
-                  fontFamily: 'var(--font-manrope), Manrope, sans-serif',
-                  fontWeight: 800,
-                  fontSize: { xs: '1.1rem', lg: '1.2rem' },
-                  color: '#0E251D',
-                  letterSpacing: '-0.02em',
+                  position: 'relative',
+                  width: { xs: 132, sm: 152, lg: 168 },
+                  height: { xs: 44, sm: 50, lg: 56 },
                 }}
               >
-                ZeeShad
-              </Typography>
+                <Image
+                  src="/header-logo.png"
+                  alt="ZeeShad"
+                  fill
+                  priority
+                  sizes="168px"
+                  style={{ objectFit: 'contain', objectPosition: 'left center' }}
+                />
+              </Box>
             </Box>
 
             <Box
@@ -636,9 +640,15 @@ export default function Header() {
         sx={{ display: { lg: 'none' } }}
       >
         <Box sx={{ p: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Typography sx={{ fontFamily: 'var(--font-manrope), Manrope, sans-serif', fontWeight: 800, color: '#0E251D' }}>
-            ZeeShad
-          </Typography>
+          <Box sx={{ position: 'relative', width: 140, height: 46 }}>
+            <Image
+              src="/header-logo.png"
+              alt="ZeeShad"
+              fill
+              sizes="140px"
+              style={{ objectFit: 'contain', objectPosition: 'left center' }}
+            />
+          </Box>
           <IconButton aria-label="Close menu" onClick={() => setMobileOpen(false)}>
             <Close />
           </IconButton>
