@@ -220,6 +220,32 @@ export const NAV_PRIMARY = [
   { href: '/contact', label: 'Contact' },
 ] as const;
 
+/** Code District–style header IA mapped to ZeeShad routes */
+export const HEADER_NAV = [
+  { id: 'clients', label: 'Clients', href: '/#clients', mega: null },
+  { id: 'solutions', label: 'Solutions', href: '/solutions', mega: 'solutions' as const },
+  { id: 'products', label: 'Products', href: '/products', mega: 'products' as const },
+  { id: 'company', label: 'Company', href: '/company', mega: 'company' as const },
+] as const;
+
+export const HEADER_COMPANY_LINKS = [
+  { href: '/company', title: 'About ZeeShad', desc: 'Legal identity and operating model' },
+  { href: '/case-studies', title: 'Delivery approach', desc: 'How we scope, build and hand over' },
+  { href: '/enterprise-government', title: 'Enterprise & government', desc: 'Institutional pathway' },
+  {
+    href: '/enterprise-government/capability-statement',
+    title: 'Corporate profile',
+    desc: 'Request a capability statement',
+  },
+  { href: '/privacy', title: 'Privacy', desc: 'How we handle enquiry data' },
+  { href: '/contact', title: 'Contact', desc: 'Discuss a project' },
+] as const;
+
+export const HEADER_CTAS = {
+  secondary: { label: 'ZeeShad Desk', href: 'https://desk.zeeshad.com/' },
+  primary: { label: 'Free Discovery Session', href: '/contact' },
+} as const;
+
 export const CONTACT_INTERESTS = [
   'Discuss a project',
   'Request a proposal',
