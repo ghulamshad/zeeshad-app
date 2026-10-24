@@ -7,8 +7,8 @@ import {
   Link as MuiLink,
   Divider,
 } from '@mui/material';
+import Image from 'next/image';
 import Link from 'next/link';
-import BrandMark from '@/components/BrandMark';
 import { COMPANY, NAV_PRIMARY, SITE_VERSION } from '@/lib/content/site';
 
 export default function Footer() {
@@ -48,30 +48,25 @@ export default function Footer() {
           }}
         >
           <Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
-              <BrandMark size={44} invert />
-              <Box>
-                <Typography
-                  sx={{
-                    fontFamily: 'var(--font-manrope), Manrope, sans-serif',
-                    fontWeight: 800,
-                    fontSize: '1.2rem',
-                    color: '#fff',
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  ZeeShad
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: '0.65rem',
-                    color: 'rgba(255,255,255,0.5)',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Enterprise software · AI · transformation
-                </Typography>
+            <Box
+              component={Link}
+              href="/"
+              aria-label="ZeeShad home"
+              sx={{
+                display: 'inline-flex',
+                mb: 2.5,
+                lineHeight: 0,
+                textDecoration: 'none',
+              }}
+            >
+              <Box sx={{ position: 'relative', width: { xs: 148, md: 168 }, height: { xs: 50, md: 56 } }}>
+                <Image
+                  src="/footer-logo.png"
+                  alt="ZeeShad"
+                  fill
+                  sizes="168px"
+                  style={{ objectFit: 'contain', objectPosition: 'left center' }}
+                />
               </Box>
             </Box>
             <Typography sx={{ fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 280 }}>
