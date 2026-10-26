@@ -4,45 +4,13 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import Link from 'next/link';
 import { ArrowForward } from '@mui/icons-material';
 import { Reveal, Stagger, StaggerItem } from '@/components/Motion';
-import { SOLUTION_PILLARS } from '@/lib/content/site';
+import { HOME_SERVICES_INTRO, SERVICE_TIERS } from '@/lib/content/marketing';
 
-const EXTRA_SERVICES = [
-  {
-    title: 'System integration',
-    desc: 'CRM, accounts, warehouse and sales share one record—so nobody re-types the same order three times.',
-    href: '/solutions#custom-software-saas',
-    tint: '#FFF1E8',
-  },
-  {
-    title: 'Custom software development',
-    desc: 'Build from scratch or replace per-seat tools with software you own—scoped before we write code.',
-    href: '/solutions#custom-software-saas',
-    tint: '#EAF0FF',
-  },
-] as const;
-
-const MORE_LINKS = [
-  { label: 'Products', href: '/products' },
-  { label: 'Enterprise', href: '/enterprise' },
-  { label: 'Case studies', href: '/case-studies' },
-  { label: 'Company', href: '/company' },
-] as const;
-
-const PILLAR_TINTS = ['#EAF0FF', '#E7F6EE', '#F1EDFC'] as const;
+const TINTS = ['#EAF0FF', '#E7F6EE', '#F1EDFC'] as const;
 
 export default function ServicesSection() {
-  const cards = [
-    ...SOLUTION_PILLARS.map((p, i) => ({
-      title: p.title,
-      desc: p.outcome,
-      href: p.href,
-      tint: PILLAR_TINTS[i % PILLAR_TINTS.length],
-    })),
-    ...EXTRA_SERVICES,
-  ];
-
   return (
-    <Box component="section" id="services" className="zs-services" sx={{ py: { xs: 8, md: 11 }, bgcolor: '#F5F5F5' }}>
+    <Box component="section" id="services" sx={{ py: { xs: 8, md: 11 }, bgcolor: '#F5F5F5' }}>
       <Container maxWidth="lg">
         <Reveal>
           <Box
@@ -66,7 +34,7 @@ export default function ServicesSection() {
                   textTransform: 'uppercase',
                 }}
               >
-                Our Services
+                Services
               </Typography>
               <Typography
                 variant="h2"
@@ -80,19 +48,18 @@ export default function ServicesSection() {
                   maxWidth: 480,
                 }}
               >
-                Services that deliver value at scale
+                {HOME_SERVICES_INTRO.title}
               </Typography>
-              <Typography sx={{ color: '#505050', maxWidth: 480, lineHeight: 1.65 }}>
-                Each service fixes a real problem your team deals with every day—built with a named lead and written
-                scope.
+              <Typography sx={{ color: '#505050', maxWidth: 560, lineHeight: 1.65 }}>
+                {HOME_SERVICES_INTRO.body}
               </Typography>
             </Box>
             <Button
               component={Link}
-              href="/solutions"
+              href="/services"
               variant="outlined"
               endIcon={<ArrowForward sx={{ fontSize: 14 }} />}
-              sx={{ alignSelf: { xs: 'flex-start', md: 'auto' }, fontWeight: 700, textTransform: 'none', borderRadius: 1 }}
+              sx={{ fontWeight: 700, textTransform: 'none', borderRadius: 1 }}
             >
               Explore all services
             </Button>
@@ -100,15 +67,9 @@ export default function ServicesSection() {
         </Reveal>
 
         <Stagger>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: '1fr 1fr', lg: 'repeat(3, 1fr)' },
-              gap: 2,
-            }}
-          >
-            {cards.map((card) => (
-              <StaggerItem key={card.title}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr 1fr' }, gap: 2 }}>
+            {SERVICE_TIERS.map((tier, i) => (
+              <StaggerItem key={tier.slug}>
                 <Box
                   component="article"
                   sx={{
@@ -121,23 +82,31 @@ export default function ServicesSection() {
                     overflow: 'hidden',
                   }}
                 >
-                  <Box aria-hidden sx={{ minHeight: 140, bgcolor: card.tint, backgroundImage: `linear-gradient(160deg, ${card.tint} 0%, #fff 90%)` }} />
+                  <Box
+                    aria-hidden
+                    sx={{
+                      minHeight: 120,
+                      bgcolor: TINTS[i % TINTS.length],
+                      backgroundImage: `linear-gradient(160deg, ${TINTS[i % TINTS.length]} 0%, #fff 90%)`,
+                    }}
+                  />
                   <Box sx={{ p: 2.75, display: 'flex', flexDirection: 'column', gap: 1.5, flex: 1 }}>
                     <Typography component="h3" sx={{ fontWeight: 800, fontSize: '1.1rem', color: '#0E251D' }}>
-                      {card.title}
+                      {tier.title}
                     </Typography>
                     <Typography sx={{ color: '#505050', fontSize: '0.9rem', lineHeight: 1.6, flex: 1 }}>
-                      {card.desc}
+                      {tier.homeBlurb}
                     </Typography>
+                    <Typography sx={{ fontSize: '0.8rem', fontWeight: 700, color: 'primary.main' }}>{tier.fee}</Typography>
                     <Button
                       component={Link}
-                      href={card.href}
+                      href={tier.href}
                       variant="contained"
                       size="small"
                       endIcon={<ArrowForward sx={{ fontSize: 13 }} />}
                       sx={{ alignSelf: 'flex-start', fontWeight: 700, textTransform: 'none', borderRadius: 1 }}
                     >
-                      Explore more
+                      Learn more
                     </Button>
                   </Box>
                 </Box>
@@ -145,34 +114,6 @@ export default function ServicesSection() {
             ))}
           </Box>
         </Stagger>
-
-        <Box sx={{ mt: 4 }}>
-          <Typography sx={{ fontWeight: 700, fontSize: '0.8rem', color: '#505050', mb: 1.5 }}>More</Typography>
-          <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-            {MORE_LINKS.map((link) => (
-              <Box component="li" key={link.href}>
-                <Button
-                  component={Link}
-                  href={link.href}
-                  size="small"
-                  sx={{
-                    bgcolor: '#fff',
-                    border: '1px solid #E0E0E0',
-                    borderRadius: 999,
-                    px: 1.75,
-                    py: 0.75,
-                    fontWeight: 700,
-                    color: '#0E251D',
-                    textTransform: 'none',
-                    '&:hover': { borderColor: 'primary.main', color: 'primary.main' },
-                  }}
-                >
-                  {link.label}
-                </Button>
-              </Box>
-            ))}
-          </Box>
-        </Box>
       </Container>
     </Box>
   );

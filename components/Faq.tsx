@@ -11,10 +11,12 @@ import {
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 import { Reveal } from '@/components/Motion';
-import { SOLUTIONS_FAQ } from '@/lib/content/solutions';
+import { WHY_PAGE } from '@/lib/content/marketing';
+
+const FAQ_ITEMS = WHY_PAGE.faq;
 
 export default function Faq() {
-  const [expanded, setExpanded] = useState<string | false>(SOLUTIONS_FAQ[0].q);
+  const [expanded, setExpanded] = useState<string | false>(FAQ_ITEMS[0].q);
 
   return (
     <Box
@@ -41,7 +43,7 @@ export default function Faq() {
           </Typography>
         </Reveal>
 
-        {SOLUTIONS_FAQ.map((item) => (
+        {FAQ_ITEMS.map((item) => (
           <Accordion
             key={item.q}
             disableGutters

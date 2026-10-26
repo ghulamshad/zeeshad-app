@@ -1,23 +1,18 @@
 'use client';
 
-import { Box, Container, Typography, Link as MuiLink } from '@mui/material';
+import { Box, Container, Typography, Button, Link as MuiLink } from '@mui/material';
+import Link from 'next/link';
 import { CheckCircleOutline } from '@mui/icons-material';
 import { Reveal } from '@/components/Motion';
-import { COMPANY, PROOF_DRAFT, PROOF_RECOGNITIONS } from '@/lib/content/site';
+import { CALENDLY_URL, CLOSING_BLOCK, SCOPING_CTA } from '@/lib/content/marketing';
+import { COMPANY } from '@/lib/content/site';
 import ContactSection from '@/components/ContactSection';
-
-const POINTS = [
-  'Your biggest bottleneck, named',
-  'A build, buy or automate recommendation',
-  'A rough scope and timeline',
-] as const;
 
 export default function DiscoverySection() {
   return (
     <Box
       component="section"
       id="discovery"
-      className="zs-discovery"
       sx={{ py: { xs: 8, md: 11 }, bgcolor: '#F5F5F5', scrollMarginTop: 96 }}
     >
       <Container maxWidth="lg">
@@ -43,7 +38,7 @@ export default function DiscoverySection() {
                 textTransform: 'uppercase',
               }}
             >
-              Free discovery session
+              Free scoping call
             </Typography>
             <Typography
               variant="h2"
@@ -54,48 +49,16 @@ export default function DiscoverySection() {
                 fontSize: { xs: '1.65rem', md: '2.1rem' },
                 color: '#0E251D',
                 mb: 1.5,
-                maxWidth: 360,
+                maxWidth: 400,
               }}
             >
-              Book time with our team.
+              {CLOSING_BLOCK.title}
             </Typography>
-            <Typography sx={{ color: '#505050', mb: 3, maxWidth: 380, lineHeight: 1.65 }}>
-              You leave with a straight answer on what to build first—even if you don&apos;t build it with us.
+            <Typography sx={{ color: '#505050', mb: 3, maxWidth: 420, lineHeight: 1.65 }}>
+              {CLOSING_BLOCK.body}
             </Typography>
 
-            <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, mb: 3.5 }}>
-              {POINTS.map((point) => (
-                <Box
-                  component="li"
-                  key={point}
-                  sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.25, mb: 1.5 }}
-                >
-                  <CheckCircleOutline sx={{ color: 'primary.main', fontSize: 22, mt: 0.15 }} aria-hidden />
-                  <Typography sx={{ fontWeight: 600, color: '#0E251D', fontSize: '0.95rem' }}>{point}</Typography>
-                </Box>
-              ))}
-            </Box>
-
-            <Box component="ul" sx={{ listStyle: 'none', m: 0, p: 0, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {PROOF_RECOGNITIONS.slice(0, 3).map((item) => (
-                <Box
-                  component="li"
-                  key={item.label}
-                  sx={{
-                    px: 1.5,
-                    py: 0.85,
-                    borderRadius: 1,
-                    border: '1px dashed #D5D5D5',
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    color: '#505050',
-                  }}
-                >
-                  {item.label}
-                  {PROOF_DRAFT ? ' · draft' : ''}
-                </Box>
-              ))}
-            </Box>
+            <StackButtons />
 
             <Typography sx={{ mt: 3, color: '#505050', fontSize: '0.85rem' }}>
               Or reach us at{' '}
@@ -111,15 +74,46 @@ export default function DiscoverySection() {
 
           <Box>
             <Typography component="h3" sx={{ fontWeight: 800, fontSize: '1.15rem', color: '#0E251D', mb: 0.5 }}>
-              How can we help you?
+              Tell us what needs handling
             </Typography>
             <Typography sx={{ color: '#505050', mb: 2, fontSize: '0.9rem' }}>
-              Get in touch. We&apos;d love to hear from you.
+              Not sure which service you need? Pick Not sure yet. Most first calls start there.
             </Typography>
             <ContactSection embedded />
           </Box>
         </Box>
       </Container>
+    </Box>
+  );
+}
+
+function StackButtons() {
+  return (
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5, mb: 2 }}>
+      <Button
+        component={Link}
+        href={SCOPING_CTA.href}
+        variant="contained"
+        sx={{ fontWeight: 700, borderRadius: 1, px: 2.5, py: 1.2 }}
+      >
+        {SCOPING_CTA.label}
+      </Button>
+      <Button
+        component="a"
+        href={CALENDLY_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="outlined"
+        sx={{ fontWeight: 700, borderRadius: 1, px: 2.5, py: 1.2 }}
+      >
+        Skip the form, pick the time
+      </Button>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: '100%', mt: 0.5 }}>
+        <CheckCircleOutline sx={{ color: 'primary.main', fontSize: 20 }} aria-hidden />
+        <Typography sx={{ fontSize: '0.85rem', color: '#505050' }}>
+          No invoice until you approve the scope
+        </Typography>
+      </Box>
     </Box>
   );
 }

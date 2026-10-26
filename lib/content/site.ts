@@ -16,46 +16,38 @@ export const COMPANY = {
     'D-17 Ground Floor, Gulistan Society',
     'Quaidabad, Karachi, Pakistan',
   ],
-  hours: 'Monday–Friday, 09:00–18:00 Pakistan Standard Time (PKT, UTC+5)',
-  incorporationNote: 'Incorporated under Companies Act, 2017 (XIX of 2017)',
+  hours: 'Monday–Friday, 9 AM to 6 PM PKT. Calls booked in US business hours.',
+  incorporationNote: 'Incorporated under the Companies Act, 2017. All rights reserved.',
+  positioning:
+    'A remote-first digital marketing agency headquartered in Karachi, Pakistan, working with businesses across the United States.',
 } as const;
 
-/** Audit-recommended positioning (owner-authorized via audit.md) */
+/** From ZeeShad_Website.pdf — home hero */
 export const HOME_HERO = {
-  eyebrow: 'Enterprise Software · AI · Digital Transformation',
-  h1: 'Enterprise software, AI and automation,',
-  h1Accent: 'powered by clear delivery',
-  body: 'Custom business systems and workflow automation for mid-market companies that need software that fits how they work.',
-  primaryCta: { label: 'Free Discovery', href: '/contact' },
-  secondaryCta: { label: 'Explore Our Solutions', href: '/solutions' },
+  eyebrow: 'Done-for-you digital marketing',
+  h1: 'Marketing that shows up as calls, quotes',
+  h1Accent: 'and booked jobs.',
+  body: 'ZeeShad runs your ads, social, email and SEO and reports every Friday on what came in. One written scope, one account lead, month to month. You keep every account.',
+  primaryCta: { label: 'Book a Scoping Call', href: '/contact' },
+  secondaryCta: { label: 'See how it works', href: '/approach' },
 } as const;
 
 export const HOME_HERO_TAGS = [
-  { label: 'Digitize Operations', href: '/solutions#enterprise-business-systems' },
-  { label: 'Modernize Systems', href: '/solutions#custom-software-saas' },
-  { label: 'Enable AI', href: '/solutions#ai-automation' },
-  { label: 'Connect Systems', href: '/solutions#custom-software-saas' },
+  { label: 'One channel', href: '/services/one-channel' },
+  { label: 'Combined channels', href: '/services/combined-channels' },
+  { label: 'Full handoff', href: '/services/full-handoff' },
+  { label: 'See the process', href: '/approach' },
 ] as const;
 
-/**
- * Owner-approved client names only. No logos, quotes, or results unless separately cleared.
- */
+/** Trusted-by strip — text logos until files and permission collected */
 export const CLIENTS = [
-  {
-    name: 'Mushaz Perfumes',
-    href: 'https://www.mushaz.com/',
-    note: 'Fragrance brand',
-  },
-  {
-    name: 'Ornavibe',
-    href: 'https://www.ornavibe.com/',
-    note: 'ornavibe.com',
-  },
-  {
-    name: 'Al Zohra Welfare Association',
-    href: 'https://www.al-zohra.org/',
-    note: 'Welfare & education',
-  },
+  { name: 'Vibe Metal', href: '/#results', note: 'US metal supply' },
+  { name: 'Ascent Innovations', href: '/#results', note: 'B2B software' },
+  { name: 'Dr Shahrukh Memon', href: '/#results', note: 'Aesthetic clinic' },
+  { name: 'Lantis', href: '/#results', note: 'Messaging app' },
+  { name: 'Mushaz Perfumes', href: 'https://www.mushaz.com/', note: 'Fragrance brand' },
+  { name: 'Ornavibe', href: 'https://www.ornavibe.com/', note: 'ornavibe.com' },
+  { name: 'Al Zohra Welfare Association', href: 'https://www.al-zohra.org/', note: 'Welfare & education' },
 ] as const;
 
 export const HOW_WE_WORK = [
@@ -220,57 +212,54 @@ export const DELIVERY_STEPS = [
 
 export const NAV_PRIMARY = [
   { href: '/', label: 'Home' },
-  { href: '/solutions', label: 'Solutions' },
-  { href: '/products', label: 'Products' },
-  { href: '/case-studies', label: 'Delivery' },
-  { href: '/enterprise-government', label: 'Enterprise' },
-  { href: '/company', label: 'Company' },
+  { href: '/services', label: 'Services' },
+  { href: '/approach', label: 'Approach' },
+  { href: '/why-zeeshad', label: 'Why ZeeShad' },
+  { href: '/about', label: 'About' },
+  { href: '/resources', label: 'Resources' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
-/** Code District–style header IA mapped to ZeeShad routes */
+/** Header IA from ZeeShad_Website.pdf */
 export const HEADER_NAV = [
-  { id: 'clients', label: 'Clients', href: '/#clients', mega: null },
-  { id: 'solutions', label: 'Solutions', href: '/solutions', mega: 'solutions' as const },
-  { id: 'products', label: 'Products', href: '/products', mega: 'products' as const },
-  { id: 'company', label: 'Company', href: '/company', mega: 'company' as const },
+  { id: 'services', label: 'Services', href: '/services', mega: 'services' as const },
+  { id: 'approach', label: 'Approach', href: '/approach', mega: null },
+  { id: 'why', label: 'Why ZeeShad', href: '/why-zeeshad', mega: null },
+  { id: 'about', label: 'About', href: '/about', mega: null },
+  { id: 'resources', label: 'Resources', href: '/resources', mega: null },
+  { id: 'contact', label: 'Contact', href: '/contact', mega: null },
 ] as const;
 
 export const HEADER_COMPANY_LINKS = [
-  { href: '/company', title: 'About ZeeShad', desc: 'Legal identity and operating model' },
-  { href: '/case-studies', title: 'Delivery approach', desc: 'How we scope, build and hand over' },
-  { href: '/enterprise-government', title: 'Enterprise & government', desc: 'Institutional pathway' },
-  {
-    href: '/enterprise-government/capability-statement',
-    title: 'Corporate profile',
-    desc: 'Request a capability statement',
-  },
-  { href: '/privacy', title: 'Privacy', desc: 'How we handle enquiry data' },
-  { href: '/contact', title: 'Contact', desc: 'Discuss a project' },
+  { href: '/about', title: 'About ZeeShad', desc: 'The company and the accounts that shaped it' },
+  { href: '/approach', title: 'Approach', desc: 'Scope, setup, execute, report' },
+  { href: '/why-zeeshad', title: 'Why ZeeShad', desc: 'The option between hiring and an agency' },
+  { href: '/resources', title: 'Resources', desc: 'Guides, case studies and news' },
+  { href: '/privacy', title: 'Privacy', desc: 'What the site collects and why' },
+  { href: '/contact', title: 'Contact', desc: 'Book a scoping call' },
 ] as const;
 
 export const HEADER_CTAS = {
-  secondary: { label: 'ZeeShad Desk', href: 'https://desk.zeeshad.com/' },
-  primary: { label: 'Free Discovery Session', href: '/contact' },
+  secondary: { label: 'See how it works', href: '/approach' },
+  primary: { label: 'Book a Scoping Call', href: '/contact' },
 } as const;
 
 export const CONTACT_INTERESTS = [
-  'Discuss a project',
-  'Request a proposal',
-  'ZeeShad Desk demo / trial',
-  'Enterprise / government inquiry',
-  'Custom software',
-  'AI & automation',
-  'Digital marketing',
-  'Other',
+  'Paid advertising',
+  'Social media',
+  'Email marketing',
+  'SEO and content',
+  'Lead generation',
+  'All of it',
+  'Not sure yet',
 ] as const;
 
 export const COMPANY_OVERVIEW = {
-  headline: 'A Karachi-based software and growth partner',
+  headline: 'A marketing department you can subscribe to.',
   paragraphs: [
-    'ZeeShad (Private) Limited designs, builds and supports business systems for organizations that need software that fits how they work—not a generic brochure of every IT category.',
-    'Our commercial focus is enterprise business systems, custom software and SaaS, and AI-enabled automation, alongside live products such as ZeeShad Desk.',
-    'We work with clients over email, video calls and messaging. We aim to overlap UK afternoons and US Eastern mornings when a project needs it.',
+    'ZeeShad (Private) Limited is a remote-first digital marketing agency headquartered in Karachi, Pakistan, working with businesses across the United States.',
+    'We plan, build and run marketing for owners and small teams who need the output of a marketing department without the payroll, the term contract or the management overhead.',
+    'Our clients are in the United States. Calls are booked in US business hours, all work and communication is in English and in writing, and your account lead replies within one business day, Monday to Friday.',
   ],
 } as const;
 
@@ -298,43 +287,42 @@ export const CASE_STUDIES_INTRO = {
   body: 'Approved case studies will be published here as clients permit. Until then, this page explains how we deliver so you can judge the approach, not marketing claims.',
 } as const;
 
-/**
- * DRAFT proof layout (Code District–style structure).
- * Replace every value with owner-approved ZeeShad facts, then set PROOF_DRAFT = false.
- * Do not treat placeholder copy as live company claims.
- */
-export const PROOF_DRAFT = true;
+/** Live proof from ZeeShad_Website.pdf (named accounts with spend attached). */
+export const PROOF_DRAFT = false;
 
 export const PROOF_METRICS = [
-  { value: 'XX', label: 'Replace — client outcomes / savings' },
-  { value: 'XX+', label: 'Replace — solutions delivered' },
-  { value: 'X+', label: 'Replace — years in business' },
+  { value: '$499', label: 'From, per channel / month' },
+  { value: '30 days', label: 'Written notice, month to month' },
+  { value: 'Friday', label: 'Weekly note on what came in' },
 ] as const;
 
 export const PROOF_RECOGNITIONS = [
-  { label: 'Recognition 1', note: 'Replace when verified' },
-  { label: 'Recognition 2', note: 'Replace when verified' },
-  { label: 'Certification', note: 'Replace when verified' },
-  { label: 'Listing / award', note: 'Replace when verified' },
+  { label: 'One-page scope', note: 'Before any invoice' },
+  { label: 'Account lead', note: 'Named on your scope' },
+  { label: 'Your accounts', note: 'Stay in your name' },
+  { label: 'US business hours', note: 'Calls booked for US clients' },
 ] as const;
 
 export const PROOF_TESTIMONIALS = [
   {
-    quote: 'Replace with an approved client quote. Do not publish without permission.',
-    name: 'Client name',
-    role: 'Title, organisation',
-    result: 'Replace — outcome headline (only if verified)',
+    quote:
+      'Vibe Metal runs Google Ads with ZeeShad on $1,500 a month of ad spend: 25 to 35 inbound calls a day and 5 to 8 qualified quote requests a day.',
+    name: 'Vibe Metal',
+    role: 'US metal supply and fabrication',
+    result: 'Under $10 per qualified lead',
   },
   {
-    quote: 'Replace with an approved client quote. Do not publish without permission.',
-    name: 'Client name',
-    role: 'Title, organisation',
-    result: 'Replace — outcome headline (only if verified)',
+    quote:
+      'Ascent Innovations: $1,600 of Google Ads spend over three months produced 46 qualified leads for a Microsoft Dynamics partner.',
+    name: 'Ascent Innovations',
+    role: 'B2B software',
+    result: 'About $35 per qualified lead',
   },
   {
-    quote: 'Replace with an approved client quote. Do not publish without permission.',
-    name: 'Client name',
-    role: 'Title, organisation',
-    result: 'Replace — outcome headline (only if verified)',
+    quote:
+      'Dr Shahrukh Memon clinic: PKR 25,000 Meta Ads spend produced 150+ WhatsApp conversations and 50+ qualified patients booked.',
+    name: 'Dr Shahrukh Memon',
+    role: 'Aesthetic clinic',
+    result: 'About PKR 500 per patient',
   },
 ] as const;

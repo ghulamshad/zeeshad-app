@@ -25,11 +25,10 @@ import {
   HEADER_COMPANY_LINKS,
   HEADER_CTAS,
   HEADER_NAV,
-  PRODUCTS,
-  SOLUTION_PILLARS,
 } from '@/lib/content/site';
+import { SERVICE_TIERS } from '@/lib/content/marketing';
 
-type MegaId = 'solutions' | 'products' | 'company';
+type MegaId = 'services' | 'company';
 
 function PlusIcon({ open }: { open: boolean }) {
   return (
@@ -228,14 +227,14 @@ export default function Header() {
                         aria-haspopup={hasMega ? 'true' : undefined}
                         aria-expanded={hasMega ? megaOpen : undefined}
                         onMouseEnter={() => {
-                          if (item.mega) openPanel(item.mega);
+                          if (item.mega) openPanel(item.mega as MegaId);
                           else {
                             clearCloseTimer();
                             setOpenMega(null);
                           }
                         }}
                         onFocus={() => {
-                          if (item.mega) openPanel(item.mega);
+                          if (item.mega) openPanel(item.mega as MegaId);
                         }}
                         sx={{
                           display: 'inline-flex',
@@ -309,12 +308,12 @@ export default function Header() {
           </Toolbar>
         </Container>
 
-        {/* Solutions mega */}
+        {/* Services mega */}
         <Box
-          onMouseEnter={() => openPanel('solutions')}
+          onMouseEnter={() => openPanel('services')}
           onMouseLeave={scheduleClose}
           sx={{
-            display: { xs: 'none', lg: openMega === 'solutions' ? 'block' : 'none' },
+            display: { xs: 'none', lg: openMega === 'services' ? 'block' : 'none' },
             position: 'absolute',
             left: 0,
             right: 0,
@@ -323,21 +322,21 @@ export default function Header() {
             borderBottom: '1px solid #E8E8E8',
             boxShadow: '0 18px 40px rgba(11,19,36,0.08)',
           }}
-          aria-hidden={openMega !== 'solutions'}
+          aria-hidden={openMega !== 'services'}
         >
           <Container maxWidth="lg" sx={{ py: 3 }}>
             <Box
               sx={{
                 display: 'grid',
-                gridTemplateColumns: { lg: '1fr 1fr 0.85fr' },
+                gridTemplateColumns: { lg: '1fr 1fr 1fr 0.85fr' },
                 gap: 2,
               }}
             >
-              {SOLUTION_PILLARS.map((pillar, i) => (
+              {SERVICE_TIERS.map((tier, i) => (
                 <Box
-                  key={pillar.slug}
+                  key={tier.slug}
                   component={Link}
-                  href={pillar.href}
+                  href={tier.href}
                   onClick={() => setOpenMega(null)}
                   sx={{
                     display: 'flex',
@@ -365,16 +364,16 @@ export default function Header() {
                       mb: 1,
                     }}
                   >
-                    SOLUTION {String(i + 1).padStart(2, '0')}_
+                    SERVICE {String(i + 1).padStart(2, '0')}_
                   </Typography>
                   <Typography sx={{ fontWeight: 800, color: '#0E251D', mb: 1, fontSize: '1.05rem' }}>
-                    {pillar.title}_
+                    {tier.title}
                   </Typography>
                   <Typography sx={{ color: '#505050', fontSize: '0.875rem', lineHeight: 1.6, flexGrow: 1 }}>
-                    {pillar.outcome}
+                    {tier.homeBlurb}
                   </Typography>
                   <Typography sx={{ color: 'text.secondary', fontSize: '0.75rem', mt: 2, lineHeight: 1.5 }}>
-                    {pillar.problem}
+                    {tier.fee}
                   </Typography>
                 </Box>
               ))}
@@ -408,111 +407,17 @@ export default function Header() {
                       mb: 1.5,
                     }}
                   >
-                    LET&apos;S TALK_
+                    SCOPING CALL_
                   </Typography>
                   <Typography sx={{ fontWeight: 800, fontSize: '1.25rem', mb: 1, lineHeight: 1.25 }}>
-                    Don&apos;t know where to start?
+                    Ready to hand it off?
                   </Typography>
                   <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', lineHeight: 1.55 }}>
-                    Book a discovery conversation.
+                    Book a 30-minute scoping call.
                     <br />
-                    Straight next steps—no invented pitch.
+                    One-page scope within three business days.
                   </Typography>
                 </Box>
-              </Box>
-            </Box>
-          </Container>
-        </Box>
-
-        {/* Products mega */}
-        <Box
-          onMouseEnter={() => openPanel('products')}
-          onMouseLeave={scheduleClose}
-          sx={{
-            display: { xs: 'none', lg: openMega === 'products' ? 'block' : 'none' },
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: '100%',
-            bgcolor: '#F5F5F5',
-            borderBottom: '1px solid #E8E8E8',
-            boxShadow: '0 18px 40px rgba(11,19,36,0.08)',
-          }}
-          aria-hidden={openMega !== 'products'}
-        >
-          <Container maxWidth="lg" sx={{ py: 3 }}>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { lg: '1.2fr 0.8fr' },
-                gap: 2,
-              }}
-            >
-              <Box
-                component="ul"
-                role="menu"
-                aria-label="Products"
-                sx={{ listStyle: 'none', m: 0, p: 0, display: 'flex', flexDirection: 'column', gap: 0.5 }}
-              >
-                {PRODUCTS.map((product) => (
-                  <Box component="li" key={product.slug} sx={{ listStyle: 'none' }}>
-                    <Box
-                      component={Link}
-                      href={`/products/${product.slug}`}
-                      role="menuitem"
-                      onClick={() => setOpenMega(null)}
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 2,
-                        p: 2,
-                        borderRadius: 2,
-                        bgcolor: '#fff',
-                        border: '1px solid #E8E8E8',
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        '&:hover': { borderColor: 'primary.light' },
-                      }}
-                    >
-                      <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                        <Typography sx={{ fontWeight: 700, color: '#0E251D', fontSize: '0.95rem' }}>
-                          {product.name}
-                        </Typography>
-                        <Typography sx={{ color: '#505050', fontSize: '0.8rem', mt: 0.35 }}>
-                          {product.status} · {product.purpose.slice(0, 72)}
-                          {product.purpose.length > 72 ? '…' : ''}
-                        </Typography>
-                      </Box>
-                      <Add sx={{ fontSize: 18, color: '#505050', transform: 'rotate(-45deg)' }} />
-                    </Box>
-                  </Box>
-                ))}
-              </Box>
-              <Box
-                component={Link}
-                href="/contact"
-                onClick={() => setOpenMega(null)}
-                sx={{
-                  p: 2.5,
-                  borderRadius: 2,
-                  bgcolor: 'secondary.main',
-                  color: '#fff',
-                  textDecoration: 'none',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  minHeight: 180,
-                }}
-              >
-                <Typography sx={{ color: '#A8C0FF', fontWeight: 800, fontSize: '0.68rem', letterSpacing: '0.12em', mb: 1 }}>
-                  LET&apos;S TALK_
-                </Typography>
-                <Typography sx={{ fontWeight: 800, fontSize: '1.15rem', mb: 1 }}>
-                  Need a demo or a custom build?
-                </Typography>
-                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem', lineHeight: 1.55 }}>
-                  Request ZeeShad Desk access or discuss an ERP/POS engagement.
-                </Typography>
               </Box>
             </Box>
           </Container>
@@ -690,10 +595,10 @@ export default function Header() {
                   </ListItemButton>
                 )}
               </ListItem>
-              {item.mega === 'solutions' && (
-                <Collapse in={mobileExpand === 'solutions'}>
+              {item.mega === 'services' && (
+                <Collapse in={mobileExpand === 'services'}>
                   <List disablePadding sx={{ pl: 1, pb: 1 }}>
-                    {SOLUTION_PILLARS.map((p) => (
+                    {SERVICE_TIERS.map((p) => (
                       <ListItemButton
                         key={p.slug}
                         component={Link}
@@ -704,40 +609,14 @@ export default function Header() {
                         <ListItemText primary={p.title} primaryTypographyProps={{ fontSize: '0.9rem' }} />
                       </ListItemButton>
                     ))}
-                  </List>
-                </Collapse>
-              )}
-              {item.mega === 'products' && (
-                <Collapse in={mobileExpand === 'products'}>
-                  <List disablePadding sx={{ pl: 1, pb: 1 }}>
-                    {PRODUCTS.map((p) => (
-                      <ListItemButton
-                        key={p.slug}
-                        component={Link}
-                        href={`/products/${p.slug}`}
-                        onClick={() => setMobileOpen(false)}
-                        sx={{ borderRadius: 1.5 }}
-                      >
-                        <ListItemText primary={p.name} primaryTypographyProps={{ fontSize: '0.9rem' }} />
-                      </ListItemButton>
-                    ))}
-                  </List>
-                </Collapse>
-              )}
-              {item.mega === 'company' && (
-                <Collapse in={mobileExpand === 'company'}>
-                  <List disablePadding sx={{ pl: 1, pb: 1 }}>
-                    {HEADER_COMPANY_LINKS.map((l) => (
-                      <ListItemButton
-                        key={l.href}
-                        component={Link}
-                        href={l.href}
-                        onClick={() => setMobileOpen(false)}
-                        sx={{ borderRadius: 1.5 }}
-                      >
-                        <ListItemText primary={l.title} primaryTypographyProps={{ fontSize: '0.9rem' }} />
-                      </ListItemButton>
-                    ))}
+                    <ListItemButton
+                      component={Link}
+                      href="/services"
+                      onClick={() => setMobileOpen(false)}
+                      sx={{ borderRadius: 1.5 }}
+                    >
+                      <ListItemText primary="All services" primaryTypographyProps={{ fontSize: '0.9rem' }} />
+                    </ListItemButton>
                   </List>
                 </Collapse>
               )}

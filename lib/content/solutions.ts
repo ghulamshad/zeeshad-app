@@ -222,11 +222,11 @@ export const SOLUTIONS_FAQ = [
 ];
 
 export const CTA_BAND = {
-  eyebrow: "LET'S TALK_",
-  title: "Don't know where to start?",
-  line: 'Share a short brief. We reply with what’s possible, next steps, and—where appropriate—a written scope outline. No invented promises.',
-  primary: 'Book a discovery conversation',
-  secondary: 'Explore Our Solutions',
+  eyebrow: 'READY TO HAND IT OFF_',
+  title: 'Ready to hand it off?',
+  line: 'Book a 30-minute scoping call. Within three business days you get a one-page scope with deliverables, dates and price. No invoice until you approve it.',
+  primary: 'Book a Scoping Call',
+  secondary: 'See how it works',
 };
 
 /** Homepage pillars matching the design system */
@@ -281,14 +281,13 @@ export const MARKETING_TEASER = {
 };
 
 export const SERVICE_SELECT_OPTIONS = [
-  'Discuss a project',
-  'Request a proposal',
-  'ZeeShad Desk demo / trial',
-  'Enterprise / government inquiry',
-  'Custom software',
-  'AI & automation',
-  'Digital marketing',
-  'Other',
+  'Paid advertising',
+  'Social media',
+  'Email marketing',
+  'SEO and content',
+  'Lead generation',
+  'All of it',
+  'Not sure yet',
 ] as const;
 
 /** Back-compat aliases used by older imports */
@@ -356,4 +355,4 @@ export const MAIN_SERVICES = [
 ];
 
 export const COMPANY_ONE_LINER =
-  'ZeeShad (Private) Limited designs, builds and supports business systems—enterprise software, custom SaaS, and AI-enabled automation—from Karachi, working with clients in Pakistan and internationally.';
+  'ZeeShad (Private) Limited is a remote-first digital marketing agency headquartered in Karachi, Pakistan, working with businesses across the United States.';

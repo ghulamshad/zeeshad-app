@@ -17,9 +17,9 @@ export default function Footer() {
   const explore = NAV_PRIMARY.filter((item) => item.href !== '/');
   const quickLinks = [
     { href: '/', label: 'Home' },
-    { href: '/case-studies', label: 'Delivery approach' },
+    { href: '/approach', label: 'Approach' },
     { href: '/contact', label: 'Contact' },
-    { href: '/privacy', label: 'Privacy Policy' },
+    { href: '/privacy', label: 'Privacy policy' },
   ];
 
   const linkSx = {
@@ -70,7 +70,7 @@ export default function Footer() {
               </Box>
             </Box>
             <Typography sx={{ fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 280 }}>
-              Technology that moves your business forward. {COMPANY.legalName}.
+              {COMPANY.positioning}
             </Typography>
           </Box>
 

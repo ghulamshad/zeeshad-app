@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import ContactPageContent from '@/components/pages/ContactPageContent';
+import { CONTACT_PAGE } from '@/lib/content/marketing';
 
 export const metadata: Metadata = {
-  title: 'Contact',
-  description:
-    'Contact ZeeShad to discuss a project, request a proposal, or ask about ZeeShad Desk.',
+  title: CONTACT_PAGE.metaTitle,
+  description: CONTACT_PAGE.metaDescription,
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact | ZeeShad',
-    description: 'Discuss a project with ZeeShad (Private) Limited.',
+    title: CONTACT_PAGE.metaTitle,
+    description: CONTACT_PAGE.metaDescription,
     url: '/contact',
   },
 };

@@ -3,6 +3,7 @@
 import { Box, Container, Typography } from '@mui/material';
 import SiteChrome from '@/components/SiteChrome';
 import ContactSection from '@/components/ContactSection';
+import { CONTACT_PAGE } from '@/lib/content/marketing';
 
 export default function ContactPageContent() {
   return (
@@ -22,11 +23,10 @@ export default function ContactPageContent() {
                 mb: 2,
               }}
             >
-              Discuss Your Project
+              {CONTACT_PAGE.hero}
             </Typography>
             <Typography sx={{ color: 'text.secondary', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Share a short brief. We reply with next steps and, where appropriate, a written scope
-              outline. You can also email or WhatsApp using the details beside the form.
+              {CONTACT_PAGE.body}
             </Typography>
           </Box>
           <ContactSection embedded />
