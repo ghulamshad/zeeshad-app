@@ -3,8 +3,9 @@ import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import HomeHero from '@/components/home/HomeHero';
 import Footer from '@/components/Footer';
-import { HOME_META, SERVICE_TIERS, WHY_PAGE } from '@/lib/content/marketing';
+import { HOME_META, SERVICE_TIERS } from '@/lib/content/marketing';
 import { COMPANY } from '@/lib/content/site';
+import { INSPIRED_FAQ } from '@/lib/content/inspiredHome';
 
 const sectionLoading = () => (
   <div className="section-loading" aria-hidden="true">
@@ -15,16 +16,28 @@ const sectionLoading = () => (
 const StandTodaySection = dynamic(() => import('@/components/home/StandTodaySection'), {
   loading: sectionLoading,
 });
-const DeliveryCompareSection = dynamic(() => import('@/components/home/DeliveryCompareSection'), {
+const ServicesSection = dynamic(() => import('@/components/home/ServicesSection'), {
   loading: sectionLoading,
 });
-const ServicesSection = dynamic(() => import('@/components/home/ServicesSection'), {
+const ClientsLogosSection = dynamic(() => import('@/components/home/ClientsLogosSection'), {
+  loading: sectionLoading,
+});
+const AiTechSection = dynamic(() => import('@/components/home/AiTechSection'), {
   loading: sectionLoading,
 });
 const StoriesSection = dynamic(() => import('@/components/home/StoriesSection'), {
   loading: sectionLoading,
 });
+const TestimonialsSection = dynamic(() => import('@/components/home/TestimonialsSection'), {
+  loading: sectionLoading,
+});
+const DeliveryCompareSection = dynamic(() => import('@/components/home/DeliveryCompareSection'), {
+  loading: sectionLoading,
+});
 const SecuritySection = dynamic(() => import('@/components/home/SecuritySection'), {
+  loading: sectionLoading,
+});
+const TechCapabilitiesSection = dynamic(() => import('@/components/home/TechCapabilitiesSection'), {
   loading: sectionLoading,
 });
 const Faq = dynamic(() => import('@/components/Faq'), { loading: sectionLoading });
@@ -92,7 +105,7 @@ export default function Home() {
   const faqData = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: WHY_PAGE.faq.map((item) => ({
+    mainEntity: INSPIRED_FAQ.items.map((item) => ({
       '@type': 'Question',
       name: item.q,
       acceptedAnswer: {
@@ -115,14 +128,32 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }} />
       <AnnouncementBar />
       <Header />
+      {/* 1 Hero */}
       <HomeHero />
+      {/* 2 Stats */}
       <StandTodaySection />
+      {/* 3 Services */}
       <ServicesSection />
+      {/* 4 Client logos */}
+      <ClientsLogosSection />
+      {/* 5 AI / watermark ZeeShad */}
+      <AiTechSection />
+      {/* 6 Case studies */}
       <StoriesSection />
+      {/* 7 Testimonials */}
+      <TestimonialsSection />
+      {/* 8 ROI */}
       <DeliveryCompareSection />
+      {/* 9 CEO */}
       <SecuritySection />
+      {/* 10 Tech */}
+      <TechCapabilitiesSection />
+      {/* 11 Global Presence — removed */}
+      {/* 12 FAQ */}
       <Faq />
+      {/* 13 Contact CTA */}
       <DiscoverySection />
+      {/* 14 removed */}
       <Footer />
     </main>
   );

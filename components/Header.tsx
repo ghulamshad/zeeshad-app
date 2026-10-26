@@ -100,6 +100,19 @@ export default function Header() {
     setMobileOpen(false);
   }, [pathname]);
 
+  // Clear sticky MUI/devtools scroll locks so the homepage never freezes.
+  useEffect(() => {
+    const unlock = () => {
+      if (document.body.style.overflow === 'hidden' && !mobileOpen) {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+      }
+    };
+    unlock();
+    const t = window.setTimeout(unlock, 300);
+    return () => window.clearTimeout(t);
+  }, [pathname, mobileOpen]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpenMega(null);
@@ -123,6 +136,7 @@ export default function Header() {
       href={HEADER_CTAS.primary.href}
       variant="contained"
       size="small"
+      endIcon={<NorthEast sx={{ fontSize: 14 }} />}
       onClick={() => {
         setOpenMega(null);
         setMobileOpen(false);
@@ -130,13 +144,15 @@ export default function Header() {
       sx={{
         fontSize: '0.8125rem',
         fontWeight: 700,
-        px: 2,
+        px: 2.25,
         py: 1,
         minHeight: 40,
-        borderRadius: 1,
+        borderRadius: 999,
         textTransform: 'none',
         whiteSpace: 'nowrap',
         boxShadow: 'none',
+        bgcolor: '#2457F5',
+        '&:hover': { bgcolor: '#FF5900', boxShadow: 'none' },
       }}
     >
       {HEADER_CTAS.primary.label}
@@ -152,9 +168,10 @@ export default function Header() {
         onMouseLeave={scheduleClose}
         sx={{
           zIndex: (t) => t.zIndex.appBar,
-          bgcolor: '#F5F5F5',
-          color: '#505050',
-          borderBottom: openMega ? 'none' : '1px solid #E8E8E8',
+          bgcolor: 'rgba(255,255,255,0.92)',
+          backdropFilter: 'blur(12px)',
+          color: '#4B5565',
+          borderBottom: openMega ? 'none' : '1px solid rgba(227,231,239,0.9)',
         }}
       >
         <Container maxWidth="lg">
@@ -280,10 +297,10 @@ export default function Header() {
                   px: 2,
                   py: 1,
                   minHeight: 40,
-                  borderRadius: 1,
+                  borderRadius: 999,
                   textTransform: 'none',
-                  borderColor: '#C9CED6',
-                  color: '#0E251D',
+                  borderColor: '#CBD2DE',
+                  color: '#0B1324',
                   bgcolor: 'transparent',
                   '&:hover': {
                     borderColor: 'primary.main',
@@ -538,7 +555,12 @@ export default function Header() {
         anchor="right"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-        ModalProps={{ keepMounted: true }}
+        ModalProps={{
+          keepMounted: true,
+          // Prevent MUI from leaving body { overflow: hidden } after close —
+          // that freezes the whole homepage so sections never scroll into view.
+          disableScrollLock: true,
+        }}
         PaperProps={{
           sx: { width: { xs: 320, sm: 360 }, bgcolor: '#F5F5F5' },
         }}

@@ -220,14 +220,13 @@ export const NAV_PRIMARY = [
   { href: '/contact', label: 'Contact' },
 ] as const;
 
-/** Header IA from ZeeShad_Website.pdf */
+/** Header IA — Webskitters-style top nav (no Explore with AI) */
 export const HEADER_NAV = [
-  { id: 'services', label: 'Services', href: '/services', mega: 'services' as const },
-  { id: 'approach', label: 'Approach', href: '/approach', mega: null },
-  { id: 'why', label: 'Why ZeeShad', href: '/why-zeeshad', mega: null },
   { id: 'about', label: 'About', href: '/about', mega: null },
-  { id: 'resources', label: 'Resources', href: '/resources', mega: null },
-  { id: 'contact', label: 'Contact', href: '/contact', mega: null },
+  { id: 'services', label: 'Services', href: '/services', mega: 'services' as const },
+  { id: 'solutions', label: 'Solutions', href: '/approach', mega: null },
+  { id: 'case-studies', label: 'Case Studies', href: '/#portfolio', mega: null },
+  { id: 'blog', label: 'Blog', href: '/resources', mega: null },
 ] as const;
 
 export const HEADER_COMPANY_LINKS = [
@@ -241,7 +240,7 @@ export const HEADER_COMPANY_LINKS = [
 
 export const HEADER_CTAS = {
   secondary: { label: 'See how it works', href: '/approach' },
-  primary: { label: 'Book a Scoping Call', href: '/contact' },
+  primary: { label: 'Hire Us', href: '/contact' },
 } as const;
 
 export const CONTACT_INTERESTS = [

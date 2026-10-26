@@ -1,103 +1,120 @@
 'use client';
 
-import { Box, Container, Typography, Button } from '@mui/material';
+import { useRef } from 'react';
+import { Box, Container, Typography, IconButton } from '@mui/material';
 import Link from 'next/link';
-import { ArrowForward } from '@mui/icons-material';
-import { Reveal, Stagger, StaggerItem } from '@/components/Motion';
-import { PROOF_ACCOUNTS, PROOF_DISCLAIMER } from '@/lib/content/marketing';
+import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { Reveal } from '@/components/Motion';
+import { ASSETS, INSPIRED_CASES } from '@/lib/content/inspiredHome';
+import { WS, wsCommonBtnSx, wsH2LightSx, wsToptitleSx } from '@/lib/wsDesign';
 
 export default function StoriesSection() {
+  const scroller = useRef<HTMLDivElement>(null);
+  const scrollBy = (dir: -1 | 1) => {
+    scroller.current?.scrollBy({ left: dir * 400, behavior: 'smooth' });
+  };
+
   return (
-    <Box component="section" id="results" sx={{ py: { xs: 8, md: 11 }, bgcolor: '#fff', scrollMarginTop: 96 }}>
-      <Container maxWidth="lg">
-        <Reveal>
+    <Box
+      component="section"
+      id="portfolio"
+      sx={{
+        py: { xs: 8, md: 12 },
+        bgcolor: WS.dark,
+        color: WS.white,
+        scrollMarginTop: 96,
+        position: 'relative',
+        overflow: 'hidden',
+        fontFamily: WS.fontBody,
+      }}
+    >
+      <Box aria-hidden component="img" src={ASSETS.caseBtm} alt="" sx={{ position: 'absolute', bottom: 0, left: 0, width: '100%', maxHeight: 240, objectFit: 'cover', opacity: 0.45, pointerEvents: 'none' }} />
+
+      <Container maxWidth={false} sx={{ position: 'relative', zIndex: 1, maxWidth: 1164, px: { xs: 2, md: 1.5 } }}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', lg: '0.38fr 0.62fr' },
+            gap: { xs: 4, lg: 4 },
+            alignItems: 'center',
+          }}
+        >
+          <Reveal>
+            <Typography component="span" sx={wsToptitleSx}>
+              {INSPIRED_CASES.eyebrow}
+            </Typography>
+            <Typography component="h2" sx={{ ...wsH2LightSx, mb: 3.5, maxWidth: 380 }}>
+              Dive into ZeeShad{' '}
+              <Box component="span" sx={{ color: WS.cyan }}>
+                Remarkable Portfolio
+              </Box>
+            </Typography>
+            <Box component={Link} href={INSPIRED_CASES.cta.href} sx={{ ...wsCommonBtnSx, mb: 2.5 }}>
+              {INSPIRED_CASES.cta.label}
+              <Box component="img" src={ASSETS.btnArrow} alt="" />
+            </Box>
+            <Box sx={{ display: 'flex', gap: 1.25 }}>
+              <IconButton onClick={() => scrollBy(-1)} aria-label="Previous" sx={{ width: 48, height: 48, border: '1px solid rgba(255,255,255,0.25)', color: '#fff', '&:hover': { bgcolor: WS.orange, borderColor: WS.orange } }}>
+                <ChevronLeft />
+              </IconButton>
+              <IconButton onClick={() => scrollBy(1)} aria-label="Next" sx={{ width: 48, height: 48, border: '1px solid rgba(255,255,255,0.25)', color: '#fff', '&:hover': { bgcolor: WS.orange, borderColor: WS.orange } }}>
+                <ChevronRight />
+              </IconButton>
+            </Box>
+          </Reveal>
+
           <Box
+            ref={scroller}
+            className="zs-h-scroll"
             sx={{
               display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              justifyContent: 'space-between',
-              alignItems: { md: 'flex-end' },
-              gap: 2,
-              mb: 4.5,
+              gap: 2.5,
+              overflowX: 'auto',
+              scrollSnapType: 'x mandatory',
+              pb: 1,
+              mx: { xs: -2, lg: 0 },
+              px: { xs: 2, lg: 0 },
             }}
           >
-            <Box>
-              <Typography
+            {INSPIRED_CASES.items.map((item) => (
+              <Box
+                key={item.title}
+                component="article"
                 sx={{
-                  color: 'primary.main',
-                  fontWeight: 800,
-                  letterSpacing: '0.1em',
-                  fontSize: '0.72rem',
-                  mb: 1.25,
-                  textTransform: 'uppercase',
+                  flex: '0 0 auto',
+                  width: { xs: '85%', sm: 360, md: 400 },
+                  scrollSnapAlign: 'start',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  bgcolor: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  transition: 'transform 0.25s ease',
+                  '&:hover': { transform: 'translateY(-6px)', '& img': { transform: 'scale(1.05)' } },
                 }}
               >
-                Proof
-              </Typography>
-              <Typography
-                variant="h2"
-                component="h2"
-                sx={{
-                  fontWeight: 800,
-                  letterSpacing: '-0.03em',
-                  fontSize: { xs: '1.75rem', md: '2.25rem' },
-                  color: '#0E251D',
-                  mb: 1,
-                }}
-              >
-                What came in, and what it cost
-              </Typography>
-              <Typography sx={{ color: '#505050', maxWidth: 560, lineHeight: 1.65 }}>
-                Four accounts. Each line shows the spend, what came back and the cost per lead, so you can judge the
-                work rather than take our word for it.
-              </Typography>
-            </Box>
-            <Button
-              component={Link}
-              href="/resources"
-              variant="outlined"
-              endIcon={<ArrowForward sx={{ fontSize: 14 }} />}
-              sx={{ fontWeight: 700, textTransform: 'none', borderRadius: 1 }}
-            >
-              Read the latest
-            </Button>
-          </Box>
-        </Reveal>
-
-        <Stagger>
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 2 }}>
-            {PROOF_ACCOUNTS.map((row) => (
-              <StaggerItem key={row.account}>
-                <Box
-                  component="article"
-                  sx={{
-                    height: '100%',
-                    p: 3,
-                    borderRadius: 2,
-                    border: '1px solid #E8E8E8',
-                    bgcolor: '#F5F5F5',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 1.25,
-                  }}
-                >
-                  <Typography sx={{ fontWeight: 800, color: '#0E251D', fontSize: '1rem' }}>{row.account}</Typography>
-                  <Typography sx={{ color: '#505050', fontSize: '0.85rem' }}>
-                    {row.channel} · {row.spend}
-                  </Typography>
-                  <Typography sx={{ color: '#0E251D', fontSize: '0.95rem', lineHeight: 1.55, flex: 1 }}>
-                    {row.result}
-                  </Typography>
-                  <Typography sx={{ color: 'primary.main', fontWeight: 800, fontSize: '0.9rem' }}>{row.cpl}</Typography>
+                <Box sx={{ position: 'relative', height: { xs: 210, md: 250 }, overflow: 'hidden' }}>
+                  <Image src={item.image} alt={item.title} fill unoptimized sizes="400px" style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }} />
+                  <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 45%, rgba(0,16,36,0.9) 100%)' }} />
                 </Box>
-              </StaggerItem>
+                <Box sx={{ p: 2.75 }}>
+                  <Typography
+                    component="h3"
+                    sx={{
+                      fontFamily: WS.fontDisplay,
+                      fontWeight: 700,
+                      fontSize: { xs: '1rem', md: '1.15rem' },
+                      lineHeight: 1.4,
+                      color: WS.white,
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                </Box>
+              </Box>
             ))}
           </Box>
-        </Stagger>
-
-        <Typography sx={{ color: '#8A8A8A', fontSize: '0.8rem', mt: 3, lineHeight: 1.6, maxWidth: 720 }}>
-          {PROOF_DISCLAIMER}
-        </Typography>
+        </Box>
       </Container>
     </Box>
   );

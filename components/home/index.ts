@@ -1,7 +1,11 @@
 export { default as HomeHero } from './HomeHero';
 export { default as StandTodaySection } from './StandTodaySection';
-export { default as DeliveryCompareSection } from './DeliveryCompareSection';
 export { default as ServicesSection } from './ServicesSection';
+export { default as ClientsLogosSection } from './ClientsLogosSection';
+export { default as AiTechSection } from './AiTechSection';
 export { default as StoriesSection } from './StoriesSection';
+export { default as TestimonialsSection } from './TestimonialsSection';
+export { default as DeliveryCompareSection } from './DeliveryCompareSection';
 export { default as SecuritySection } from './SecuritySection';
+export { default as TechCapabilitiesSection } from './TechCapabilitiesSection';
 export { default as DiscoverySection } from './DiscoverySection';

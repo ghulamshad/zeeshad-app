@@ -39,8 +39,8 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     marketing: {
-      main: '#C2410C',
-      dark: '#9A3412',
+      main: '#FF5900',
+      dark: '#E04F00',
       light: '#FFF1E8',
       contrastText: '#ffffff',
     },
@@ -158,7 +158,14 @@ const theme = createTheme({
           '&:hover': { boxShadow: 'none' },
         },
         contained: {
-          '&:hover': { filter: 'brightness(1.04)' },
+          '&:hover': { filter: 'none' },
+        },
+        containedPrimary: {
+          backgroundColor: '#2457F5',
+          '&:hover': {
+            backgroundColor: '#FF5900',
+            filter: 'none',
+          },
         },
         outlined: {
           borderWidth: 1.5,
